@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tcolorbox_definition
+# key: ,bd
+# --
+#+ATTR_LaTeX: :options {${1:name}} {${1:$(s-replace " " "_" yas-text)}}
+#+BEGIN_definition
+$0
+#+END_definition

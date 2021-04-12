@@ -1,0 +1,5 @@
+(require 'arche-package)
+(use-package magit)
+(global-set-key (kbd "C-c g") #'magit)
+(use-package git-gutter)
+(provide 'arche-git)

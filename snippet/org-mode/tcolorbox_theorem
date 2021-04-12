@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tcolorbox_theorem
+# key: ,bt
+# --
+#+ATTR_LaTeX: :options {${1:name}} {${1:$(s-replace " " "_" yas-text)}}
+#+BEGIN_theorem
+$0
+#+END_theorem

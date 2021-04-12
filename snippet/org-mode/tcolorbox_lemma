@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tcolorbox_lemma
+# key: ,bl
+# --
+#+ATTR_LaTeX: :options {${1:name}} {${1:$(s-replace " " "_" yas-text)}}
+#+BEGIN_lemma
+$0
+#+END_lemma

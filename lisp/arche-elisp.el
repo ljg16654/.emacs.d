@@ -1,0 +1,5 @@
+(require 'arche-package)
+(use-package s)
+(use-package dash)
+(use-package f)
+(provide 'arche-elisp)

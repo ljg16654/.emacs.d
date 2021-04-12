@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: tcolorbox_proposition
+# key: ,bp
+# --
+#+ATTR_LaTeX: :options {${1:name}} {${1:$(s-replace " " "_" yas-text)}}
+#+BEGIN_proposition
+$0
+#+END_proposition
