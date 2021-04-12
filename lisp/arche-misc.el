@@ -1,5 +1,8 @@
 (require 'arche-helm)
 (use-package ace-jump-mode)
+(use-package ace-link
+  :config
+  (ace-link-setup-default))
 (straight-use-package
  '(disk-usage :type git
 	      :host github
