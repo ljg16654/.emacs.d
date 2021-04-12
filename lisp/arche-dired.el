@@ -1,5 +1,6 @@
 (require 'arche-package)
 (use-package dired-narrow)
+(use-package dired-subtree)
 (setq dired-maybe-use-globstar t)
 (setq delete-by-moving-to-trash t)
 (add-hook 'dired-mode-hook
