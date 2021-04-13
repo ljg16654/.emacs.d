@@ -19,12 +19,10 @@
     )
   :bind (("C-c f e" . olivetti-mode)))
 (setq bookmark-file (file-truename "~/.emacs.bmk"))
-(use-package centaur-tabs)
 (general-define-key
  :prefix "C-c f"
  "p" #'(lambda () (interactive) (find-file (concat user-emacs-directory "init.el")))
  "d" #'(lambda () (interactive) (find-file (file-truename "~/Downloads")))
  "c" #'(lambda () (interactive) (find-file (file-truename "~/Documents")))
  "l" #'(lambda () (interactive) (find-file (file-truename "~/org/reading-list.org"))))
-(use-package good-scroll)
 (provide 'arche-misc)

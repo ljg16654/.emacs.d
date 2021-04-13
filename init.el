@@ -62,6 +62,7 @@
 (require 'arche-env)
 (require 'arche-web)
 (require 'arche-chinese)
+(require 'arche-sibling)
 (server-start)
  
 (put 'narrow-to-region 'disabled nil)

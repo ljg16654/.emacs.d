@@ -36,8 +36,7 @@
 
 (use-package org-download
   :config
-  (setq org-download-screenshot-method "gnome-screenshot -a -f %s")
-  (setq org-download-image-dir))
+  (progn (setq org-download-screenshot-method "gnome-screenshot -a -f %s")))
 
 (use-package org-noter)
 
