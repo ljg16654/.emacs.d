@@ -9,6 +9,5 @@
 	 (switch-to-buffer (s-prepend "test_" fn))))
      (t (message "Not in a python buffer!"))
      )))
-(define-key python-mode-map (kbd "H-s") #'arche-sibling-jump)
 
 (provide 'arche-sibling)

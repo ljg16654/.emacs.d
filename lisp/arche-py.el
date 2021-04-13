@@ -1,9 +1,11 @@
 (require 'arche-package)
 (require 'arche-prog)
+(require 'arche-sibling)
 (add-hook 'python-mode-hook #'linum-mode)
 (use-package python-pytest)
 (define-key python-mode-map (kbd "H-t") #'python-pytest-dispatch)
-
+(define-key python-mode-map (kbd "H-s") #'arche-sibling-jump)
+(define-key python-mode-map (kbd "H-z") #'python-shell-switch-to-shell)
 ;; for font-lock and filling paragraphs inside docstring region:
 (use-package python-docstring)
 

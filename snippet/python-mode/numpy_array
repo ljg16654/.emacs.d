@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: numpy_array
+# key: ,n
+# --
+np.array($1)

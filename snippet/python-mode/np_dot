@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: numpy_dot
+# key: ,.
+# --
+np.dot($1)

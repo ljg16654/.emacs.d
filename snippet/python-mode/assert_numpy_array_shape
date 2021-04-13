@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: assert_numpy_array_shape
+# key: ,as
+# --
+assert isinstance(${1:array to check}, NDArray[(${2:intended shape}), ${3: array dtype}])
