@@ -1,11 +1,4 @@
 (require 'arche-package)
-;;* ENV
-(setenv "PATH"
-	(concat
-	 ;; manually added
-	 "/usr/local/cbc/bin" ";"
-	 "~/.local/bin" ";"
-	 (getenv "PATH")))
 
 ;;* vterm
 (use-package vterm
