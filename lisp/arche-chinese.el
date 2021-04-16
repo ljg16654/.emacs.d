@@ -7,10 +7,10 @@
     :config (pyim-basedict-enable))
   ;; quanpin
   (setq pyim-default-scheme 'quanpin)
-  (pyim-isearch-mode 1)
+  ;; (pyim-isearch-mode 1)
   (setq pyim-page-tooltip 'posframe)
   (setq pyim-page-length 5)
-  (add-hook 'emacs-startup-hook
-            #'(lambda () (pyim-restart-1 t)))
+  ;; (add-hook 'emacs-startup-hook
+  ;;           #'(lambda () (pyim-restart-1 t)))
   )
 (provide 'arche-chinese)

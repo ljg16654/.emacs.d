@@ -1,8 +1,9 @@
 (setenv "PATH"
 	(concat
 	 ;; manually added
-	 ;; sbcl
+	 ;; sbcln
 	 "/home/jigang/.local/lib/sbcl/" ";"
+	 "/home/jigang/src/td/tdlib" ";"
 	 "~/.local/bin" ";"
 	 (getenv "PATH")))
 (setenv "http_proxy" "http://127.0.0.1:7890")
