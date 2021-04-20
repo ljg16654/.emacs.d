@@ -20,4 +20,5 @@
     ))
 
 (use-package org-web-tools)
+(use-package engine-mode)
 (provide 'arche-web)

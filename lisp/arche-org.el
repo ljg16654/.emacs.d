@@ -135,6 +135,7 @@ With a prefix ARG, remove start location."
    (haskell . t)
    (ditaa . t)
    (ipython . t) ;; provided by package ob-ipython
+   (matlab . t)
    ))
 
 ;;* org-ref
