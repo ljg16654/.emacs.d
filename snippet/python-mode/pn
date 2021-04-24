@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: pn
+# key: ,pn
+# --
+print("${1: variable}: \n", $1)

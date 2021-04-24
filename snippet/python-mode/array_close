@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: array_close
+# key: ,ac
+# --
+assert (abs(${1: arr1} - ${2: arr2}) < 1e-${3:}).all()

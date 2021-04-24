@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+# name: org-mode image
+# key: ,im
+# --
+#+name: ${1: name}
+#+ATTR_LATEX: :width ${2: ratio}\linewidth
+#+caption: ${3: Caption}
+[[${4: path to image}]]

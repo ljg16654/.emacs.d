@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: value_close
+# key: ,vc
+# --
+assert abs(${1: value1} - ${2: value2}) < 1e-${3}
