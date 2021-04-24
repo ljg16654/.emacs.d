@@ -1,4 +1,4 @@
-;; Embark, Consult and Marginalia
+;;*  Embark, Consult and Marginalia
 (require 'arche-package)
 (require 'arche-keybinding)
 (use-package embark
@@ -22,6 +22,7 @@
             #'which-key--hide-popup-ignore-command)
           embark-become-indicator embark-action-indicator)
     ))
+
 (use-package consult
   :config
   (progn
@@ -34,4 +35,10 @@
   :hook
   (embark-collect-mode . embark-consult-preview-minor-mode))
 (use-package marginalia)
+
+;;* add action to exsiting category
+(define-key embark-general-map (kbd "W") #'wordnut-search)
+;;* new categories for embark
+(add-to-list 'marginalia-prompt-categories
+	     '("tab by name" . tab))
 (provide 'arche-ecm)

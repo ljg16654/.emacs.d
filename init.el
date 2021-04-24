@@ -68,6 +68,7 @@
 (require 'arche-log)
 (require 'arche-chinese)
 (require 'arche-sibling)
+(require 'arche-hyperbole)
 (server-start)
  
 (put 'narrow-to-region 'disabled nil)

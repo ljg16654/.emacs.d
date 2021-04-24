@@ -1,4 +1,5 @@
 ;; (setq gnus-select-method '(nnimap "imap.sjtu.edu.cn"))
+;;* gnus
 (setq gnus-select-method '(nnnil nil))
 (setq gnus-secondary-select-methods
       '(
@@ -10,4 +11,8 @@
 		(nnimap-server-port 993)
 		(nnimap-inbox "INBOX")
 		(nnimap-stream ssl))))
+
+;;* notmuch
+
+
 (provide 'arche-email)

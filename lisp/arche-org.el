@@ -23,6 +23,9 @@
     ))
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
+;;* journal
+(use-package org-journal)
+
 ;;** writing LaTeX
 (require 'arche-org-latex-inline-math)
 

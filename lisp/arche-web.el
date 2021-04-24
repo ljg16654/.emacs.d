@@ -1,5 +1,9 @@
 (require 'arche-package)
 (require 'arche-org)
+(use-package eww
+  :after ace-link
+  :config
+  (progn (define-key eww-mode-map (kbd "f") #'ace-link)))
 (use-package w3m)
 (setq browse-url-generic-program "qutebrowser")
 (setq browse-url-browser-function #'eww-browse-url)

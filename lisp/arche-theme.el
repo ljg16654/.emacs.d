@@ -1,3 +1,4 @@
+(require 'arche-package)
 ;; (load-theme 'modus-operandi t)
 (tool-bar-mode -1)
 (menu-bar-mode -1)

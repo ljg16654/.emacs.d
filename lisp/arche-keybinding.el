@@ -1,6 +1,6 @@
 (require 'arche-package)
 (use-package general)
-
+(use-package which-key)
 (use-package key-chord
   :init
   (setq key-chord-two-keys-delay 0.05)
