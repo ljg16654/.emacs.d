@@ -24,7 +24,20 @@
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
 ;;* journal
-(use-package org-journal)
+;; https://stackoverflow.com/questions/28913294/emacs-org-mode-language-of-time-stamps
+;; make sure the weekdays in the time stamps of Org mode files appear in English
+(setq system-time-locale "C")
+;; org journal also provides integration with Emacs Calendar, see ./arche-log.el
+;; try "j r", "j d" "j n" over dates in calendar-mode!
+(use-package org-journal
+  :config
+  (progn
+    ;; Otherwise separate headings with time as titles are created for each new entry
+    (setq org-journal-time-prefix nil)
+    (setq org-journal-file-type 'monthly)
+    ))
+
+
 
 ;;** writing LaTeX
 (require 'arche-org-latex-inline-math)
