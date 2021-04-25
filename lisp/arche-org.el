@@ -52,7 +52,12 @@
   :config
   (progn (setq org-download-screenshot-method "gnome-screenshot -a -f %s")))
 
-(use-package org-noter)
+(use-package org-noter
+  :config
+  (progn
+    (setq org-noter-notes-search-path
+	  '("~/Documents/"
+	    "~/org-roam/"))))
 
 (use-package org-pdftools
   :hook (org-mode . org-pdftools-setup-link))
