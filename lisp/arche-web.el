@@ -1,5 +1,11 @@
 (require 'arche-package)
 (require 'arche-org)
+
+(use-package enwc
+  :config
+  (progn
+    (setq enwc-default-backend 'nm)))
+
 (use-package eww
   :after ace-link
   :config

@@ -37,8 +37,6 @@
     (setq org-journal-file-type 'monthly)
     ))
 
-
-
 ;;** writing LaTeX
 (require 'arche-org-latex-inline-math)
 
