@@ -71,5 +71,3 @@
 (require 'arche-sibling)
 (require 'arche-hyperbole)
 (server-start)
- 
-(put 'narrow-to-region 'disabled nil)

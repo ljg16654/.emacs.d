@@ -1,4 +1,5 @@
 (require 'arche-helm)
+(put 'narrow-to-region 'disabled nil)
 (use-package ace-jump-mode)
 (use-package ace-link
   :config
