@@ -55,6 +55,7 @@
 (require 'arche-py)
 (require 'arche-c)
 (require 'arche-matlab)
+(require 'arche-mma)
 (require 'arche-rust)
 (require 'arche-lsp)
 (require 'arche-misc)

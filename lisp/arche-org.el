@@ -2,7 +2,8 @@
 (require 'arche-pdf)
 (require 'cl-lib)
 (require 'arche-company)
-(use-package org)
+(use-package org
+  :straight org-plus-contrib)
 ;;* appearance stuff 
 (setq org-ellipsis " ▾"
       org-hide-emphasis-markers t
@@ -134,6 +135,8 @@ With a prefix ARG, remove start location."
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
 ;;** load languages
+(require 'arche-matlab)
+(require 'arche-mma)
 (use-package ob-ipython)
 (setq org-babel-python-command "python3")
 (org-babel-do-load-languages
@@ -155,6 +158,7 @@ With a prefix ARG, remove start location."
    (ditaa . t)
    (ipython . t) ;; provided by package ob-ipython
    (matlab . t)
+   (mathematica . t)
    ))
 
 ;;* org-ref
