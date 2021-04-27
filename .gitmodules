@@ -1,0 +1,6 @@
+[submodule "site-lisp/graph.el"]
+	path = site-lisp/graph.el
+	url = https://github.com/storax/graph.el
+[submodule "site-lisp/matlab-emacs-src"]
+	path = site-lisp/matlab-emacs-src
+	url = https://git.code.sf.net/p/matlab-emacs/src
