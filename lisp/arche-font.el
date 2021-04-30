@@ -1,3 +1,4 @@
 (set-face-attribute 'default nil :family "Iosevka" :height 135)
-(setq line-spacing 0.3)
+(set-face-attribute 'fixed-pitch nil :family "Iosevka")
+(set-face-attribute 'variable-pitch nil :family "Iosevka-fixed")
 (provide 'arche-font)

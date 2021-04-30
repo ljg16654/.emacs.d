@@ -1,5 +1,9 @@
 (require 'arche-helm)
+(setq vc-follow-symlinks nil)
 (put 'narrow-to-region 'disabled nil)
+(defun my-copy-full-name ()
+  (interactive)
+  (kill-new (file-truename (buffer-file-name))))
 (use-package ace-jump-mode)
 (use-package ace-link
   :config
@@ -23,7 +27,9 @@
 (general-define-key
  :prefix "C-c f"
  "p" #'(lambda () (interactive) (find-file (concat user-emacs-directory "init.el")))
+ "P" #'(lambda () (interactive) (find-file (file-truename "~/Pictures/")))
  "d" #'(lambda () (interactive) (find-file (file-truename "~/Downloads")))
  "c" #'(lambda () (interactive) (find-file (file-truename "~/Documents")))
  "l" #'(lambda () (interactive) (find-file (file-truename "~/org/reading-list.org"))))
+
 (provide 'arche-misc)

@@ -5,7 +5,6 @@
  )
 
 (pdf-tools-install)
-(add-hook 'pdf-view-mode-hook #'pdf-view-midnight-minor-mode)
 (general-define-key
  :keymaps 'pdf-view-mode-map
  "o" #'pdf-outline

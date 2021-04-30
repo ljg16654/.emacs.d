@@ -12,6 +12,7 @@
 (define-key python-mode-map (kbd "H-t") #'python-pytest-dispatch)
 (define-key python-mode-map (kbd "H-f") #'python-pytest-function)
 (define-key python-mode-map (kbd "H-r") #'python-pytest-last-failed)
+(define-key python-mode-map (kbd "H-b") #'lsp-ui-doc-focus-frame)
 (define-key python-mode-map (kbd "H-s") #'arche-sibling-jump)
 (define-key python-mode-map (kbd "H-z") #'python-shell-switch-to-shell)
 ;; for font-lock and filling paragraphs inside docstring region:

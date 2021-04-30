@@ -18,9 +18,10 @@
 ;;* editing experience
 (defun arche-org-mode-hook ()
   (progn
-    (auto-fill-mode t)
-    (org-bullets-mode t)
-    (org-indent-mode t)
+    (auto-fill-mode)
+    (org-bullets-mode)
+    (org-indent-mode)
+    (flyspell-mode)
     ))
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
@@ -56,6 +57,7 @@
 (use-package org-noter
   :config
   (progn
+    (setq org-noter-always-create-frame nil)
     (setq org-noter-notes-search-path
 	  '("~/Documents/"
 	    "~/org-roam/"))))

@@ -31,4 +31,5 @@
 	.
 	"#f0ffdd" ;; foreground
 	))
+(load-theme 'random t)
 (provide 'arche-theme)

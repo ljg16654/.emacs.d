@@ -4,5 +4,6 @@
   :after (debbugs)
   :config
   (progn
+    (hkey-ace-window-setup (kbd "M-o"))
     (global-set-key (kbd "s-m") #'hkey-either)))
 (provide 'arche-hyperbole)
