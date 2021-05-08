@@ -25,7 +25,7 @@
   (font-lock-comment-face (:foreground "CadetBlue" :background random-br :slant 'italic))
   (font-lock-variable-name-face (:foreground "ForestGreen"))
   (font-lock-keyword-face (:foreground "gold4"))
-  (font-lock-string-face (:foreground "RoyalBlue" :background "#f0ffe5"))
+  (font-lock-string-face (:foreground "IndianRed4"))
   (font-lock-constant-face (:weight 'bold :foreground "orange"))
   (font-lock-type-face (:foreground "OrangeRed" :weight 'bold :slant 'italic))
   (default (:foreground "#050570" :background random-brightest :weight 'medium))
@@ -64,10 +64,9 @@
   (tab-bar-tab-inactive
    (:family "UnTaza"
 	    :inherit 'tab-bar-tab
-	    :background random-brightest
+	    :background "white"
 	    :foreground "black"
 	    :height 150))
-  ;; (tab-line :background random-brightest)
   (company-tooltip-selection (:background "LightGreen" :foreground "black"))
   (company-tooltip-common (:foreground "sienna"))
   (company-tooltip (:background random-br :foreground "DarkSeaGreen4"))

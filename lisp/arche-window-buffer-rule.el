@@ -37,7 +37,7 @@
          (slot . 0))
 	("\\*pytest.*"
 	 (display-buffer-in-side-window)
-	 (window-width . 0.33)		; See the :hook
+	 (window-width . 0.5)		; See the :hook
 	 (side . left)
 	 (slot . 0)
          (window-parameters . ((no-other-window . t))))

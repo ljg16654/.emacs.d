@@ -3,6 +3,7 @@
 (use-package dash)
 (use-package f)
 (use-package transient)
+(use-package ov)
 
 ;; library for graph
 (add-to-list 'load-path (concat
