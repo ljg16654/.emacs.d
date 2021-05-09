@@ -4,6 +4,7 @@
 (defun my-copy-full-name ()
   (interactive)
   (kill-new (file-truename (buffer-file-name))))
+(use-package hl-todo)
 (use-package ace-jump-mode)
 (use-package lorem-ipsum)
 (use-package ace-link

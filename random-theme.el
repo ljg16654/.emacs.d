@@ -62,11 +62,7 @@
 	    :foreground "OrangeRed"
 	    :height 150))
   (tab-bar-tab-inactive
-   (:family "UnTaza"
-	    :inherit 'tab-bar-tab
-	    :background "white"
-	    :foreground "black"
-	    :height 150))
+   (:inherit 'tab-bar-tab :background "LightGrey" :foreground "DarkGrey" :height 150 :family "UnTaza"))
   (company-tooltip-selection (:background "LightGreen" :foreground "black"))
   (company-tooltip-common (:foreground "sienna"))
   (company-tooltip (:background random-br :foreground "DarkSeaGreen4"))
@@ -78,11 +74,8 @@
  )
 
 (setq pdf-view-midnight-colors
-      '(
-       "#191970" ;; background
-       .
-       random-brightest ;; foreground
-       ))
+      ;; fore, back
+      '("DarkSlateBlue" . "#fafffa"))
 
 (provide-theme 'random)
 (global-set-key (kbd "M-o") #'describe-face)
