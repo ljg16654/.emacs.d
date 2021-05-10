@@ -25,6 +25,28 @@
     ))
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
+;;* capture
+(setq org-link-elisp-skip-confirm-regexp
+      (rx "wordnut-search"))
+
+(defun org-capture-wordnut-capture ()
+  (with-current-buffer "*WordNut*"
+    (wordnut--lexi-word)))
+
+(setq org-capture-templates
+      '(("t" "Personal todo" entry
+         (file+headline "todo.org" "Inbox")
+         "* TODO %?\n%i" :prepend t)
+        ("r" "read later" checkitem
+         (file+headline "read-later.org" "Inbox")
+         "[ ] %? ")
+	;; TODO capture template for wordnut-buffer
+        ("w" "word" plain
+	 (file+headline "words.org" "Inbox")
+	 "[[elisp:(wordnut-search %(org-capture-wordnut-capture)][%(org-capture-wordnut-capture)]]")))
+
+(global-set-key (kbd "H-c") #'org-capture)
+
 ;;* journal
 ;; https://stackoverflow.com/questions/28913294/emacs-org-mode-language-of-time-stamps
 ;; make sure the weekdays in the time stamps of Org mode files appear in English

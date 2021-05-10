@@ -1,4 +1,5 @@
 (require 'arche-package)
+(require 'arche-misc)
 
 ;;* editing
 (use-package lispy)
@@ -8,7 +9,7 @@
   (lispy-mode t)
   (paren-face-mode t)
   (highlight-parentheses-mode t)
-  )
+  (hl-todo-mode t))
 (add-hook 'lisp-mode-hook #'arche-lisps-hook)
 (add-hook 'emacs-lisp-mode-hook #'arche-lisps-hook)
 (add-hook 'inferior-emacs-lisp-mode #'(lambda () (autopair-mode t)))
