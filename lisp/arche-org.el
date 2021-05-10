@@ -2,6 +2,7 @@
 (require 'arche-pdf)
 (require 'cl-lib)
 (require 'arche-company)
+(require 'arche-dictionaries)
 (use-package org
   :straight org-plus-contrib)
 ;;* appearance stuff 
@@ -46,6 +47,13 @@
 	 "[[elisp:(wordnut-search %(org-capture-wordnut-capture)][%(org-capture-wordnut-capture)]]")))
 
 (global-set-key (kbd "H-c") #'org-capture)
+(defun wordnut-search-and-capture ()
+  "Perform wordnut-search and then capture."
+  (interactive)
+  (progn
+    (call-interactively #'wordnut-search)
+    (org-capture nil "w")))
+(global-set-key (kbd "s-w") #'wordnut-search-and-capture)
 
 ;;* journal
 ;; https://stackoverflow.com/questions/28913294/emacs-org-mode-language-of-time-stamps
