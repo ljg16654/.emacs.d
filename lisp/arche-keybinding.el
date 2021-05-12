@@ -9,7 +9,6 @@
   (key-chord-mode t)
   (key-chord-define-global ",." "<>\C-b")
   (key-chord-define-global "jk" "[]\C-b")
-  (key-chord-define-global "JK" "{}\C-b")
-  )
+  (key-chord-define-global "JK" "{}\C-b"))
 
 (provide 'arche-keybinding)

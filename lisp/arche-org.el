@@ -5,6 +5,7 @@
 (require 'arche-dictionaries)
 (use-package org
   :straight org-plus-contrib)
+
 ;;* appearance stuff 
 (setq org-ellipsis " ▾"
       org-hide-emphasis-markers t
@@ -31,6 +32,7 @@
       (rx "wordnut-search"))
 
 (defun org-capture-wordnut-capture ()
+  "Get the word being displayed in *Wordnut* buffer if it exists."
   (with-current-buffer "*WordNut*"
     (wordnut--lexi-word)))
 
@@ -44,15 +46,19 @@
 	;; TODO capture template for wordnut-buffer
         ("w" "word" plain
 	 (file+headline "words.org" "Inbox")
-	 "[[elisp:(wordnut-search %(org-capture-wordnut-capture)][%(org-capture-wordnut-capture)]]")))
+	 "[[elisp:(wordnut-search \"%(org-capture-wordnut-capture)\")][%(org-capture-wordnut-capture)]]")))
 
 (global-set-key (kbd "H-c") #'org-capture)
+
 (defun wordnut-search-and-capture ()
   "Perform wordnut-search and then capture."
   (interactive)
   (progn
+    ;; (call-interactively #'wordnut-search)
     (call-interactively #'wordnut-search)
-    (org-capture nil "w")))
+    (org-capture nil "w")
+    (org-capture-finalize)))
+
 (global-set-key (kbd "s-w") #'wordnut-search-and-capture)
 
 ;;* journal
@@ -66,8 +72,7 @@
   (progn
     ;; Otherwise separate headings with time as titles are created for each new entry
     (setq org-journal-time-prefix nil)
-    (setq org-journal-file-type 'monthly)
-    ))
+    (setq org-journal-file-type 'monthly)))
 
 ;;** writing LaTeX
 (require 'arche-org-latex-inline-math)

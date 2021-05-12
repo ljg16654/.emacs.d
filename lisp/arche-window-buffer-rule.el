@@ -1,5 +1,9 @@
 (require 'arche-package)
 (use-package posframe)
+(winner-mode t)
+(global-set-key (kbd "s--") #'winner-undo)
+(global-set-key (kbd "s-=") #'winner-redo)
+(global-set-key (kbd "s-s") #'window-toggle-side-windows)
 (setq display-buffer-alist
       '(
         ("\\*Messages.*"
@@ -46,7 +50,6 @@
          (window-height . 0.4)
          ;; (mode . '(eshell-mode shell-mode))
          )))
-(global-set-key (kbd "C-c 2") #'window-toggle-side-windows)
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'custom-mode-hook #'visual-line-mode)
 (setq Man-notify-method 'pushy)

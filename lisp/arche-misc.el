@@ -18,6 +18,8 @@
 (global-set-key (kbd "M-i") #'helm-imenu)
 (global-set-key (kbd "μ") #'bookmark-jump)
 (global-set-key (kbd "C-x v") #'view-mode)
+(define-key view-mode-map (kbd "l") #'org-open-at-point)
+
 (use-package olivetti
   :config
   (progn
