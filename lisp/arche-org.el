@@ -174,8 +174,18 @@ With a prefix ARG, remove start location."
 
 ;;** load languages
 (require 'arche-matlab)
+
 (require 'arche-mma)
+
 (use-package ob-ipython)
+
+(use-package plantuml-mode
+  :config
+  (progn
+    (setq org-plantuml-jar-path (expand-file-name "~/tools/plantuml.1.2021.6.jar"))
+    (add-to-list
+     'org-src-lang-modes '("plantuml" . plantuml))))
+
 (setq org-babel-python-command "python3")
 (org-babel-do-load-languages
  'org-babel-load-languages
@@ -189,6 +199,7 @@ With a prefix ARG, remove start location."
    (clojure . t)
    (js . t)
    (ditaa . t)
+   (plantuml . t)
    (dot . t)
    (org . t)
    (latex . t)
