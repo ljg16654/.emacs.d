@@ -51,7 +51,7 @@
 
 (global-set-key (kbd "s-/") #'query-replace-regexp)
 
-(global-set-key (kbd "M-i") #'helm-imenu)
+(global-set-key (kbd "M-i") #'imenu)
 
 (global-set-key (kbd "μ") #'bookmark-jump)
 

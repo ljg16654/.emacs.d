@@ -3,4 +3,5 @@
 (global-set-key (kbd "σ") #'compile)
 (setq linum-format " %d  ")
 (add-hook 'prog-mode-hook #'electric-pair-mode)
+(use-package yaml-mode)
 (provide 'arche-prog)

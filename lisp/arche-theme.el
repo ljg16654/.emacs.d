@@ -1,9 +1,13 @@
 (require 'arche-package)
 ;; (load-theme 'modus-operandi t)
+
 (tool-bar-mode -1)
 (menu-bar-mode -1)
+(scroll-bar-mode -1)
+(tooltip-mode -1)
 (setq tab-bar-new-button nil)
 (setq tab-bar-close-button nil)
+
 ;;* some random themes I favor
 (use-package tron-legacy-theme)
 (use-package plan9-theme)
@@ -31,5 +35,10 @@
 	.
 	"#f0ffdd" ;; foreground
 	))
-(load-theme 'random t)
+;; (load-theme 'random t)
+
+(add-to-list 'load-path
+	     (concat user-emacs-directory "site-lisp/elegant-emacs"))
+(require 'elegance)
+
 (provide 'arche-theme)

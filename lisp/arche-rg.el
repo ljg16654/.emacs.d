@@ -1,6 +1,6 @@
 (require 'arche-package)
 (use-package rg)
-(global-set-key (kbd "C-c s")
+(global-set-key (kbd "s-s")
 		#'rg-menu)
 (use-package ripgrep)
 (provide 'arche-rg)

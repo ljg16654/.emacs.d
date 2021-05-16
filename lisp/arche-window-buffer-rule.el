@@ -3,7 +3,7 @@
 (winner-mode t)
 (global-set-key (kbd "s--") #'winner-undo)
 (global-set-key (kbd "s-=") #'winner-redo)
-(global-set-key (kbd "s-s") #'window-toggle-side-windows)
+(global-set-key (kbd "C-c s") #'window-toggle-side-windows)
 (setq display-buffer-alist
       '(
         ("\\*Messages.*"

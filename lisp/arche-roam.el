@@ -1,5 +1,7 @@
 (require 'arche-package)
+
 (executable-find "sqlite3")
+
 (use-package org-roam
   :commands org-roam-mode
   :init (add-hook 'after-init-hook 'org-roam-mode)
@@ -57,4 +59,10 @@
           org-roam-server-network-label-truncate t
           org-roam-server-network-label-truncate-length 60
           org-roam-server-network-label-wrap-length 20)))
+
+(straight-use-package
+ '(org-transclusion :type git
+	      :host github
+	      :repo "nobiot/org-transclusion"))
+
 (provide 'arche-roam)
