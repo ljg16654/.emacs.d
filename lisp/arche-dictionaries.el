@@ -10,6 +10,7 @@
   :keymap
   '(("n" . wrw-next-word)
     ("p" . wrw-prev-word)
+    ("d" . wrw-delete-word)
     ("m" . wrw-mark-word)))
 
 (defun wrw-next-word ()
@@ -24,10 +25,16 @@
 		   (read-kbd-macro
 		    "C-x 4 b words.org C-j C-p C-c C-o")))
 
+(defun wrw-delete-word ()
+  (interactive)
+  (execute-kbd-macro
+   (read-kbd-macro
+    "C-x 4 b words.org C-j C-a C-k C-c C-o")))
+
 (defun wrw-mark-word ()
   (interactive)
   (execute-kbd-macro
-		   (read-kbd-macro
-		    "C-x 4 b words.org C-j M-s h . C-c C-o")))
+   (read-kbd-macro
+    "C-x 4 b words.org C-j M-s h . C-c C-o")))
 
 (provide 'arche-dictionaries)

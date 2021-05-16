@@ -6,6 +6,8 @@
 (general-define-key
  :keymaps 'vterm-copy-mode-map
  "q" #'vterm-copy-mode)
+(define-key vterm-mode-map (kbd "H-f")
+  #'vterm-copy-mode)
 (use-package vterm-toggle
   :bind
   ("s-v" . vterm-toggle)

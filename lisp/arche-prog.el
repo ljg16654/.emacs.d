@@ -2,4 +2,5 @@
 (use-package flycheck)
 (global-set-key (kbd "σ") #'compile)
 (setq linum-format " %d  ")
+(add-hook 'prog-mode-hook #'electric-pair-mode)
 (provide 'arche-prog)

@@ -1,4 +1,8 @@
 (require 'arche-helm)
+(defun transparency (value)
+  "sets the transparency of the frame window. 0=transparent/100=opaque"
+  (interactive "ntransparency value 0 - 100 opaque:")
+  (set-frame-parameter (selected-frame) 'alpha value))
 (setq vc-follow-symlinks nil)
 (put 'narrow-to-region 'disabled nil)
 (defun my-copy-full-name ()
@@ -15,6 +19,7 @@
 	      :host github
 	      :repo "emacs-straight/disk-usage"))
 (fset 'yes-or-no-p 'y-or-n-p)
+(global-set-key (kbd "s-/") #'query-replace-regexp)
 (global-set-key (kbd "M-i") #'helm-imenu)
 (global-set-key (kbd "μ") #'bookmark-jump)
 (global-set-key (kbd "C-x v") #'view-mode)

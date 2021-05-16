@@ -54,4 +54,6 @@
 	(list ?a ?s ?d ?f ?j ?k ?l ?q ?w ?e ?r ?x ?c ?v)))
 (global-set-key (kbd "θ") #'ace-window)
 (global-set-key (kbd "χ") #'other-window)
+(global-set-key (kbd "ρ") #'(lambda () (interactive)
+			      (other-window -1)))
 (provide 'arche-buffer-management)

@@ -36,6 +36,7 @@
   (with-current-buffer "*WordNut*"
     (wordnut--lexi-word)))
 
+;; TODO have a look at https://github.com/progfolio/doct
 (setq org-capture-templates
       '(("t" "Personal todo" entry
          (file+headline "todo.org" "Inbox")
@@ -92,7 +93,7 @@
 (use-package org-noter
   :config
   (progn
-    (setq org-noter-always-create-frame nil)
+    (setq org-noter-always-create-frame t)
     (setq org-noter-notes-search-path
 	  '("~/Documents/"
 	    "~/org-roam/"))))

@@ -45,7 +45,7 @@
 (require 'arche-buffer-management)
 (require 'arche-isearch)
 (require 'arche-git)
-(require 'arche-projectile)
+(require 'arche-project)
 (require 'arche-epub)
 (require 'arche-rss)
 (require 'arche-font)
