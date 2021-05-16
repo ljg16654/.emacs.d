@@ -13,8 +13,13 @@
 (setq read-buffer-completion-ignore-case t)
 
 ;;* My favored incrementally narrowing tool in minibuffer
-;; (icomplete-mode nil)
+
+;; For some reason selectrum doesn't work properly with wordnut-search
 (use-package selectrum)
-(selectrum-mode +1)
+(selectrum-mode 0)
+
+(use-package icomplete-vertical)
+(icomplete-mode)
+(icomplete-vertical-mode)
 
 (provide 'arche-minibuffer-completion)
