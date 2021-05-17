@@ -207,7 +207,6 @@ With a prefix ARG, remove start location."
    (ditaa . t)
    (ipython . t) ;; provided by package ob-ipython
    (matlab . t)
-   (mathematica . t)
    ))
 
 ;;* org-ref

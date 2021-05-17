@@ -18,7 +18,13 @@
 (use-package selectrum)
 (selectrum-mode 0)
 
-(use-package icomplete-vertical)
+(use-package icomplete-vertical
+  :bind (:map icomplete-minibuffer-map
+              ("<down>" . icomplete-forward-completions)
+              ("C-n" . icomplete-forward-completions)
+              ("<up>" . icomplete-backward-completions)
+              ("C-p" . icomplete-backward-completions)
+              ("C-v" . icomplete-vertical-toggle)))
 (icomplete-mode)
 (icomplete-vertical-mode)
 
