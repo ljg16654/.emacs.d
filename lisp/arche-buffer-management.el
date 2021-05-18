@@ -41,9 +41,8 @@
 
 (setq tab-bar-new-tab-choice "*scratch*")
 (global-set-key (kbd "ψ") #'tab-bar-switch-to-recent-tab)
-(global-set-key (kbd "s-l") #'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-h") #'tab-bar-switch-to-prev-tab)
-(global-set-key (kbd "s-j") #'tab-bar-select-tab-by-name)
+(global-set-key (kbd "s-j") #'tab-bar-switch-to-next-tab)
+(global-set-key (kbd "s-k") #'tab-bar-switch-to-prev-tab)
 
 (use-package avy)
 (global-set-key (kbd "s-'") #'avy-goto-word-1)

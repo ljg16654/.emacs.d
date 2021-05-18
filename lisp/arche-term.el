@@ -15,7 +15,18 @@
 (provide 'arche-term)
 
 ;;* eshell
-(use-package eshell-git-prompt
+;;** fish-like autosuggestion
+(use-package esh-autosuggest
+  :hook (eshell-mode . esh-autosuggest-mode))
+
+(use-package eshell-git-prompt)
+
+(use-package esh-help
   :config
-  (progn
-    (eshell-git-prompt-use-theme 'robbyrussell)))
+  (setup-esh-help-eldoc))
+
+(use-package eshell-prompt-extras)
+(with-eval-after-load "esh-opt"
+  (autoload 'epe-theme-lambda "eshell-prompt-extras")
+  (setq eshell-highlight-prompt nil
+        eshell-prompt-function 'epe-theme-lambda))
