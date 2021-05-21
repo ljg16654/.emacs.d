@@ -13,12 +13,12 @@
 (diminish 'auto-fill-function "AuF")
 (diminish 'evil-snipe-mode)
 (diminish 'evil-escape-mode)
-(provide 'arche-modeline)
-(use-package doom-modeline
-  ;; :init (doom-modeline-mode 1)
-  :config
-  (progn
-    (setq doom-modeline-height 15)))
+
+(use-package minions
+  :init (minions-mode))
+
+(use-package hide-mode-line)
+
 (use-package nyan-mode
   ;; :config
   ;; (nyan-mode)

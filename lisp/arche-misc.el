@@ -75,4 +75,6 @@
  "c" #'(lambda () (interactive) (find-file (file-truename "~/Documents")))
  "l" #'(lambda () (interactive) (find-file (file-truename "~/org/reading-list.org"))))
 
+(use-package emojify)
+
 (provide 'arche-misc)

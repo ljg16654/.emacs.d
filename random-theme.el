@@ -49,20 +49,22 @@
   (org-level-1
    (:background "#d5ffc5"
 		:foreground "black"
-		:family "UnTaza"
+		:family "Iosevka Fixed"
 		:overline t))
   (org-level-2
    (:background "#e5ffd5"
-		:family "UnTaza"
+		:family "Iosevka Fixed"
 		:overline t))
   ;; tab-bar
+  (tab-bar (:background random-brightest))
   (tab-bar-tab
-   (:family "UnTaza"
+   (:family "Iosevka Fixed"
 	    :background random-brightest
-	    :foreground "OrangeRed"
+	    :foreground "black"
+	    :underline t
 	    :height 150))
   (tab-bar-tab-inactive
-   (:inherit 'tab-bar-tab :background "LightGrey" :foreground "DarkGrey" :height 150 :family "UnTaza"))
+   (:underline nil :family "Iosevka Fixed" :background random-brightest :foreground "black" :height 150 ))
   (company-tooltip-selection (:background "LightGreen" :foreground "black"))
   (company-tooltip-common (:foreground "sienna"))
   (company-tooltip (:background random-br :foreground "DarkSeaGreen4"))

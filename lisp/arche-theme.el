@@ -13,6 +13,7 @@
 (use-package plan9-theme)
 ;;* autothemer
 (use-package autothemer)
+
 (defun my-load-tron-legacy ()
   (interactive)
   (progn (setq pdf-view-midnight-colors
@@ -20,7 +21,12 @@
 		 .
 		 "#000000" ;; fg
 		 ))
+	 ;; tab-bar
+	 (set-face-attribute 'tab-bar-tab nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey" :underline t)
+	 (set-face-attribute 'tab-bar-tab-inactive nil :inherit nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey")
+	 (set-face-attribute 'tab-bar nil :background "black")
 	 (load-theme 'tron-legacy t)))
+
 (defun my-load-plan9 ()
   (interactive)
   (progn (setq pdf-view-midnight-colors
@@ -35,10 +41,13 @@
 	.
 	"#f0ffdd" ;; foreground
 	))
-;; (load-theme 'random t)
+
+(load-theme 'random t)
+(set-frame-parameter (selected-frame)
+                     'internal-border-width 24)
 
 (add-to-list 'load-path
 	     (concat user-emacs-directory "site-lisp/elegant-emacs"))
-(require 'elegance)
+;; (require 'elegance)
 
 (provide 'arche-theme)

@@ -51,12 +51,19 @@
 
 (global-set-key (kbd "H-c") #'org-capture)
 
+(defun arche-wordnut-search (word)
+  "Prompt for a word to search for, then do the lookup."
+  (interactive (list (wordnut--completing (if (eq major-mode 'pdf-view-mode) "" (current-word t t)))))
+  (ignore-errors
+    (wordnut--history-update-cur wordnut-hs))
+  (wordnut--lookup word))
+
 (defun wordnut-search-and-capture ()
   "Perform wordnut-search and then capture."
   (interactive)
   (progn
     ;; (call-interactively #'wordnut-search)
-    (call-interactively #'wordnut-search)
+    (call-interactively #'arche-wordnut-search)
     (org-capture nil "w")
     (org-capture-finalize)))
 
