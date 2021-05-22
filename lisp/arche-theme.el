@@ -1,4 +1,5 @@
 (require 'arche-package)
+(use-package modus-themes)
 ;; (load-theme 'modus-operandi t)
 
 (tool-bar-mode -1)
@@ -10,6 +11,7 @@
 
 ;;* some random themes I favor
 (use-package tron-legacy-theme)
+(use-package doom-themes)
 (use-package plan9-theme)
 ;;* autothemer
 (use-package autothemer)
@@ -42,9 +44,9 @@
 	"#f0ffdd" ;; foreground
 	))
 
-(load-theme 'random t)
+;; (load-theme 'random t)
 (set-frame-parameter (selected-frame)
-                     'internal-border-width 24)
+                     'internal-border-width 12)
 
 (add-to-list 'load-path
 	     (concat user-emacs-directory "site-lisp/elegant-emacs"))

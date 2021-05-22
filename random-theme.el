@@ -59,12 +59,13 @@
   (tab-bar (:background random-brightest))
   (tab-bar-tab
    (:family "Iosevka Fixed"
+	    :height 120
 	    :background random-brightest
 	    :foreground "black"
 	    :underline t
-	    :height 150))
+	    ))
   (tab-bar-tab-inactive
-   (:underline nil :family "Iosevka Fixed" :background random-brightest :foreground "black" :height 150 ))
+   (:underline nil :family "Iosevka Fixed" :height 120 :background random-brightest :foreground "black"))
   (company-tooltip-selection (:background "LightGreen" :foreground "black"))
   (company-tooltip-common (:foreground "sienna"))
   (company-tooltip (:background random-br :foreground "DarkSeaGreen4"))

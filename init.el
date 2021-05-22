@@ -69,5 +69,6 @@
 (require 'arche-log)
 (require 'arche-chinese)
 (require 'arche-sibling)
+(require 'arche-eaf)
 (require 'arche-hyperbole)
 (server-start)
