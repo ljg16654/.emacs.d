@@ -2,7 +2,7 @@
 
 ;;* Compeltion Style
 (use-package orderless)
-(setq completion-styles '(orderless))
+(setq completion-styles '(orderless partial-completion))
 ;; for file name completion, ignore case
 (setq read-file-name-completion-ignore-case t)
 (setq read-buffer-completion-ignore-case t)

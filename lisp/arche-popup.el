@@ -5,7 +5,6 @@
   (setq popper-display-control nil)
   (setq popper-reference-buffers
 	(list "\\*Python\\*"
-	      "\\*eshell\\*"
               "\\*ielm\\*"))
   :config
   (defhydra 'popper-stuff

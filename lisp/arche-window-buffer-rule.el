@@ -44,11 +44,6 @@
 	 (window-width . 0.5)		; See the :hook
 	 (side . left)
 	 (slot . 0)
-         (window-parameters . ((no-other-window . t))))
-        ("\\*.*\\([^E]eshell\\|shell\\|v?term\\).*"
-         (display-buffer-reuse-mode-window display-buffer-at-bottom)
-         (window-height . 0.4)
-         ;; (mode . '(eshell-mode shell-mode))
          )))
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'custom-mode-hook #'visual-line-mode)
