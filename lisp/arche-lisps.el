@@ -10,10 +10,14 @@
   (paren-face-mode t)
   (highlight-parentheses-mode t)
   (hl-todo-mode t))
-(add-hook 'lisp-mode-hook #'arche-lisps-hook)
+
+;; apply hook to lisp major modes
 (add-hook 'emacs-lisp-mode-hook #'arche-lisps-hook)
+(add-hook 'lisp-mode-hook #'arche-lisps-hook)
+(add-hook 'slime-repl-map-mode-hook #'arche-lisps-hook)
+(add-hook 'clojure-mode-hook #'arche-lisps-hook)
+
 (add-hook 'inferior-emacs-lisp-mode #'(lambda () (autopair-mode t)))
-(add-hook 'slime-repl-map-mode-hook #'(lambda () (lispy-mode t)))
 (define-key emacs-lisp-mode-map (kbd "C-c C-c") #'eval-buffer)
 
 ;;* common lisp
@@ -24,4 +28,9 @@
       (setq inferior-lisp-program my-lisp-prog)
     (setq slime-lisp-implementations
 	  `((sbcl ,(list my-lisp-prog) :coding-system utf-8-unix)))))
+
+;;* clojure
+(use-package cider)
+(add-hook 'clojure-mode-hook #'cider-mode)
+
 (provide 'arche-lisps)

@@ -29,7 +29,7 @@
 
 ;;* capture
 (setq org-link-elisp-skip-confirm-regexp
-      (rx "wordnut-search"))
+      (rx (or "man" "wordnut-search")))
 
 (defun org-capture-wordnut-capture ()
   "Get the word being displayed in *Wordnut* buffer if it exists."

@@ -24,5 +24,7 @@
   (interactive)
   (eaf-open "eaf-demo_clone" "demo-clone"))
 
-(eaf-open "sdkaba" "aba")
+(global-set-key (kbd "s-h") #'eaf-open-browser-with-history)
+(setq eaf-browser-default-search-engine "duckduckgo")
+
 (provide 'arche-eaf)
