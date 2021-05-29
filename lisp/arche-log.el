@@ -29,14 +29,13 @@
   (interactive)
   (let
       ((canvas-calendar-feed-url "https://www.umjicanvas.com/feeds/calendars/user_ZNPM8DdwWnHRg6gfFRMtg9r05mmgTuessZDEmjns.ics")
-       (icalendar-fn "~/canvassync/ics_feed/canvas_export.ics"))
+       (icalendar-fn "~/canvassync/ics_feed/canvas_export.ics")
+       (diary-fn "~/canvassync/ics_feed/canvas_diary"))
     (progn
-      (url-copy-file
-       canvas-calendar-feed-url
-       icalendar-fn)
-      (icalendar-import-file
-       icalendar-fn
-       "~/canvassync/ics_feed/canvas_diary"))))
+      (if (f-file-p icalendar-fn) (f-delete icalendar-fn))
+      (url-copy-file canvas-calendar-feed-url icalendar-fn)
+      (if (f-file-p diary-fn) (f-delete diary-fn))
+      (icalendar-import-file icalendar-fn diary-fn))))
 
 (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
 (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)

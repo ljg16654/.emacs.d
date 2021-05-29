@@ -229,11 +229,26 @@
    ))
 
 ;;** movement between blocks
+(defun arche-cc-preserve-current-window ()
+  "Issue org-ctrl-c-ctrl-c and force stay in current window."
+  (interactive)
+  (let
+      ((tmp-window (get-buffer-window)))
+    (progn
+      (org-ctrl-c-ctrl-c)
+      (select-window tmp-window))))
+
 (defhydra 'org-blocks
-    (org-mode-map "H-b")
-    ("j" #'org-next-block)
-    ("k" #'org-previous-block)
-    ("c" #'org-ctrl-c-ctrl-c))
+  (org-mode-map "H-b")
+  ("j" #'(lambda () (interactive)
+	   (progn
+	     (call-interactively 'org-next-block)
+	     (reposition-window))))
+  ("k" #'(lambda () (interactive)
+	   (progn
+	     (call-interactively 'org-previous-block)
+	     (reposition-window))))
+  ("c" #'arche-cc-preserve-current-window))
 
 ;;* org-ref
 (require 'arche-org-ref)
