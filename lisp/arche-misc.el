@@ -35,6 +35,7 @@
 (use-package hl-todo)
 
 (use-package ace-jump-mode)
+(global-set-key (kbd "s-j") #'ace-jump-line-mode)
 
 (use-package lorem-ipsum)
 

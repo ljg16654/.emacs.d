@@ -46,6 +46,18 @@
 (global-set-key (kbd "s-.") #'tab-bar-switch-to-next-tab)
 (global-set-key (kbd "s-,") #'tab-bar-switch-to-prev-tab)
 
+(defun my-select-tab ()
+  (interactive)
+  (let ((tabs (mapcar (lambda (tab)
+			(alist-get 'name tab))
+		      (tab-bar--tabs-recent))))
+    (cond
+     ((eq tabs nil) (tab-new))
+     ((eq (length tabs) 1) (tab-next))
+     (t
+      (tab-bar-switch-to-tab
+       (completing-read "Select tab: " tabs nil t))))))
+
 (use-package avy)
 (global-set-key (kbd "s-'") #'avy-goto-word-1)
 
