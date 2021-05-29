@@ -29,6 +29,7 @@
 ;; each use-package form also invoke straight.el to install the package
 (require 'arche-package)
 (require 'arche-keybinding)
+(require 'arche-hyperbole)
 (require 'arche-dired)
 (require 'arche-pdf)
 (require 'arche-elisp)
@@ -46,7 +47,7 @@
 (require 'arche-isearch)
 (require 'arche-git)
 (require 'arche-project)
-(require 'arche-epub)
+(require 'arche-readings)
 (require 'arche-rss)
 (require 'arche-font)
 (require 'arche-theme)
@@ -70,5 +71,4 @@
 (require 'arche-chinese)
 (require 'arche-sibling)
 (require 'arche-eaf)
-(require 'arche-hyperbole)
 (server-start)

@@ -7,4 +7,7 @@
 		   :enable t
 		   :type (:@type "proxyTypeHttp")
 		   ))))
+
+(define-key dired-mode-map (kbd "H-s") #'telega-buffer-file-send)
+
 (provide 'arche-telegram)

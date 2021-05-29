@@ -11,6 +11,10 @@
   (highlight-parentheses-mode t)
   (hl-todo-mode t))
 
+;; use my usual binding of imenu
+(define-key lispy-mode-map (kbd "M-i") #'imenu)
+(define-key lispy-mode-map (kbd "M-u") #'lispy-iedit)
+
 ;; apply hook to lisp major modes
 (add-hook 'emacs-lisp-mode-hook #'arche-lisps-hook)
 (add-hook 'lisp-mode-hook #'arche-lisps-hook)

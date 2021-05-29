@@ -3,18 +3,30 @@
 (require 'cl-lib)
 (require 'arche-company)
 (require 'arche-dictionaries)
-(use-package org
-  :straight org-plus-contrib)
+;; (use-package org
+;;   :straight org-plus-contrib)
+(use-package org)
 
 ;;* appearance stuff 
 (setq org-ellipsis " ▾"
       org-hide-emphasis-markers t
       org-imenu-depth 7
       org-export-with-toc nil
+      org-image-actual-width nil
       )
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
+
+;; Rescale latex-preview, adopted from
+;; https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text
+;; text-scale-mode is automatically turned on after text-scale-adjust
+(defun update-org-latex-fragments ()
+  (org-latex-preview '(64))
+  (plist-put org-format-latex-options :scale (* 1.5 text-scale-mode-amount))
+  (org-latex-preview '(16)))
+(add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
+
 (use-package org-bullets)
 
 ;;* editing experience
@@ -108,38 +120,38 @@
 (use-package org-pdftools
   :hook (org-mode . org-pdftools-setup-link))
 
-(use-package org-noter-pdftools
-  :after org-noter
-  :config
-  ;; Add a function to ensure precise note is inserted
-  (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
-    (interactive "P")
-    (org-noter--with-valid-session
-     (let ((org-noter-insert-note-no-questions (if toggle-no-questions
-                                                   (not org-noter-insert-note-no-questions)
-                                                 org-noter-insert-note-no-questions))
-           (org-pdftools-use-isearch-link t)
-           (org-pdftools-use-freestyle-annot t))
-       (org-noter-insert-note (org-noter--get-precise-info)))))
+;; (use-package org-noter-pdftools
+;;   :after org-noter
+;;   :config
+;;   ;; Add a function to ensure precise note is inserted
+;;   (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
+;;     (interactive "P")
+;;     (org-noter--with-valid-session
+;;      (let ((org-noter-insert-note-no-questions (if toggle-no-questions
+;;                                                    (not org-noter-insert-note-no-questions)
+;;                                                  org-noter-insert-note-no-questions))
+;;            (org-pdftools-use-isearch-link t)
+;;            (org-pdftools-use-freestyle-annot t))
+;;        (org-noter-insert-note (org-noter--get-precise-info)))))
 
-  ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
-  (defun org-noter-set-start-location (&optional arg)
-    "When opening a session with this document, go to the current location.
-With a prefix ARG, remove start location."
-    (interactive "P")
-    (org-noter--with-valid-session
-     (let ((inhibit-read-only t)
-           (ast (org-noter--parse-root))
-           (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
-       (with-current-buffer (org-noter--session-notes-buffer session)
-         (org-with-wide-buffer
-          (goto-char (org-element-property :begin ast))
-          (if arg
-              (org-entry-delete nil org-noter-property-note-location)
-            (org-entry-put nil org-noter-property-note-location
-                           (org-noter--pretty-print-location location))))))))
-  (with-eval-after-load 'pdf-annot
-    (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
+;;   ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
+;;   (defun org-noter-set-start-location (&optional arg)
+;;     "When opening a session with this document, go to the current location.
+;; With a prefix ARG, remove start location."
+;;     (interactive "P")
+;;     (org-noter--with-valid-session
+;;      (let ((inhibit-read-only t)
+;;            (ast (org-noter--parse-root))
+;;            (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
+;;        (with-current-buffer (org-noter--session-notes-buffer session)
+;;          (org-with-wide-buffer
+;;           (goto-char (org-element-property :begin ast))
+;;           (if arg
+;;               (org-entry-delete nil org-noter-property-note-location)
+;;             (org-entry-put nil org-noter-property-note-location
+;;                            (org-noter--pretty-print-location location))))))))
+;;   (with-eval-after-load 'pdf-annot
+;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 (global-set-key (kbd "C-c n l") #'org-store-link)
 (setq org-file-apps '((auto-mode . emacs)
@@ -215,6 +227,13 @@ With a prefix ARG, remove start location."
    (ipython . t) ;; provided by package ob-ipython
    (matlab . t)
    ))
+
+;;** movement between blocks
+(defhydra 'org-blocks
+    (org-mode-map "H-b")
+    ("j" #'org-next-block)
+    ("k" #'org-previous-block)
+    ("c" #'org-ctrl-c-ctrl-c))
 
 ;;* org-ref
 (require 'arche-org-ref)

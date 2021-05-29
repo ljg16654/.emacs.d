@@ -25,7 +25,18 @@
  )
 (appt-activate t)
 
-;; (icalendar-import-file "~/canvassync/ics_feed/user_ZNPM8DdwWnHRg6gfFRMtg9r05mmgTuessZDEmjns.ics" "~/canvassync/ics_feed/canvas_diary")
+(defun my-refresh-canvas-ics ()
+  (interactive)
+  (let
+      ((canvas-calendar-feed-url "https://www.umjicanvas.com/feeds/calendars/user_ZNPM8DdwWnHRg6gfFRMtg9r05mmgTuessZDEmjns.ics")
+       (icalendar-fn "~/canvassync/ics_feed/canvas_export.ics"))
+    (progn
+      (url-copy-file
+       canvas-calendar-feed-url
+       icalendar-fn)
+      (icalendar-import-file
+       icalendar-fn
+       "~/canvassync/ics_feed/canvas_diary"))))
 
 (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
 (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)

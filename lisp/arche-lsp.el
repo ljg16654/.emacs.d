@@ -10,5 +10,7 @@
 
 (add-hook 'lsp-mode-hook #'lsp-headerline-breadcrumb-mode)
 
+(use-package lsp-pyright)
+
 (provide 'arche-lsp)
 

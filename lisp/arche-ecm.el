@@ -36,15 +36,10 @@
   (embark-collect-mode . embark-consult-preview-minor-mode))
 
 (use-package marginalia
-   :after icomplete-vertical
-   :custom
-   (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
-   :init
-   (marginalia-mode))
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil)))
 
 ;;* add action to exsiting category
 (define-key embark-general-map (kbd "W") #'wordnut-search)
-;;* new categories for embark
-(add-to-list 'marginalia-prompt-categories
-	     '("tab by name" . tab))
+
 (provide 'arche-ecm)

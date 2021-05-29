@@ -1,7 +1,7 @@
 (require 'arche-package)
 (use-package debbugs)
 (use-package hyperbole
-  :after (debbugs)
+  :after (debbugs ace-window)
   :config
   (progn
     (hkey-ace-window-setup (kbd "M-o"))

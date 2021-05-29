@@ -1,6 +1,10 @@
 (require 'arche-package)
-(use-package modus-themes)
-;; (load-theme 'modus-operandi t)
+(use-package modus-themes
+  :config
+  (setq modus-themes-org-blocks 'gray-background)
+  (setq modus-themes-mode-line '3d)
+  :init
+  (load-theme 'modus-operandi t))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -43,10 +47,6 @@
 	.
 	"#f0ffdd" ;; foreground
 	))
-
-;; (load-theme 'random t)
-(set-frame-parameter (selected-frame)
-                     'internal-border-width 12)
 
 (add-to-list 'load-path
 	     (concat user-emacs-directory "site-lisp/elegant-emacs"))

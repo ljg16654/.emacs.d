@@ -8,6 +8,9 @@
 ;;* pytest
 (use-package python-pytest)
 
+;;* live-py
+(use-package live-py-mode)
+
 ;;* keybinding
 (define-key python-mode-map (kbd "H-t") #'python-pytest-dispatch)
 (define-key python-mode-map (kbd "H-f") #'python-pytest-function)

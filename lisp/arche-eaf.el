@@ -24,7 +24,36 @@
   (interactive)
   (eaf-open "eaf-demo_clone" "demo-clone"))
 
-(global-set-key (kbd "s-h") #'eaf-open-browser-with-history)
+
+;;* Interleave
+;; First enable the mode by default
+(add-hook 'eaf-mode-hook 'eaf-interleave-app-mode)
+;; https://github.com/manateelazycat/emacs-application-framework/pull/267
+;; keymap in the org file  
+(general-define-key
+ :keymaps 'eaf-interleave-mode-map
+ "M-." #'eaf-interleave-sync-current-note
+ "M-p" #'eaf-interleave-sync-previous-note
+ "M-n" #'eaf-interleave-sync-next-note)
+
+;; keymap in the eaf application
+(general-define-key
+ :keymaps 'eaf-interleave-app-mode-map
+ "C-c M-i" #'eaf-interleave-add-note
+ "C-c M-o" #'eaf-interleave-open-notes-file
+ "C-c M-q" #'eaf-interleave-quit)
+
+(setq eaf-interleave-org-notes-dir-list
+      (list
+       ;; "./" is automatically replaced by dir//pdf/file
+       "./"
+       "./notes"
+       "~/org-roam"
+       "~/org/interleave_notes"))
+
+;;* Browser
+(global-set-key (kbd "s-h") #'eaf-search-it)
+(global-set-key (kbd "s-H") #'eaf-open-browser-with-history)
 (setq eaf-browser-default-search-engine "duckduckgo")
 
 (provide 'arche-eaf)

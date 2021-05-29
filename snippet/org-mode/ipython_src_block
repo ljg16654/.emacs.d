@@ -1,7 +1,7 @@
 # -*- mode: snippet -*-
-# name: ipython_src_block
-# key: <i
+# name: ipython block
+# key: ,sip
 # --
-#+BEGIN_SRC ipython :session :exports both :results raw drawer
-  $0
-#+END_SRC
+#+begin_src ipython :session ${1:mysession} :results raw drawer
+$0
+#+end_src
