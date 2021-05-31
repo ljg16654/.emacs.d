@@ -13,6 +13,20 @@
   (interactive)
   (kill-new (file-truename (buffer-file-name))))
 
+(defun my-alter-current-line ()
+  (interactive)
+  (progn
+    (execute-kbd-macro
+     (read-kbd-macro "C-e RET C-p C-a C-SPC C-e M-w C-n C-y TAB"))
+    (execute-kbd-macro
+     (read-kbd-macro "C-a C-SPC C-e"))
+    (call-interactively #'query-replace-regexp)))
+
+(global-set-key (kbd "C-M-y") #'my-alter-current-line)
+  
+(use-package expand-region)
+(global-set-key (kbd "M-'") #'er/expand-region)
+
 (use-package helpful
   :config
   (progn
@@ -35,7 +49,6 @@
 (use-package hl-todo)
 
 (use-package ace-jump-mode)
-(global-set-key (kbd "s-j") #'ace-jump-line-mode)
 
 (use-package lorem-ipsum)
 
@@ -56,8 +69,6 @@
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "s-/") #'query-replace-regexp)
-
-(global-set-key (kbd "M-i") #'imenu)
 
 (global-set-key (kbd "μ") #'bookmark-jump)
 

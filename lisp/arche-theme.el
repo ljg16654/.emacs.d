@@ -17,6 +17,7 @@
 (use-package tron-legacy-theme)
 (use-package doom-themes)
 (use-package plan9-theme)
+(use-package greymatters-theme)
 ;;* autothemer
 (use-package autothemer)
 

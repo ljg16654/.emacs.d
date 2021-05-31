@@ -3,6 +3,7 @@
 (require 'cl-lib)
 (require 'arche-company)
 (require 'arche-dictionaries)
+(require 'arche-hydra)
 ;; (use-package org
 ;;   :straight org-plus-contrib)
 (use-package org)

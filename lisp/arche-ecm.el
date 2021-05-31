@@ -29,6 +29,9 @@
     ;; 'f SPC' for recentf
     (recentf-mode t)
     ))
+
+(global-set-key (kbd "M-i") #'consult-imenu)
+
 (use-package embark-consult
   :after (embark consult)
   :demand t
