@@ -20,6 +20,10 @@
 ;; (add-to-list 'load-path "/usr/share/emacs/site-lisp/mu4e")
 ;; (require 'org-mu4e)
 ;; (require 'mu4e)
+
+;; (use-package mu4e
+;;   :load-path "/usr/share/emacs/site-lisp/mu4e")
+
 ;; (setq mail-user-agent 'mu4e-user-agent)
 ;; (setq mu4e-maildir "/home/jigang/Maildir")
 ;; (setq mu4e-get-mail-command "offlineimap")

@@ -49,8 +49,4 @@
 	"#f0ffdd" ;; foreground
 	))
 
-(add-to-list 'load-path
-	     (concat user-emacs-directory "site-lisp/elegant-emacs"))
-;; (require 'elegance)
-
 (provide 'arche-theme)

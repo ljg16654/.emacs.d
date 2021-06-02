@@ -1,13 +1,15 @@
 (require 'arche-helm)
 
+(put 'upcase-region 'disabled nil)
+(put 'downcase-region 'disabled nil)
+(put 'narrow-to-region 'disabled nil)
+
 (defun transparency (value)
   "sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "ntransparency value 0 - 100 opaque:")
   (set-frame-parameter (selected-frame) 'alpha value))
 
 (setq vc-follow-symlinks nil)
-
-(put 'narrow-to-region 'disabled nil)
 
 (defun my-copy-full-name ()
   (interactive)
@@ -23,7 +25,7 @@
     (call-interactively #'query-replace-regexp)))
 
 (global-set-key (kbd "C-M-y") #'my-alter-current-line)
-  
+
 (use-package expand-region)
 (global-set-key (kbd "M-'") #'er/expand-region)
 
@@ -77,8 +79,8 @@
 (use-package olivetti
   :config
   (progn
-    ;; occupies 7/10 of the window width  
-    (setq-default olivetti-body-width 0.7)
+    ;; occupies 8/10 of the window width
+    (setq-default olivetti-body-width 0.8)
     )
   :bind (("C-c f e" . olivetti-mode)))
 

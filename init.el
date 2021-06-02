@@ -27,6 +27,7 @@
 (add-to-list 'load-path my-lisp-dir)
 
 ;; each use-package form also invoke straight.el to install the package
+(setq warning-minimum-level :emergency)
 (require 'arche-package)
 (require 'arche-keybinding)
 (require 'arche-hyperbole)
@@ -72,5 +73,3 @@
 (require 'arche-sibling)
 (require 'arche-eaf)
 (server-start)
-(put 'upcase-region 'disabled nil)
-(put 'downcase-region 'disabled nil)

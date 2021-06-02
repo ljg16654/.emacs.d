@@ -9,6 +9,7 @@
   :custom
   (eaf-browser-continue-where-left-off t)
   :config
+  (setq eaf-org-override-pdf-links-open nil)
   (eaf-setq eaf-browser-enable-adblocker "true")
   (eaf-bind-key scroll_up "C-n" eaf-pdf-viewer-keybinding)
   (eaf-bind-key scroll_down "C-p" eaf-pdf-viewer-keybinding)

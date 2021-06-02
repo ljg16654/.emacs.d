@@ -9,8 +9,5 @@
   (setq pyim-default-scheme 'quanpin)
   ;; (pyim-isearch-mode 1)
   (setq pyim-page-tooltip 'posframe)
-  (setq pyim-page-length 5)
-  ;; (add-hook 'emacs-startup-hook
-  ;;           #'(lambda () (pyim-restart-1 t)))
-  )
+  (setq pyim-page-length 5))
 (provide 'arche-chinese)
