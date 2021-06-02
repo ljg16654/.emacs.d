@@ -165,6 +165,7 @@
 (general-define-key
  :keymaps 'org-mode-map
  "M-h" #'org-metaleft
+ "M-H" #'mark-paragraph
  "M-l" #'org-metaright
  "C-c e" #'org-mark-element)
 

@@ -4,6 +4,18 @@
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; From https://www.emacswiki.org/emacs/UnfillParagraph
+;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
+(defun unfill-paragraph (&optional region)
+  "Takes a multi-line paragraph and makes it into a single line of text."
+  (interactive (progn (barf-if-buffer-read-only) '(t)))
+  (let ((fill-column (point-max))
+        ;; This would override `fill-column' if it's an integer.
+        (emacs-lisp-docstring-fill-column t))
+    (fill-paragraph nil region)))
+
+(global-set-key (kbd "M-Q") #'unfill-paragraph)
+
 (defun transparency (value)
   "sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "ntransparency value 0 - 100 opaque:")
@@ -79,10 +91,18 @@
 (use-package olivetti
   :config
   (progn
-    ;; occupies 8/10 of the window width
-    (setq-default olivetti-body-width 0.8)
+    (setq-default olivetti-body-width 0.7)
     )
   :bind (("C-c f e" . olivetti-mode)))
+
+(defun arche/focus-writing ()
+  (interactive)
+  (progn
+    (olivetti-mode 1)
+    (auto-fill-mode -1)
+    (variable-pitch-mode 1)
+    (toggle-truncate-lines 1)
+    (hide-mode-line-mode 1)))
 
 (setq bookmark-file (file-truename "~/.emacs.bmk"))
 
