@@ -2,5 +2,4 @@
 (require 'arche-minibuffer-completion)
 (use-package helm)
 (use-package helm-swoop)
-(global-set-key (kbd "s-j") #'helm-swoop)
 (provide 'arche-helm)

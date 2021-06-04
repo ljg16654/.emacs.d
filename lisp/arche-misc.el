@@ -101,7 +101,7 @@
     (olivetti-mode 1)
     (auto-fill-mode -1)
     (variable-pitch-mode 1)
-    (toggle-truncate-lines 1)
+    (toggle-truncate-lines t)
     (hide-mode-line-mode 1)))
 
 (setq bookmark-file (file-truename "~/.emacs.bmk"))

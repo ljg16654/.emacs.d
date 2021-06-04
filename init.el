@@ -72,4 +72,5 @@
 (require 'arche-chinese)
 (require 'arche-sibling)
 (require 'arche-eaf)
+(require 'arche-exwm)
 (server-start)

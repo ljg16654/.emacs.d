@@ -1,6 +1,6 @@
 (require 'arche-package)
 
-(global-set-key (kbd "s-o") #'consult-buffer)
+(global-set-key (kbd "s-o") #'switch-to-buffer)
 (global-set-key (kbd "s-p") #'previous-buffer)
 (global-set-key (kbd "s-n") #'next-buffer)
 (global-set-key (kbd "s-k") #'(lambda () (interactive)

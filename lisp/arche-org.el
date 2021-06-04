@@ -24,8 +24,9 @@
 ;; text-scale-mode is automatically turned on after text-scale-adjust
 (defun update-org-latex-fragments ()
   (org-latex-preview '(64))
-  (plist-put org-format-latex-options :scale (* 1.5 text-scale-mode-amount))
+  (plist-put org-format-latex-options :scale (* 1.6 text-scale-mode-amount))
   (org-latex-preview '(16)))
+
 (add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
 
 (use-package org-bullets)

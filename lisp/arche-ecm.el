@@ -31,6 +31,7 @@
     ))
 
 (global-set-key (kbd "M-i") #'consult-imenu)
+(global-set-key (kbd "s-j") #'consult-line)
 
 (use-package embark-consult
   :after (embark consult)
