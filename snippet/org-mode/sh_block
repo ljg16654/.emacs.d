@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: sh_block
+# key: ,ss
+# --
+#+begin_src sh
+$1
+#+end_src

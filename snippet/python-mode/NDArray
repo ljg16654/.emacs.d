@@ -1,0 +1,5 @@
+# -*- mode: snippet -*-
+# name: NDArray
+# key: ,ND
+# --
+NDArray[(${2:intended shape}), ${3:Any}]
