@@ -1,3 +1,4 @@
+;; see arche-web.el for more configuration related to the browser   
 (require 'arche-package)
 
 (use-package desktop-environment

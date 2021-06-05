@@ -19,6 +19,22 @@
 ;; eaf
 ;; (setq browse-url-browser-function #'eaf-open-browser)
 
+;; web search
+(defun arche/duckduckgo-search ()
+  (interactive)
+  (let
+      ((what (read-string "Search for: ")))
+    (browse-url (concat "www.duckduckgo.com/?q=" what))))
+
+(defun arche/browse-qutebrowser-hist ()
+  (interactive)
+  (let*
+      ((hist (shell-command-to-string "~/scripts/qutebrowser-get-hist.sh"))
+       (hist-list (s-split "\n" hist))
+       (url-with-description (completing-read "Choose from Qutebrowser history: " hist-list))
+       (url (-last-item (s-split " " url-with-description))))
+    (browse-url url)))
+
 (use-package org-web-tools)
 (use-package engine-mode)
 (use-package mentor)
