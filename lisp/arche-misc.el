@@ -16,6 +16,8 @@
 
 (global-set-key (kbd "M-Q") #'unfill-paragraph)
 
+(use-package prism)
+
 (defun transparency (value)
   "sets the transparency of the frame window. 0=transparent/100=opaque"
   (interactive "ntransparency value 0 - 100 opaque:")

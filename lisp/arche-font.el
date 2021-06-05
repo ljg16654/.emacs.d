@@ -1,4 +1,5 @@
-(set-face-attribute 'default nil :family "Iosevka" :height 135)
-(set-face-attribute 'fixed-pitch nil :family "Iosevka")
+(set-face-attribute 'default nil :family "FantasqueSansMono" :weight 'normal :height 135)
+(set-face-attribute 'fixed-pitch nil :family "FantasqueSansMono")
 (set-face-attribute 'variable-pitch nil :family "Iosevka-fixed")
+(setq line-spacing 0.25)
 (provide 'arche-font)

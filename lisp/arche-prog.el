@@ -2,7 +2,12 @@
 (use-package flycheck)
 (global-set-key (kbd "σ") #'compile)
 (setq linum-format " %d  ")
-(add-hook 'prog-mode-hook #'electric-pair-mode)
+(add-hook 'prog-mode-hook #'arche/prog-mode-hook)
+
+(defun arche/prog-mode-hook ()
+  (electric-pair-mode t)
+  (olivetti-mode t))
+
 (use-package yaml-mode)
 
 ;; for Gazebo and ROS

@@ -34,11 +34,12 @@
 ;;* editing experience
 (defun arche-org-mode-hook ()
   (progn
-    (auto-fill-mode)
-    (org-bullets-mode)
-    (org-indent-mode)
-    (flyspell-mode)
-    ))
+    (auto-fill-mode t)
+    (org-bullets-mode t)
+    (org-indent-mode t)
+    (flyspell-mode t)
+    (olivetti-mode t)))
+
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
 ;;* capture
