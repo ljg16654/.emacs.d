@@ -68,8 +68,9 @@
            :unnarrowed t))))
 
 (straight-use-package
- '(org-transclusion :type git
-	      :host github
-	      :repo "nobiot/org-transclusion"))
+ '(org-transclusion
+   :type git
+   :host github
+   :repo "nobiot/org-transclusion"))
 
 (provide 'arche-roam)

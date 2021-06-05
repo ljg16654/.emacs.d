@@ -1,4 +1,5 @@
 (require 'arche-package)
+(require 'arche-misc)
 (use-package flycheck)
 (global-set-key (kbd "σ") #'compile)
 (setq linum-format " %d  ")

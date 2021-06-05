@@ -4,6 +4,7 @@
 (require 'arche-company)
 (require 'arche-dictionaries)
 (require 'arche-hydra)
+(require 'arche-misc)
 ;; (use-package org
 ;;   :straight org-plus-contrib)
 (use-package org)
