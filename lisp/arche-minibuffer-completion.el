@@ -8,6 +8,8 @@
 (setq read-buffer-completion-ignore-case t)
 
 ;;* My favored incrementally narrowing tool in minibuffer
+(use-package vertico)
+(vertico-mode t)
 
 (use-package icomplete-vertical
   :ensure t
@@ -20,8 +22,14 @@
               ("C-p" . icomplete-backward-completions)
               ("C-v" . icomplete-vertical-toggle)))
 
-(icomplete-mode t)
-(icomplete-vertical-mode t)
+(icomplete-mode -1)
+(icomplete-vertical-mode -1)
 
+(use-package ivy
+  :config
+  (setq ivy-height 5)
+  (setq ivy-re-builders-alist
+	(list )))
 
+(ivy-mode -1)
 (provide 'arche-minibuffer-completion)

@@ -1,10 +1,4 @@
 (require 'arche-package)
-(use-package modus-themes
-  :config
-  (setq modus-themes-org-blocks 'gray-background)
-  (setq modus-themes-mode-line '3d)
-  :init
-  (load-theme 'modus-operandi t))
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -12,6 +6,11 @@
 (tooltip-mode -1)
 (setq tab-bar-new-button nil)
 (setq tab-bar-close-button nil)
+
+(use-package modus-themes
+  :config
+  (setq modus-themes-org-blocks 'gray-background)
+  (setq modus-themes-mode-line '3d))
 
 ;;* some random themes I favor
 (use-package tron-legacy-theme)
@@ -41,12 +40,7 @@
 		 .
 		 "#FFFFE8"))
 	 (load-theme 'plan9 t)))
-;; (load-theme 'random t)
-(setq pdf-view-midnight-colors
-      '(
-	"#191970" ;; background
-	.
-	"#f0ffdd" ;; foreground
-	))
+
+(load-theme 'doom-nova t t)
 
 (provide 'arche-theme)

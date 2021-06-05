@@ -66,7 +66,7 @@
 
 (global-set-key (kbd "H-c") #'org-capture)
 
-(defun arche-wordnut-search (word)
+(defun arche/wordnut-search (word)
   "Prompt for a word to search for, then do the lookup."
   (interactive (list (wordnut--completing (if (eq major-mode 'pdf-view-mode) "" (current-word t t)))))
   (ignore-errors
@@ -78,7 +78,7 @@
   (interactive)
   (progn
     ;; (call-interactively #'wordnut-search)
-    (call-interactively #'arche-wordnut-search)
+    (call-interactively #'arche/wordnut-search)
     (org-capture nil "w")
     (org-capture-finalize)))
 

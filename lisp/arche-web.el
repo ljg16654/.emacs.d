@@ -7,7 +7,8 @@
   (progn (define-key eww-mode-map (kbd "f") #'ace-link)))
 
 (setq browse-url-generic-program "qutebrowser")
-(setq browse-url-browser-function #'eaf-open-browser)
+;; (setq browse-url-browser-function #'eaf-open-browser)
+(setq browse-url-browser-function #'browse-url-browser-function)
 (defun my-sel-url-browser-function ()
   "Prompt for selection of the 'browse-url-browser-function'"
   (interactive)

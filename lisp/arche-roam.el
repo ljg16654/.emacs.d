@@ -58,7 +58,14 @@
           org-roam-server-network-arrows nil
           org-roam-server-network-label-truncate t
           org-roam-server-network-label-truncate-length 60
-          org-roam-server-network-label-wrap-length 20)))
+          org-roam-server-network-label-wrap-length 20))
+  (require 'org-roam-protocol)
+  (setq org-roam-capture-ref-templates
+        '(("r" "ref" plain (function org-roam-capture--get-point)
+           "%?"
+           :file-name "${slug}"
+           :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}"
+           :unnarrowed t))))
 
 (straight-use-package
  '(org-transclusion :type git

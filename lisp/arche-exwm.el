@@ -39,6 +39,8 @@
   (setq exwm-input-global-keys
 	;; only for exwm-related commands
 	(list
+	 (cons (kbd "s-#") #'desktop-environment-screen)
+	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)
 	 (cons (kbd "s-r") #'exwm-reset)
 	 (cons (kbd "s-g") #'exwm-workspace-switch)
 	 (cons (kbd "s-t") #'arche/toggle-touchpad)
