@@ -20,6 +20,7 @@
 ;;* autothemer
 (use-package autothemer)
 
+;;;###autoload
 (defun my-load-tron-legacy ()
   (interactive)
   (progn (setq pdf-view-midnight-colors
@@ -33,6 +34,7 @@
 	 (set-face-attribute 'tab-bar nil :background "black")
 	 (load-theme 'tron-legacy t)))
 
+;;;###autoload
 (defun my-load-plan9 ()
   (interactive)
   (progn (setq pdf-view-midnight-colors

@@ -1,5 +1,6 @@
 (require 'arche-package)
 (require 'arche-org)
+(require 'arche-elisp)
 
 (use-package eww
   :after ace-link
@@ -20,12 +21,18 @@
 ;; (setq browse-url-browser-function #'eaf-open-browser)
 
 ;; web search
+;;;###autoload
 (defun arche/duckduckgo-search ()
   (interactive)
+  "If input starts with space, go to the link after the
+space. Otherwise, search for the input."
   (let
       ((what (read-string "Search for: ")))
+    (if (s-prefix-p " " what)
+	(browse-url (s-trim what)))
     (browse-url (concat "www.duckduckgo.com/?q=" what))))
 
+;;;###autoload
 (defun arche/browse-qutebrowser-hist ()
   (interactive)
   (let*

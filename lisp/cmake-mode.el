@@ -79,6 +79,7 @@ set the path with these commands:
 
 ;; Line indentation helper functions
 
+;;;###autoload
 (defun cmake-line-starts-inside-string ()
   "Determine whether the beginning of the current line is in a string."
   (save-excursion
@@ -90,6 +91,7 @@ set the path with these commands:
     )
   )
 
+;;;###autoload
 (defun cmake-find-last-indented-line ()
   "Move to the beginning of the last line that has meaningful indentation."
   (let ((point-start (point))
@@ -120,6 +122,7 @@ set the path with these commands:
 ;;
 ;; Line indentation function.
 ;;
+;;;###autoload
 (defun cmake-indent ()
   "Indent current line as CMake code."
   (interactive)
@@ -130,13 +133,13 @@ set the path with these commands:
         (save-excursion
           (beginning-of-line)
           (let ((point-start (point))
-                (case-fold-search t)  ;; case-insensitive
+                (case-fold-search t) ;; case-insensitive
                 token)
-            ; Search back for the last indented line.
+					; Search back for the last indented line.
             (cmake-find-last-indented-line)
-            ; Start with the indentation on this line.
+					; Start with the indentation on this line.
             (setq cur-indent (current-indentation))
-            ; Search forward counting tokens that adjust indentation.
+					; Search forward counting tokens that adjust indentation.
             (while (re-search-forward cmake-regex-token point-start t)
               (setq token (match-string 0))
               (when (or (string-match (concat "^" cmake-regex-paren-left "$") token)
@@ -153,16 +156,18 @@ set the path with these commands:
               )
             )
           )
-        ; Indent this line by the amount selected.
+					; Indent this line by the amount selected.
         (cmake-indent-line-to (max cur-indent 0))
         )
       )
     )
   )
 
+;;;###autoload
 (defun cmake-point-in-indendation ()
   (string-match "^[ \\t]*$" (buffer-substring (point-at-bol) (point))))
 
+;;;###autoload
 (defun cmake-indent-line-to (column)
   "Indent the current line to COLUMN.
 If point is within the existing indentation it is moved to the end of
@@ -176,6 +181,7 @@ the indentation.  Otherwise it retains the same position on the line"
 ;;
 ;; Helper functions for buffer
 ;;
+;;;###autoload
 (defun cmake-unscreamify-buffer ()
   "Convert all CMake commands to lowercase in buffer."
   (interactive)
@@ -213,6 +219,7 @@ the indentation.  Otherwise it retains the same position on the line"
       (zero-or-more space)
       "(" (zero-or-more (not-char ")")) ")"))
 
+;;;###autoload
 (defun cmake-beginning-of-defun ()
   "Move backward to the beginning of a CMake function or macro.
 
@@ -224,6 +231,7 @@ Return t unless search stops due to beginning of buffer."
     (when (re-search-backward cmake--regex-defun-start nil 'move)
       t)))
 
+;;;###autoload
 (defun cmake-end-of-defun ()
   "Move forward to the end of a CMake function or macro.
 
@@ -236,6 +244,7 @@ Return t unless search stops due to end of buffer."
       (forward-line)
       t)))
 
+;;;###autoload
 (defun cmake-mark-defun ()
   "Mark the current CMake function or macro.
 
@@ -307,7 +316,8 @@ This puts the mark at the end, and point at the beginning."
 ; Help mode starts here
 
 
-;;;###autoload
+;;;###
+;;;###autoloadautoload
 (defun cmake-command-run (type &optional topic buffer)
   "Runs the command cmake with the arguments specified.  The
 optional argument topic will be appended to the argument list."
@@ -327,7 +337,8 @@ optional argument topic will be appended to the argument list."
     )
   )
 
-;;;###autoload
+;;;###
+;;;###autoloadautoload
 (defun cmake-command-run-help (type &optional topic buffer)
   "`cmake-command-run' but rendered in `rst-mode'."
   (interactive "s")
@@ -346,7 +357,8 @@ optional argument topic will be appended to the argument list."
     )
   )
 
-;;;###autoload
+;;;###
+;;;###autoloadautoload
 (defun cmake-help-list-commands ()
   "Prints out a list of the cmake commands."
   (interactive)
@@ -369,6 +381,7 @@ optional argument topic will be appended to the argument list."
     ("property" cmake-properties cmake-help-property-history)
     ))
 
+;;;###autoload
 (defun cmake-get-list (listname)
   "If the value of LISTVAR is nil, run cmake --help-LISTNAME-list
 and store the result as a list in LISTVAR."
@@ -378,27 +391,30 @@ and store the result as a list in LISTVAR."
           (save-window-excursion
             (cmake-command-run-help (concat "--help-" listname "-list") nil temp-buffer-name)
             (with-current-buffer temp-buffer-name
-              ; FIXME: Ignore first line if it is "cmake version ..." from CMake < 3.0.
+					; FIXME: Ignore first line if it is "cmake version ..." from CMake < 3.0.
               (set listvar (split-string (buffer-substring-no-properties (point-min) (point-max)) "\n" t)))))
       (symbol-value listvar)
       ))
   )
 
 (require 'thingatpt)
+
+;;;###autoload
 (defun cmake-symbol-at-point ()
   (let ((symbol (symbol-at-point)))
     (and (not (null symbol))
          (symbol-name symbol))))
 
+;;;###autoload
 (defun cmake-help-type (type)
   (let* ((default-entry (cmake-symbol-at-point))
          (history (car (cdr (cdr (assoc type cmake-string-to-list-symbol)))))
          (input (completing-read
                  (format "CMake %s: " type) ; prompt
-                 (cmake-get-list type) ; completions
-                 nil ; predicate
-                 t   ; require-match
-                 default-entry ; initial-input
+                 (cmake-get-list type)	    ; completions
+                 nil			    ; predicate
+                 t			    ; require-match
+                 default-entry		    ; initial-input
                  history
                  )))
     (if (string= input "")

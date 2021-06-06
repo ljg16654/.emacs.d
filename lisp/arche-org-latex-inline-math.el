@@ -24,15 +24,17 @@
   "A list of strings. Stored for completion of inline math LaTeX
   fragments.")
 
+;;;###autoload
 (defun my-org-get-inline-math () 
   "Get inline math around cursor"
-       (interactive)
-       (let* ((context (org-element-context))
-	      (type (org-element-type context)))
-	 (when (memq type '(latex-environment latex-fragment))
-	   (my-remove-inline-matrix-delimiter (org-element-property :value context))
-	   )))
+  (interactive)
+  (let* ((context (org-element-context))
+	 (type (org-element-type context)))
+    (when (memq type '(latex-environment latex-fragment))
+      (my-remove-inline-matrix-delimiter (org-element-property :value context))
+      )))
 
+;;;###autoload
 (defun my-org-get-inline-math-prefix ()
   "Prefix definition for company backend. Returns nil if the
 cursor is no inside a latex fragment. Otherwise, the substring
@@ -48,6 +50,7 @@ between left delimiter and the current cursor is returned."
 	    (inline-math-prefix-point-min (+ (save-excursion (re-search-backward (rx "\\("))) 2)))
        (buffer-substring-no-properties inline-math-prefix-point-min (point))))))
 
+;;;###autoload
 (defun my-org-get-all-inline-math ()
   "Store all inline math LaTeX fragments in the `inline-math-candidates'"
   (interactive)
@@ -60,6 +63,7 @@ between left delimiter and the current cursor is returned."
 			     (add-to-list 'inline-math-candidates (my-org-get-inline-math))
 			     )))))
 
+;;;###autoload
 (defun my-remove-inline-matrix-delimiter (str)
   "Given the value of a LaTeX fragment org element, remove its
 delimiters to make it an appropriate candidate for completion."
@@ -67,6 +71,7 @@ delimiters to make it an appropriate candidate for completion."
 			(string-remove-suffix "\\)"
 					      str)))
 
+;;;###autoload
 (defun company-inline-math-backend (command &optional arg &rest ignored)
   "The company backend for completing inline math LaTeX
 fragments.  The candidates are obtained by trasversing all LaTeX
@@ -77,22 +82,24 @@ fragments in the org buffer"
     (prefix (and (eq major-mode 'org-mode)
 		 (my-org-get-inline-math-prefix)))
     (candidates
-	     (cl-remove-if-not
-	      (lambda (str) (string-prefix-p arg str))
-	      (progn (my-org-get-all-inline-math)
-		    inline-math-candidates)))))
+     (cl-remove-if-not
+      (lambda (str) (string-prefix-p arg str))
+      (progn (my-org-get-all-inline-math)
+	     inline-math-candidates)))))
 
 (add-to-list 'company-backends #'company-inline-math-backend)
 
+;;;###autoload
 (defun my-select-inline-math ()
   "Complete inline math and insert."
   (interactive)
-    (insert (try-completion "Select inline math: "
-		 (progn (my-org-get-all-inline-math)
-			inline-math-candidates)
-		 nil t)))
+  (insert (try-completion "Select inline math: "
+			  (progn (my-org-get-all-inline-math)
+				 inline-math-candidates)
+			  nil t)))
 
 
+;;;###autoload
 (defun my-tcolorbox-get-env-labels ()
   "In current org-mode buffer, get the labels of blocks with envrionment defined within \newtcb*."
   (interactive)

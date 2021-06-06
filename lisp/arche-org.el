@@ -23,6 +23,7 @@
 ;; Rescale latex-preview, adopted from
 ;; https://emacs.stackexchange.com/questions/3387/how-to-enlarge-latex-fragments-in-org-mode-at-the-same-time-as-the-buffer-text
 ;; text-scale-mode is automatically turned on after text-scale-adjust
+;;;###autoload
 (defun update-org-latex-fragments ()
   (org-latex-preview '(64))
   (plist-put org-format-latex-options :scale (* 1.6 text-scale-mode-amount))
@@ -32,7 +33,8 @@
 
 (use-package org-bullets)
 
-;;* editing experience
+;;* ed
+;;;###autoloaditing experience
 (defun arche-org-mode-hook ()
   (progn
     (auto-fill-mode t)
@@ -47,6 +49,7 @@
 (setq org-link-elisp-skip-confirm-regexp
       (rx (or "man" "wordnut-search")))
 
+;;;###autoload
 (defun org-capture-wordnut-capture ()
   "Get the word being displayed in *Wordnut* buffer if it exists."
   (with-current-buffer "*WordNut*"
@@ -67,6 +70,7 @@
 
 (global-set-key (kbd "H-c") #'org-capture)
 
+;;;###autoload
 (defun arche/wordnut-search (word)
   "Prompt for a word to search for, then do the lookup."
   (interactive (list (wordnut--completing (if (eq major-mode 'pdf-view-mode) "" (current-word t t)))))
@@ -74,6 +78,7 @@
     (wordnut--history-update-cur wordnut-hs))
   (wordnut--lookup word))
 
+;;;###autoload
 (defun wordnut-search-and-capture ()
   "Perform wordnut-search and then capture."
   (interactive)
@@ -123,39 +128,6 @@
 
 (use-package org-pdftools
   :hook (org-mode . org-pdftools-setup-link))
-
-;; (use-package org-noter-pdftools
-;;   :after org-noter
-;;   :config
-;;   ;; Add a function to ensure precise note is inserted
-;;   (defun org-noter-pdftools-insert-precise-note (&optional toggle-no-questions)
-;;     (interactive "P")
-;;     (org-noter--with-valid-session
-;;      (let ((org-noter-insert-note-no-questions (if toggle-no-questions
-;;                                                    (not org-noter-insert-note-no-questions)
-;;                                                  org-noter-insert-note-no-questions))
-;;            (org-pdftools-use-isearch-link t)
-;;            (org-pdftools-use-freestyle-annot t))
-;;        (org-noter-insert-note (org-noter--get-precise-info)))))
-
-;;   ;; fix https://github.com/weirdNox/org-noter/pull/93/commits/f8349ae7575e599f375de1be6be2d0d5de4e6cbf
-;;   (defun org-noter-set-start-location (&optional arg)
-;;     "When opening a session with this document, go to the current location.
-;; With a prefix ARG, remove start location."
-;;     (interactive "P")
-;;     (org-noter--with-valid-session
-;;      (let ((inhibit-read-only t)
-;;            (ast (org-noter--parse-root))
-;;            (location (org-noter--doc-approx-location (when (called-interactively-p 'any) 'interactive))))
-;;        (with-current-buffer (org-noter--session-notes-buffer session)
-;;          (org-with-wide-buffer
-;;           (goto-char (org-element-property :begin ast))
-;;           (if arg
-;;               (org-entry-delete nil org-noter-property-note-location)
-;;             (org-entry-put nil org-noter-property-note-location
-;;                            (org-noter--pretty-print-location location))))))))
-;;   (with-eval-after-load 'pdf-annot
-;;     (add-hook 'pdf-annot-activate-handler-functions #'org-noter-pdftools-jump-to-note)))
 
 (global-set-key (kbd "C-c n l") #'org-store-link)
 (setq org-file-apps '((auto-mode . emacs)
@@ -233,7 +205,8 @@
    (matlab . t)
    ))
 
-;;** movement between blocks
+;;** m
+;;;###autoloadovement between blocks
 (defun arche-cc-preserve-current-window ()
   "Issue org-ctrl-c-ctrl-c and force stay in current window."
   (interactive)

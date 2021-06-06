@@ -4,13 +4,14 @@
 ;;* diary
 (setq diary-file (file-truename (concat user-emacs-directory "diary")))
 
+;;;###autoload
 (defun arche-toggle-diary ()
   (interactive)
   (let
       ((bufn "*Fancy Diary Entries*"))
-      (if (get-buffer bufn)
-	  (kill-buffer bufn)
-	(diary))))
+    (if (get-buffer bufn)
+	(kill-buffer bufn)
+      (diary))))
 
 (global-set-key (kbd "s-d") #'arche-toggle-diary)
 
@@ -25,6 +26,7 @@
  )
 (appt-activate t)
 
+;;;###autoload
 (defun my-refresh-canvas-ics ()
   (interactive)
   (let

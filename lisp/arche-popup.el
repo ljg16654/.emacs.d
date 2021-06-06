@@ -15,6 +15,7 @@
   (key-chord-define-global "dk" #'popper-toggle-latest)
   (popper-mode +1))
 
+;;;###autoload
 (defun clear-popper-popup-alive ()
   "Clear popup buffers that are currently maintained by
 	      popper.el. Useful when related rules are changed."
@@ -22,7 +23,6 @@
   (progn
     (setq popper-open-popup-alist nil)
     (setq popper-buried-popup-alist nil)
-    (message "Popper active alist cleared."))
-  )
+    (message "Popper active alist cleared.")))
 
 (provide 'arche-popup)

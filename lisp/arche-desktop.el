@@ -13,12 +13,14 @@
     (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
 
 ;; stumpwm simulation
+;;;###autoload
 (defun arche-desktop/filter-buffer-by-prefix (prefix)
   (-filter
    (lambda (buf)
      (s-prefix-p prefix (buffer-name buf)))
    (buffer-list)))
 
+;;;###autoload
 (defun arche/raise-or-run (cmd prefix)
   (let
       ((buf (car (arche-desktop/filter-buffer-by-prefix prefix))))

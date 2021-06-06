@@ -13,24 +13,28 @@
     ("d" . wrw-delete-word)
     ("m" . wrw-mark-word)))
 
+;;;###autoload
 (defun wrw-next-word ()
   (interactive)
   (execute-kbd-macro
    (read-kbd-macro
     "C-x 4 b words.org C-j C-n C-c C-o")))
 
+;;;###autoload
 (defun wrw-prev-word ()
   (interactive)
   (execute-kbd-macro
-		   (read-kbd-macro
-		    "C-x 4 b words.org C-j C-p C-c C-o")))
+   (read-kbd-macro
+    "C-x 4 b words.org C-j C-p C-c C-o")))
 
+;;;###autoload
 (defun wrw-delete-word ()
   (interactive)
   (execute-kbd-macro
    (read-kbd-macro
     "C-x 4 b words.org C-j C-a C-k C-c C-o")))
 
+;;;###autoload
 (defun wrw-mark-word ()
   (interactive)
   (execute-kbd-macro

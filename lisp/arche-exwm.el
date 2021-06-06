@@ -5,6 +5,7 @@
 
 (use-package exwm
   :init
+  (winner-mode -1)
   (setq mouse-autoselect-window nil
         focus-follows-mouse t
         exwm-workspace-warp-cursor t
@@ -23,13 +24,11 @@
 		("Alacritty" (exwm-workspace-rename-buffer (format "Alacritty: %s" exwm-title))))))
   
   (add-hook 'exwm-init-hook #'(lambda () (setq arche/exwm-enabled t)))
-
-  
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
   (define-key exwm-mode-map (kbd "s-u") #'universal-argument)
   (define-key exwm-mode-map (kbd "C-u") #'(lambda () (interactive)
 					    (execute-kbd-macro (read-kbd-macro "C-q C-u"))))
-
+  
   (setq exwm-input-global-keys
 	;; global keys that take effect both in  emacs buffers and X windows
 	(list
@@ -51,10 +50,12 @@
 	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)
 	 (cons (kbd "χ") #'other-window)
 	 (cons (kbd "ρ") #'(lambda () (interactive)
-			     (other-window -1)))))
+			     (other-window -1)))
+	 (cons (kbd "θ") #'ace-window)))
   
   ;; toggle touchpad
-p  (defun arche/toggle-touchpad ()
+  ;;;###autoload
+  (defun arche/toggle-touchpad ()
     (interactive)
     "Toggle the dumb touchpad."
     (start-process-shell-command "sh" nil " sh ~/scripts/toggleTouchpad.sh"))
