@@ -26,15 +26,6 @@
 
   
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
-  (define-key exwm-mode-map (kbd "χ") #'other-window)
-  (define-key exwm-mode-map (kbd "ρ") #'(lambda () (interactive)
-					  (other-window -1)))
-  (global-set-key (kbd "θ") #'ace-window)
-  (define-key exwm-mode-map (kbd "s-o") #'switch-to-buffer)
-  
-  (define-key exwm-mode-map (kbd "s-p") #'previous-buffer)
-  (define-key exwm-mode-map (kbd "s-n") #'next-buffer)
-  (define-key exwm-mode-map (kbd "s-k") )
 
   (setq exwm-input-global-keys
 	;; only for exwm-related commands
@@ -53,7 +44,10 @@
 	 (cons (kbd "s-t") #'arche/toggle-touchpad)
 	 (cons (kbd "s-w") #'wordnut-search-and-capture)
 	 (cons (kbd "s-#") #'desktop-environment-screenshot)
-	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)))
+	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)
+	 (cons (kbd "χ") #'other-window)
+	 (cons (kbd "ρ") #'(lambda () (interactive)
+					  (other-window -1)))))
   
   ;; toggle touchpad
   (defun arche/toggle-touchpad ()
