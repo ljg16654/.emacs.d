@@ -1,8 +1,17 @@
 (require 'arche-package)
 (use-package posframe)
-(winner-mode t)
-(global-set-key (kbd "s--") #'winner-undo)
-(global-set-key (kbd "s-=") #'winner-redo)
+
+(use-package winner-mode
+  ;; EXWM closing floating window causes winner-mode to crash
+  :disabled
+  :init
+  (winner-mode t)
+  :config
+  (global-set-key (kbd "s--") #'winner-undo)
+  (global-set-key (kbd "s-=") #'winner-redo))
+
+(winner-mode -1)
+
 (global-set-key (kbd "C-c s") #'window-toggle-side-windows)
 (setq display-buffer-alist
       '(
