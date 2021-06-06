@@ -3,7 +3,10 @@
 
 (use-package desktop-environment
   :after exwm
-  :config (desktop-environment-mode))
+  :config
+  (desktop-environment-mode)
+  ;; TODO find latest screenshot
+  )
 
 (defun efs/run-in-background (command)
   (let ((command-parts (split-string command "[ ]+")))

@@ -1,4 +1,5 @@
 (require 'arche-package)
+(require 'arche-web)
 
 (defvar arche/exwm-enabled nil)
 
@@ -33,19 +34,26 @@
   
   (define-key exwm-mode-map (kbd "s-p") #'previous-buffer)
   (define-key exwm-mode-map (kbd "s-n") #'next-buffer)
-  (define-key exwm-mode-map (kbd "s-k") #'(lambda () (interactive)
-					    (kill-buffer (current-buffer))))
+  (define-key exwm-mode-map (kbd "s-k") )
 
   (setq exwm-input-global-keys
 	;; only for exwm-related commands
 	(list
-	 (cons (kbd "s-#") #'desktop-environment-screen)
-	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)
-	 (cons (kbd "s-r") #'exwm-reset)
+	 (cons (kbd "s-a") #'(lambda () (interactive) (arche/raise-or-run "alacritty" "Alacritty: ")))
+	 (cons (kbd "s-e") #'eshell)
 	 (cons (kbd "s-g") #'exwm-workspace-switch)
-	 (cons (kbd "s-t") #'arche/toggle-touchpad)
+	 (cons (kbd "s-h") #'arche/duckduckgo-search)
+	 (cons (kbd "s-k") #'(lambda () (interactive)
+			       (kill-buffer (current-buffer))))
+	 (cons (kbd "s-n") #'next-buffer)
+	 (cons (kbd "s-o") #'switch-to-buffer)
+	 (cons (kbd "s-p") #'previous-buffer)
 	 (cons (kbd "s-q") #'(lambda () (interactive) (arche/raise-or-run "qutebrowser" "Qutebrowser: ")))
-	 (cons (kbd "s-a") #'(lambda () (interactive) (arche/raise-or-run "alacritty" "Alacritty: ")))))
+	 (cons (kbd "s-r") #'exwm-reset)
+	 (cons (kbd "s-t") #'arche/toggle-touchpad)
+	 (cons (kbd "s-w") #'wordnut-search-and-capture)
+	 (cons (kbd "s-#") #'desktop-environment-screenshot)
+	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)))
   
   ;; toggle touchpad
   (defun arche/toggle-touchpad ()
@@ -67,7 +75,7 @@
   
   (exwm-enable)
   (require 'exwm-randr)
-  (setq exwm-randr-workspace-output-plist '(0 "eDP-1-1"))
+  (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1-1" 1 "DP-1-2"))
   (exwm-randr-enable))
 
 (provide 'arche-exwm)
