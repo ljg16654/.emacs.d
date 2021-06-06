@@ -26,6 +26,9 @@
 
   
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
+  (define-key exwm-mode-map (kbd "s-u") #'universal-argument)
+  (define-key exwm-mode-map (kbd "C-u") #'(lambda () (interactive)
+					    (execute-kbd-macro (read-kbd-macro "C-q C-u"))))
 
   (setq exwm-input-global-keys
 	;; global keys that take effect both in  emacs buffers and X windows
@@ -51,7 +54,7 @@
 			     (other-window -1)))))
   
   ;; toggle touchpad
-  (defun arche/toggle-touchpad ()
+p  (defun arche/toggle-touchpad ()
     (interactive)
     "Toggle the dumb touchpad."
     (start-process-shell-command "sh" nil " sh ~/scripts/toggleTouchpad.sh"))
