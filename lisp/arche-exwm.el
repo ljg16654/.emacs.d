@@ -1,8 +1,6 @@
 (require 'arche-package)
 (require 'arche-web)
 
-(defvar arche/exwm-enabled nil)
-
 (use-package exwm
   :init
   (winner-mode -1)
@@ -33,6 +31,9 @@
 	;; global keys that take effect both in  emacs buffers and X windows
 	(list
 	 (cons (kbd "s-a") #'(lambda () (interactive) (arche/raise-or-run "alacritty" "Alacritty: ")))
+	 (cons (kbd "s-C") #'(lambda () (interactive)
+			       (kill-buffer (current-buffer))
+			       (unless (one-window-p) (delete-window))))
 	 (cons (kbd "s-e") #'eshell)
 	 (cons (kbd "s-f") #'arche/duckduckgo-search)
 	 (cons (kbd "s-g") #'exwm-workspace-switch)
@@ -41,6 +42,7 @@
 			       (kill-buffer (current-buffer))))
 	 (cons (kbd "s-n") #'next-buffer)
 	 (cons (kbd "s-o") #'switch-to-buffer)
+	 (cons (kbd "s-C-o") #'counsel-wmctrl)
 	 (cons (kbd "s-p") #'previous-buffer)
 	 (cons (kbd "s-q") #'(lambda () (interactive) (arche/raise-or-run "qutebrowser" "Qutebrowser: ")))
 	 (cons (kbd "s-r") #'exwm-reset)
@@ -54,7 +56,7 @@
 	 (cons (kbd "θ") #'ace-window)))
   
   ;; toggle touchpad
-  ;;;###autoload
+;;;###autoload
   (defun arche/toggle-touchpad ()
     (interactive)
     "Toggle the dumb touchpad."
@@ -76,5 +78,6 @@
   (require 'exwm-randr)
   (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1-1" 1 "DP-1-2"))
   (exwm-randr-enable))
+
 
 (provide 'arche-exwm)

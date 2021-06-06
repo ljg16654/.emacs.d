@@ -28,6 +28,9 @@
 
 ;; each use-package form also invoke straight.el to install the package
 (setq warning-minimum-level :emergency)
+
+(defvar arche/enable-exwm t)
+(defvar arche/exwm-enabled nil)
 (require 'arche-package)
 (require 'arche-keybinding)
 (require 'arche-hyperbole)
@@ -72,5 +75,5 @@
 (require 'arche-chinese)
 (require 'arche-sibling)
 (require 'arche-eaf)
-(require 'arche-exwm)
+(if arche/enable-exwm (require 'arche-exwm))
 (server-start)

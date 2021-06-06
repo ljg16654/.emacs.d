@@ -1,15 +1,17 @@
 (require 'arche-package)
 
-(global-set-key (kbd "s-o") #'switch-to-buffer)
-(global-set-key (kbd "s-p") #'previous-buffer)
-(global-set-key (kbd "s-n") #'next-buffer)
-(global-set-key (kbd "s-k") #'(lambda () (interactive)
-				(kill-buffer (current-buffer))))
-(global-set-key (kbd "C-x C-b") #'ibuffer)
-(global-set-key (kbd "C-x <return> r")
-		;; originally bound to
-		;; revert-buffer-with-coding-system
-		#'revert-buffer)
+(if (not arche/enable-exwm)
+    (progn
+      (global-set-key (kbd "s-o") #'switch-to-buffer)
+      (global-set-key (kbd "s-p") #'previous-buffer)
+      (global-set-key (kbd "s-n") #'next-buffer)
+      (global-set-key (kbd "s-k") #'(lambda () (interactive)
+				      (kill-buffer (current-buffer))))
+      (global-set-key (kbd "C-x C-b") #'ibuffer)
+      (global-set-key (kbd "C-x <return> r")
+		      ;; originally bound to
+		      ;; revert-buffer-with-coding-system
+		      #'revert-buffer)))
 
 (general-define-key
  :prefix "C-c f"
