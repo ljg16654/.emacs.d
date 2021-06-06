@@ -28,12 +28,13 @@
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
 
   (setq exwm-input-global-keys
-	;; only for exwm-related commands
+	;; global keys that take effect both in  emacs buffers and X windows
 	(list
 	 (cons (kbd "s-a") #'(lambda () (interactive) (arche/raise-or-run "alacritty" "Alacritty: ")))
 	 (cons (kbd "s-e") #'eshell)
+	 (cons (kbd "s-f") #'arche/duckduckgo-search)
 	 (cons (kbd "s-g") #'exwm-workspace-switch)
-	 (cons (kbd "s-h") #'arche/duckduckgo-search)
+	 (cons (kbd "s-h") #'arche/browse-qutebrowser-hist)
 	 (cons (kbd "s-k") #'(lambda () (interactive)
 			       (kill-buffer (current-buffer))))
 	 (cons (kbd "s-n") #'next-buffer)
@@ -47,7 +48,7 @@
 	 (cons (kbd "s-$") #'desktop-environment-screenshot-part)
 	 (cons (kbd "χ") #'other-window)
 	 (cons (kbd "ρ") #'(lambda () (interactive)
-					  (other-window -1)))))
+			     (other-window -1)))))
   
   ;; toggle touchpad
   (defun arche/toggle-touchpad ()

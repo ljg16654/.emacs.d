@@ -16,14 +16,15 @@
   (global-set-key (kbd "s-u") #'projectile-switch-project))
 
 (use-package ibuffer-projectile
+  :disabled
   :after projectile
   :config
   (progn
-    (add-hook 'ibuffer-hook
-	      (lambda ()
-		(ibuffer-projectile-set-filter-groups)
-		(unless (eq ibuffer-sorting-mode 'alphabetic)
-		  (ibuffer-do-sort-by-alphabetic))))))
+    (remove-hook 'ibuffer-hook
+		 (lambda ()
+		   (ibuffer-projectile-set-filter-groups)
+		   (unless (eq ibuffer-sorting-mode 'alphabetic)
+		     (ibuffer-do-sort-by-alphabetic))))))
 
 (use-package org-projectile
   :after (org projectile)

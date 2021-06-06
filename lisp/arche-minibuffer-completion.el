@@ -1,5 +1,11 @@
 (require 'arche-package)
 
+;;* savehist
+(use-package savehist
+    :config
+    (setq history-length 25)
+    (savehist-mode 1))
+
 ;;* Compeltion Style
 (use-package orderless)
 (setq completion-styles '(orderless partial-completion))
@@ -10,6 +16,14 @@
 ;;* My favored incrementally narrowing tool in minibuffer
 (use-package vertico)
 (vertico-mode t)
+
+(use-package marginalia
+  :after vertico
+  :straight t
+  :custom
+  (marginalia-annotators '(marginalia-annotators-heavy marginalia-annotators-light nil))
+  :init
+  (marginalia-mode))
 
 (use-package icomplete-vertical
   :ensure t
@@ -25,11 +39,4 @@
 (icomplete-mode -1)
 (icomplete-vertical-mode -1)
 
-(use-package ivy
-  :config
-  (setq ivy-height 5)
-  (setq ivy-re-builders-alist
-	(list )))
-
-(ivy-mode -1)
 (provide 'arche-minibuffer-completion)
