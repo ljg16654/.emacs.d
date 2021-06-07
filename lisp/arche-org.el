@@ -3,7 +3,6 @@
 (require 'arche-pdf)
 (require 'cl-lib)
 (require 'arche-company)
-(require 'arche-dictionaries)
 (require 'arche-hydra)
 (require 'arche-misc)
 ;; (use-package org
