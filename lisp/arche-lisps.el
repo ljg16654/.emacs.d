@@ -20,6 +20,7 @@
 (add-hook 'lisp-mode-hook #'arche-lisps-hook)
 (add-hook 'slime-repl-map-mode-hook #'arche-lisps-hook)
 (add-hook 'clojure-mode-hook #'arche-lisps-hook)
+(add-hook 'cider-repl-mode-hook #'arche-lisps-hook)
 
 (add-hook 'inferior-emacs-lisp-mode #'(lambda () (autopair-mode t)))
 (define-key emacs-lisp-mode-map (kbd "C-c C-c") #'eval-buffer)

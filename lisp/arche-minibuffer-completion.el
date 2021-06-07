@@ -14,6 +14,10 @@
 (setq read-buffer-completion-ignore-case t)
 
 ;;* My favored incrementally narrowing tool in minibuffer
+
+;; notes on `vertico-exit`
+;; C-j to exit with current candidate
+;; C-u C-j to exit with input
 (use-package vertico)
 (vertico-mode t)
 

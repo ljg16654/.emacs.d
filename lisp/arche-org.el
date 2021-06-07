@@ -1,3 +1,4 @@
+;; -*- lexical-binding: t; -*-
 (require 'arche-package)
 (require 'arche-pdf)
 (require 'cl-lib)
@@ -114,6 +115,23 @@
 ;; enables org-mode style fontification and activation of
 ;; bracket links in modes other than org-mode.
 ;; (use-package org-link-minor-mode)
+
+;; window behavior when following org-mode-link
+(setq org-link-frame-setup
+    '((vm . vm-visit-folder-other-frame)
+      (vm-imap . vm-visit-imap-folder-other-frame)
+      (gnus . org-gnus-no-new-news)
+      (file . find-file)
+      (wl . wl-other-frame)))
+
+(defun arche/follow-org-mode-link-other-window ()
+  (let ((org-link-frame-setup
+	 '((vm . vm-visit-folder-other-frame)
+	  (vm-imap . vm-visit-imap-folder-other-frame)
+	  (gnus . org-gnus-no-new-news)
+	  (file . find-file-other-window)
+	  (wl . wl-other-frame)))))
+  (org-open-at-point))
 
 (use-package org-download
   :config
