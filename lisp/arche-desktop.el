@@ -63,6 +63,11 @@
 (global-set-key (kbd "C-x T")
 		#'arche/open-tmux-session-in-alacritty-completing-read)
 
+(defun arche/select-wallpaper ()
+  "Use sxiv to select wallpaper. Then Use feh to set it."
+  (interactive)
+  (efs/run-in-background "~/scripts/select-wallpaper.sh"))
+
 (defun transparency (value)
   "Set transparency value."
   (interactive "ntransparency value 0 - 100 opaque:")
@@ -78,5 +83,6 @@
 	   (set-frame-parameter (selected-frame) 'alpha 100)))))
 
 (global-set-key (kbd "C-c t") #'arche/toggle-transparency)
+(global-set-key (kbd "C-c W") #'arche/select-wallpaper)
 
 (provide 'arche-desktop)
