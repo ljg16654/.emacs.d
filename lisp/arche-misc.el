@@ -104,6 +104,14 @@ calls."
   #'(lambda () (interactive) (progn (previous-line)
 			       (recenter-top-bottom 8))))
 
+(define-key view-mode-map (kbd "{")
+  #'(lambda () (interactive) (progn (backward-paragraph)
+			       (recenter-top-bottom 8))))
+
+(define-key view-mode-map (kbd "}")
+  #'(lambda () (interactive) (progn (forward-paragraph)
+			       (recenter-top-bottom 8))))
+
 (use-package olivetti
   :config
   (setq-default olivetti-body-width 0.7)
