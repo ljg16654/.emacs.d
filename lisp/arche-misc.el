@@ -92,15 +92,17 @@ differ only by a few numbers."
 (global-set-key (kbd "C-x v") #'view-mode)
 
 (defun arche/recenter-center ()
+  "Recenter to the center, avoid cycling due to continuous
+calls."
   (execute-kbd-macro (read-kbd-macro "C-u C-l")))
 
 (define-key view-mode-map (kbd "j")
   #'(lambda () (interactive) (progn (next-line)
-			       (arche/recenter-center))))
+			       (recenter-top-bottom 8))))
 
 (define-key view-mode-map (kbd "k")
   #'(lambda () (interactive) (progn (previous-line)
-			       (arche/recenter-center))))
+			       (recenter-top-bottom 8))))
 
 (use-package olivetti
   :config
@@ -117,6 +119,7 @@ differ only by a few numbers."
     (hide-mode-line-mode 1)))
 
 (setq bookmark-file (file-truename "~/.emacs.bmk"))
+(add-hook 'kill-emacs-hook #'bookmark-save)
 
 (general-define-key
  :prefix "C-c f"

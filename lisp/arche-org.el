@@ -48,6 +48,8 @@
 (add-hook 'org-mode-hook #'arche-org-mode-hook)
 
 ;;* capture
+;; If set to t, all captures will have wired bookmark faces...  
+(setq org-capture-bookmark nil)
 (setq org-link-elisp-skip-confirm-regexp
       (rx (or "man" "wordnut-search")))
 

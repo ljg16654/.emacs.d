@@ -1,5 +1,6 @@
 (require 'arche-package)
 (require 'arche-web)
+(require 'arche-dictionaries)
 
 (use-package exwm
   :init
