@@ -7,7 +7,7 @@
       (global-set-key (kbd "s-n") #'next-buffer)
       (global-set-key (kbd "s-k") #'(lambda () (interactive)
 				      (kill-buffer (current-buffer))))
-      (global-set-key (kbd "C-x C-b") #'ibuffer)))
+      (global-set-key (kbd "s-b") #'ibuffer)))
 
 (general-define-key
  :prefix "C-c f"

@@ -32,6 +32,7 @@
 	;; global keys that take effect both in  emacs buffers and X windows
 	(list
 	 (cons (kbd "s-a") #'(lambda () (interactive) (arche/raise-or-run "alacritty" "Alacritty: ")))
+	 (cons (kbd "s-b") #'ibuffer)
 	 (cons (kbd "s-C") #'(lambda () (interactive)
 			       (kill-buffer (current-buffer))
 			       (unless (one-window-p) (delete-window))))

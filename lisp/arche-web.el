@@ -37,7 +37,9 @@ space. Otherwise, search for the input."
   (interactive)
   (let*
       ((hist (shell-command-to-string "~/scripts/qutebrowser-get-hist.sh"))
-       (hist-list (s-split "\n" hist))
+       (hist-list (-filter
+		   (lambda (str) (not (s-blank? str)))
+		   (s-split "\n" hist)))
        (url-with-description (completing-read "Choose from Qutebrowser history: " hist-list))
        (url (-last-item (s-split " " url-with-description))))
     (browse-url url)))
