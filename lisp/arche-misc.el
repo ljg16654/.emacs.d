@@ -96,6 +96,7 @@ differ only by a few numbers."
 calls."
   (execute-kbd-macro (read-kbd-macro "C-u C-l")))
 
+(require 'view)
 (define-key view-mode-map (kbd "j")
   #'(lambda () (interactive) (progn (next-line)
 			       (recenter-top-bottom 8))))
@@ -144,6 +145,6 @@ calls."
 
 (global-prettify-symbols-mode)
 
-(use-package emacspeak)
+;; (use-package emacspeak)
 
 (provide 'arche-misc)

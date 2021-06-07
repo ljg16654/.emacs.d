@@ -32,7 +32,8 @@
       (org-capture-finalize)))
 
   (global-set-key (kbd "s-w") #'wordnut-search-and-capture)
-  (define-key wordnut-mode-map (kbd "w") #'wordnut-search-and-capture))
+  (define-key wordnut-mode-map (kbd "w") #'wordnut-search-and-capture)
+  (define-key view-mode-map (kbd "w") #'wordnut-search-and-capture))
 
 (define-minor-mode wordnut-review-word-mode
   "Toggle minor-mode for reviewing wordnut history"
