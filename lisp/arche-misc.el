@@ -21,13 +21,6 @@
 ;; Font-lock by depth
 (use-package prism)
 
-(defun transparency (value)
-  "sets the transparency of the frame window. 0=transparent/100=opaque"
-  (interactive "ntransparency value 0 - 100 opaque:")
-  (set-frame-parameter (selected-frame) 'alpha value))
-
-(transparency 100)
-
 ;;* By default, visiting destination of symlink under version control asks for confirm 
 (setq vc-follow-symlinks nil)
 
@@ -98,6 +91,17 @@ differ only by a few numbers."
 
 (global-set-key (kbd "C-x v") #'view-mode)
 
+(defun arche/recenter-center ()
+  (execute-kbd-macro (read-kbd-macro "C-u C-l")))
+
+(define-key view-mode-map (kbd "j")
+  #'(lambda () (interactive) (progn (next-line)
+			       (arche/recenter-center))))
+
+(define-key view-mode-map (kbd "k")
+  #'(lambda () (interactive) (progn (previous-line)
+			       (arche/recenter-center))))
+
 (use-package olivetti
   :config
   (setq-default olivetti-body-width 0.7)
@@ -128,5 +132,7 @@ differ only by a few numbers."
       (list (cons "lambda" "λ")))
 
 (global-prettify-symbols-mode)
+
+(use-package emacspeak)
 
 (provide 'arche-misc)

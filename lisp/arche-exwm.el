@@ -72,7 +72,10 @@
 	 ;; M-w |-> C-c
 	 (cons (kbd "M-w") [3])
 	 ;; C-y |-> C-v
-	 (cons (kbd "C-y") [22])))
+	 (cons (kbd "C-y") [22])
+	 (cons (kbd "M-b") [C-left])
+	 (cons (kbd "M-f") [C-right])
+	 (cons (kbd "M-DEL") [C-backspace])))
   
   (exwm-enable)
   (require 'exwm-randr)

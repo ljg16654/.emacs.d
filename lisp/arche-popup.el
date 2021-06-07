@@ -7,11 +7,11 @@
 	(list "\\*Python\\*"
               "\\*ielm\\*"))
   :config
-  (defhydra 'popper-stuff
-    (global-map "C-c t")
-    ("t" #'popper-toggle-latest)
-    ("o" #'popper-cycle)
-    ("p" #'popper-toggle-type))
+  ;; (defhydra 'popper-stuff
+  ;;   (global-map "C-c t")
+  ;;   ("t" #'popper-toggle-latest)
+  ;;   ("o" #'popper-cycle)
+  ;;   ("p" #'popper-toggle-type))
   (key-chord-define-global "dk" #'popper-toggle-latest)
   (popper-mode +1))
 

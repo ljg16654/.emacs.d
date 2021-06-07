@@ -30,7 +30,7 @@
   :config
   (let
       ((my-lisp-prog (file-truename "~/.local/bin/sbcl")))
-      (setq inferior-lisp-program my-lisp-prog)
+    (setq inferior-lisp-program my-lisp-prog)
     (setq slime-lisp-implementations
 	  `((sbcl ,(list my-lisp-prog) :coding-system utf-8-unix)))))
 

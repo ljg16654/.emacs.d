@@ -43,6 +43,6 @@
 		 "#FFFFE8"))
 	 (load-theme 'plan9 t)))
 
-(load-theme 'doom-nova nil nil)
+(load-theme 'doom-rouge nil nil)
 
 (provide 'arche-theme)
