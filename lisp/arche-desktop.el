@@ -82,6 +82,16 @@
 	  (t
 	   (set-frame-parameter (selected-frame) 'alpha 100)))))
 
+(defun arche/open-pdf-in-zathura ()
+  (interactive)
+  (if (executable-find "zathura")
+      (if (eq major-mode 'pdf-view-mode)
+       (efs/run-in-background (concat "zathura "
+				      (file-truename (buffer-file-name)))))
+      (message "Cannot find zathura...")))
+
+(define-key pdf-view-mode-map (kbd "z") #'arche/open-pdf-in-zathura)
+
 (global-set-key (kbd "C-c t") #'arche/toggle-transparency)
 (global-set-key (kbd "C-c W") #'arche/select-wallpaper)
 
