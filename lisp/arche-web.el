@@ -28,9 +28,9 @@
 space. Otherwise, search for the input."
   (let
       ((what (read-string "Search for: ")))
-    (if (s-prefix-p " " what)
-	(browse-url (s-trim what)))
-    (browse-url (concat "www.duckduckgo.com/?q=" what))))
+    (cond ((s-prefix-p " " what) (browse-url (s-trim what)))
+	  ((s-prefix-p ",g " what) (browse-url (concat "https://github.com/search?q=" (s-chop-prefix ",g " what))))
+	  (t (browse-url (concat "www.duckduckgo.com/?q=" what))))))
 
 ;;;###autoload
 (defun arche/browse-qutebrowser-hist ()
