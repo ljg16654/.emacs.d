@@ -7,7 +7,10 @@
       (global-set-key (kbd "s-n") #'next-buffer)
       (global-set-key (kbd "s-k") #'(lambda () (interactive)
 				      (kill-buffer (current-buffer))))
-      (global-set-key (kbd "s-b") #'ibuffer)))
+      (global-set-key (kbd "s-b") #'ibuffer)
+      (global-set-key (kbd "s-.") #'tab-bar-switch-to-next-tab)
+      (global-set-key (kbd "s-,") #'tab-bar-switch-to-prev-tab)
+      (global-set-key (kbd "ψ") #'tab-bar-switch-to-recent-tab)))
 
 (general-define-key
  :prefix "C-c f"
@@ -40,9 +43,6 @@
  "t" #'tab-bar-select-tab-by-name)
 
 (setq tab-bar-new-tab-choice "*scratch*")
-(global-set-key (kbd "ψ") #'tab-bar-switch-to-recent-tab)
-(global-set-key (kbd "s-.") #'tab-bar-switch-to-next-tab)
-(global-set-key (kbd "s-,") #'tab-bar-switch-to-prev-tab)
 
 (defun my-select-tab ()
   (interactive)
