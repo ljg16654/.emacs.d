@@ -83,7 +83,7 @@
 ;;** writing LaTeX
 (require 'arche-org-latex-inline-math)
 
-;;* refile
+;;* search and query
 (use-package helm-org-rifle)
 
 ;;* links

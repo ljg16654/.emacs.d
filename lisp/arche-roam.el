@@ -1,4 +1,5 @@
 (require 'arche-package)
+(require 'arche-ecm)
 
 (executable-find "sqlite3")
 
@@ -20,6 +21,11 @@
 	  (list
 	   'prop
 	   'last-directory)))
+
+  (defun arche/grep-org-roam ()
+    (interactive)
+    (consult-grep "~/org-roam" ""))
+
   (general-define-key
    :prefix "C-c r"
    "r" #'helm-bibtex
@@ -34,7 +40,9 @@
    "y" #'org-roam-dailies-find-yesterday
    "x" #'org-roam-dailies-find-today
    "j" #'org-roam-dailies-capture-today
-   "i" #'org-roam-insert)
+   "i" #'org-roam-insert
+   "/" #'arche/grep-org-roam)
+  
   (setq org-roam-dailies-directory "daily/")
   (setq org-roam-dailies-capture-templates
 	'(("d" "default" entry
