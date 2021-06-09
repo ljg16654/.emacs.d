@@ -96,6 +96,14 @@ differ only by a few numbers."
 calls."
   (execute-kbd-macro (read-kbd-macro "C-u C-l")))
 
+(defun arche/move-paragraph-natural-recenter (direction)
+  "Move forward/backward paragraph and then recenter to a position
+natural for reading."
+  (cond
+   ((eq direction 'forward) (forward-paragraph))
+   (t (backward-paragraph)))
+  (recenter-top-bottom 8))
+
 (require 'view)
 (define-key view-mode-map (kbd "j")
   #'(lambda () (interactive) (progn (next-line)
@@ -106,12 +114,16 @@ calls."
 			       (recenter-top-bottom 8))))
 
 (define-key view-mode-map (kbd "{")
-  #'(lambda () (interactive) (progn (backward-paragraph)
-			       (recenter-top-bottom 8))))
+  #'(lambda () (interactive) (arche/move-paragraph-natural-recenter 'backward)))
 
 (define-key view-mode-map (kbd "}")
-  #'(lambda () (interactive) (progn (forward-paragraph)
-			       (recenter-top-bottom 8))))
+  #'(lambda () (interactive) (arche/move-paragraph-natural-recenter 'forward)))
+
+(define-key Info-mode-map (kbd "{")
+  #'(lambda () (interactive) (arche/move-paragraph-natural-recenter 'backward)))
+
+(define-key Info-mode-map (kbd "}")
+  #'(lambda () (interactive) (arche/move-paragraph-natural-recenter 'forward)))
 
 (use-package olivetti
   :config
