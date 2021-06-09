@@ -20,7 +20,9 @@
             (lambda ()
               (pcase exwm-class-name
                 ("qutebrowser" (exwm-workspace-rename-buffer (format "Qutebrowser: %s" exwm-title)))
-		("Alacritty" (exwm-workspace-rename-buffer (format "Alacritty: %s" exwm-title))))))
+		("Alacritty" (exwm-workspace-rename-buffer (format "Alacritty: %s" exwm-title)))
+		("Zathura" (exwm-workspace-rename-buffer (format "Zathura: %s" exwm-title)))
+		("Firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title))))))
   
   (add-hook 'exwm-init-hook #'(lambda () (setq arche/exwm-enabled t)))
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
