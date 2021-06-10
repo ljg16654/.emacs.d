@@ -1,0 +1,6 @@
+# -*- mode: snippet -*-
+# name: ifdefendif
+# key: ,ifd
+# --
+#ifdef $1
+#endif
