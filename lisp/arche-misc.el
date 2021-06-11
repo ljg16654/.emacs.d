@@ -159,4 +159,11 @@ natural for reading."
 
 ;; (use-package emacspeak)
 
+(use-package keyfreq
+  :init
+  (keyfreq-mode)
+  (keyfreq-autosave-mode)
+  :config
+  (setq keyfreq-excluded-commands '()))
+
 (provide 'arche-misc)
