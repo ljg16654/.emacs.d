@@ -1,4 +1,4 @@
-;; -*- lexical-binding: t; -*-
+;; -*- Lexical-binding: t; -*-
 (require 'arche-package)
 (require 'arche-pdf)
 (require 'cl-lib)
@@ -11,11 +11,11 @@
 
 ;;* appearance stuff 
 (setq org-ellipsis " ▾"
-      org-hide-emphasis-markers t
+      org-hide-emphasis-markers nil
       org-imenu-depth 7
       org-export-with-toc nil
-      org-image-actual-width nil
-      )
+      org-image-actual-width nil)
+
 (font-lock-add-keywords 'org-mode
                         '(("^ *\\([-]\\) "
                            (0 (prog1 () (compose-region (match-beginning 1) (match-end 1) "•"))))))
@@ -30,7 +30,7 @@
    (plist-put org-format-latex-options :scale (* 1.6 text-scale-mode-amount))
    (org-latex-preview '(16))))
 
-(add-hook 'text-scale-mode-hook 'update-org-latex-fragments)
+;; (remove-hook 'text-scale-mode-hook 'update-org-latex-fragments)
 
 (use-package org-bullets)
 

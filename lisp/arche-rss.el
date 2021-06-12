@@ -5,6 +5,10 @@
       '(
         ("https://www.motorsport.com/rss/f1/news/" motorsport)
 	("https://emacsredux.com/atom.xml" bbatsov)
+	("https://protesilaos.com/codelog.xml" prot-coding-blog)
+	("https://updates.orgmode.org/feed/updates" org-mode)
+	("https://www.reddit.com/r/emacs/.rss" r/emacs)
+	("https://www.reddit.com/r/org-mode/.rss" r/org-mode)
         ;; ("http://finance.yahoo.com/rss/headline?s=MSFT" finance)
 	;; ("https://feeds.bloomberg.com/politics/news.rss" bloomberg-politics)
         ))

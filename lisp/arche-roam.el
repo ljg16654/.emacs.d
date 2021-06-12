@@ -22,9 +22,9 @@
 	   'prop
 	   'last-directory)))
 
-  (defun arche/grep-org-roam ()
+  (defun arche/rg-org-roam ()
     (interactive)
-    (consult-grep "~/org-roam" ""))
+    (consult-ripgrep "~/org-roam" ""))
 
   (general-define-key
    :prefix "C-c r"
@@ -41,7 +41,7 @@
    "x" #'org-roam-dailies-find-today
    "j" #'org-roam-dailies-capture-today
    "i" #'org-roam-insert
-   "/" #'arche/grep-org-roam)
+   "/" #'arche/rg-org-roam)
   
   (setq org-roam-dailies-directory "daily/")
   (setq org-roam-dailies-capture-templates

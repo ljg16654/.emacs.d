@@ -14,5 +14,7 @@
 	      ".pyc")))
 
 (global-set-key (kbd "s-SPC") #'project-find-file)
+(global-set-key (kbd "s-u") #'project-switch-to-buffer)
+(global-set-key (kbd "σ") #'project-compile)
 
 (provide 'arche-project)

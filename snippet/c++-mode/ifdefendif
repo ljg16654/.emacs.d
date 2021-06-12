@@ -1,6 +1,7 @@
 # -*- mode: snippet -*-
 # name: ifdefendif
-# key: ,ifd
+# key: ,id
 # --
-#ifdef $1
+#ifdef ${1:debug}
+$2
 #endif

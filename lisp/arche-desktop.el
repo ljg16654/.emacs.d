@@ -1,5 +1,6 @@
 ;; see arche-web.el for more configuration related to the browser   
 (require 'arche-package)
+(require 'arche-elisp)
 (defvar arche/transparency 85)
 
 (use-package desktop-environment

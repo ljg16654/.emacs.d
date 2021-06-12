@@ -5,6 +5,9 @@
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
 
+;; king ring volume
+(setq kill-ring-max 200)
+
 ;; The inverse of M-q
 ;; From https://www.emacswiki.org/emacs/UnfillParagraph
 ;;; Stefan Monnier <foo at acm.org>. It is the opposite of fill-paragraph    
@@ -152,6 +155,7 @@ natural for reading."
 
 (use-package emojify)
 
+
 (setq prettify-symbols-alist
       (list (cons "lambda" "λ")))
 
@@ -159,7 +163,8 @@ natural for reading."
 
 ;; (use-package emacspeak)
 
-(use-package keyfreq
+ (use-package keyfreq
+  ;; installed on <2021-06-11 Fri>
   :init
   (keyfreq-mode)
   (keyfreq-autosave-mode)
