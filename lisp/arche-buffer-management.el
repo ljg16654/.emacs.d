@@ -1,12 +1,21 @@
 (require 'arche-package)
 
+(defun arche/kill-current-buffer ()
+  (interactive)
+  (kill-buffer (current-buffer)))
+
+(defun arche/kill-window-and-buffer-if-not-single ()
+  (interactive)
+  (progn
+    (kill-buffer (current-buffer))
+    (unless (one-window-p) (delete-window))))
+
 (if (not arche/enable-exwm)
     (progn
       (global-set-key (kbd "s-o") #'switch-to-buffer)
       (global-set-key (kbd "s-p") #'previous-buffer)
       (global-set-key (kbd "s-n") #'next-buffer)
-      (global-set-key (kbd "s-k") #'(lambda () (interactive)
-				      (kill-buffer (current-buffer))))
+      (global-set-key (kbd "s-k") #'arche/kill-current-buffer)
       (global-set-key (kbd "s-b") #'ibuffer)
       (global-set-key (kbd "s-.") #'tab-bar-switch-to-next-tab)
       (global-set-key (kbd "s-,") #'tab-bar-switch-to-prev-tab)
