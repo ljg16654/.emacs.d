@@ -62,6 +62,7 @@
 (require 'arche-matlab)
 (require 'arche-mma)
 (require 'arche-rust)
+(require 'arche-haskell)
 (require 'arche-lsp)
 (require 'arche-misc)
 (require 'arche-dictionaries)
