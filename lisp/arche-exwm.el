@@ -23,6 +23,16 @@
 		("Alacritty" (exwm-workspace-rename-buffer (format "Alacritty: %s" exwm-title)))
 		("Zathura" (exwm-workspace-rename-buffer (format "Zathura: %s" exwm-title)))
 		("Firefox" (exwm-workspace-rename-buffer (format "Firefox: %s" exwm-title))))))
+
+  (defun arche/setup-window-by-class ()
+    (interactive)
+    (pcase exwm-class-name
+      ("qutebrowser" (exwm-workspace-move-window 2))))
+
+  (add-hook 'exwm-manage-finish-hook
+            (lambda ()
+              ;; Send the window where it belongs
+              (arche/setup-window-by-class)))
   
   (add-hook 'exwm-init-hook #'(lambda () (setq arche/exwm-enabled t)))
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
@@ -93,7 +103,7 @@
   
   (exwm-enable)
   (require 'exwm-randr)
-  (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1-1" 1 "DP-1-2"))
+  (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1-1" 1 "DP-1-2" 2 "DP-1-2"))
   (exwm-randr-enable))
 
 
