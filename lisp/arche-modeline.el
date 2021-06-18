@@ -1,21 +1,20 @@
 (require 'arche-package)
+(require 'arche-misc)
+(require 'arche-buffer-management)
+
 (use-package diminish)
-(diminish 'ivy-mode)
-(diminish 'auto-revert-mode)
-(diminish 'yas-minor-mode)
-(diminish 'which-key-mode "which?")
-(diminish 'org-indent-mode)
-(diminish 'org-roam-mode)
-(diminish 'org-cdlatex-mode "cd")
-(diminish 'company-mode)
-(diminish 'projectile-mode)
-(diminish 'helm-mode)
-(diminish 'auto-fill-function "AuF")
-(diminish 'evil-snipe-mode)
-(diminish 'evil-escape-mode)
 
 (use-package minions
-  :init (minions-mode))
+  :after (ace-window helpful)
+  :init (minions-mode)
+  :config
+  (defun arche/reset-mode-line ()
+    (interactive)
+    (progn
+      (setq-default mode-line-format
+		    (helpful--original-value 'mode-line-format))
+      (minions-mode t)
+      (ace-window-display-mode t))))
 
 (use-package hide-mode-line)
 
