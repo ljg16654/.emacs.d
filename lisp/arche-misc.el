@@ -155,15 +155,41 @@ natural for reading."
 
 (use-package emojify)
 
+;; TODO https://github.com/Ilazki/prettify-utils.el/blob/master/prettify-utils.el
 
-(setq prettify-symbols-alist
-      (list (cons "lambda" "λ")))
+(load "prettify-utils.el")
+(defun prettify-set ()
+  (progn
+    (setq prettify-symbols-alist
+	  (prettify-utils-generate
+	   ("lambda"	"λ")
+	   ("|>"	"▷")
+	   ("<|"	"◁")
+	   ("->>"	"↠")
+	   ("->"	"→")
+	   ("|->"	"↦")
+	   ("<-"	"←")
+	   ("=>"	"⇒")
+	   ("<="	"≤")
+	   (">="	"≥")
+	   ("\\int"     "∫")
+	   ("\\mapsto"  "↦")
+	   ("\\forall"  "∀")
+	   ("\\in"      "∊")
+	   ("\\exists"  "∃")
+	   ("\\land"    "∧")
+	   ("\\lor"     "∨")))
+    (prettify-symbols-mode)))
 
-(global-prettify-symbols-mode)
+(add-hook 'prog-mode-hook 'prettify-set)
+(add-hook 'org-mode-hook 'prettify-set)
+
+(global-set-key (kbd "C-x 8 d") "⇓")
+(global-set-key (kbd "C-x 8 u") "⇑")
 
 ;; (use-package emacspeak)
 
- (use-package keyfreq
+(use-package keyfreq
   ;; installed on <2021-06-11 Fri>
   :init
   (keyfreq-mode)
