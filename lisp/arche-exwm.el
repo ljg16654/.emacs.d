@@ -33,16 +33,21 @@
             (lambda ()
               ;; Send the window where it belongs
               (arche/setup-window-by-class)))
-  
+
   (add-hook 'exwm-init-hook #'(lambda () (setq arche/exwm-enabled t)))
   (define-key exwm-mode-map (kbd "C-q") #'exwm-input-send-next-key)
   (define-key exwm-mode-map (kbd "s-u") #'universal-argument)
   (define-key exwm-mode-map (kbd "C-u") #'(lambda () (interactive)
 					    (execute-kbd-macro (read-kbd-macro "C-q C-u"))))
 
+  (defun arche/tmp-global-key (kbd func)
+    (progn
+      (define-key exwm-mode-map kbd func)
+      (global-set-key kbd func)))
+
   ;; IMPORTANT: C-c C-k (exwm-input-release-keyboard) to open char-mode
   ;; Useful for virtual machines.
-  
+
   (setq exwm-input-global-keys
 	;; global keys that take effect both in  emacs buffers and X windows
 	(list
@@ -54,15 +59,21 @@
 	 (cons (kbd "s-f") #'arche/duckduckgo-search)
 	 (cons (kbd "s-g") #'exwm-workspace-switch)
 	 (cons (kbd "s-h") #'arche/browse-qutebrowser-hist)
+	 (cons (kbd "s-i") #'(lambda () (interactive)
+			       (exwm-workspace-switch-create 1)))
 	 (cons (kbd "s-k") #'arche/kill-current-buffer)
 	 (cons (kbd "s-n") #'next-buffer)
 	 (cons (kbd "s-o") #'switch-to-buffer)
 	 (cons (kbd "s-C-o") #'counsel-wmctrl)
 	 (cons (kbd "s-p") #'previous-buffer)
-	 (cons (kbd "s-q") #'(lambda () (interactive) (arche/raise-or-run "qutebrowser" "Qutebrowser: ")))
+	 (cons (kbd "s-q") #'(lambda () (interactive)
+			       (exwm-workspace-switch-create 2)))
 	 (cons (kbd "s-r") #'exwm-reset)
 	 (cons (kbd "s-t") #'arche/toggle-touchpad)
+	 (cons (kbd "s-v") #'vterm-toggle)
 	 (cons (kbd "s-w") #'wordnut-search-and-capture)
+	 (cons (kbd "s-0") #'(lambda () (interactive)
+			       (exwm-workspace-switch-create 0)))
 	 (cons (kbd "s-.") #'tab-bar-switch-to-next-tab)
 	 (cons (kbd "s-,") #'tab-bar-switch-to-prev-tab)
 	 (cons (kbd "s-#") #'desktop-environment-screenshot)
