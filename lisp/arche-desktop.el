@@ -3,6 +3,49 @@
 (require 'arche-elisp)
 (defvar arche/transparency 85)
 
+(defun arche/exwm-next-workspace ()
+  (interactive)
+  (let*
+      ((current-idx (exwm-workspace--position exwm-workspace--current))
+       (workspace-num (exwm-workspace--count))
+       (next-idx (mod (+ 1 current-idx) workspace-num)))
+    (exwm-workspace-switch next-idx)))
+
+(defun arche/exwm-previous-workspace ()
+  (interactive)
+  (let*
+      ((current-idx (exwm-workspace--position exwm-workspace--current))
+       (workspace-num (exwm-workspace--count))
+       (next-idx (mod (+ (- 1) current-idx) workspace-num)))
+    (exwm-workspace-switch next-idx)))
+
+(defvar arche/last-exwm-workspace-indice '(0 0)
+  "(current, previous)")
+
+(defun arche/exwm-switch-workspace-hook ()
+  (unless
+      (eq (exwm-workspace--position exwm-workspace--current)
+	  (car arche/last-exwm-workspace-indice))
+      (progn
+	(setf (cdr arche/last-exwm-workspace-indice)
+	      (car arche/last-exwm-workspace-indice))
+	(setf (car arche/last-exwm-workspace-indice)
+	      (exwm-workspace--position exwm-workspace--current)))))
+
+(defun arche/exwm-recent-workspace ()
+  (interactive)
+  (let*
+      ((current-idx (exwm-workspace--position exwm-workspace--current))
+       (previous-idx (cdr arche/last-exwm-workspace-indice)))
+    (if (not (eq current-idx previous-idx))
+	(exwm-workspace-switch previous-idx))))
+
+(add-hook 'exwm-workspace-switch-hook #'arche/exwm-switch-workspace-hook)
+
+(arche/tmp-global-key (kbd "s-[") #'arche/exwm-previous-workspace)
+(arche/tmp-global-key (kbd "s-]") #'arche/exwm-next-workspace)
+(arche/tmp-global-key (kbd "H-SPC") #'arche/exwm-recent-workspace)
+
 (use-package desktop-environment
   :after exwm
   :config
