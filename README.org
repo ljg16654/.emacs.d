@@ -1,1 +1,14 @@
 A tinkerer's primary way to waste time.
+
+* External Dependencies
+
+** Arch Linux
+
+|------------+-----------------------|
+| flyspell   | hunspell-en_us ispell |
+| mu         | mu-git                |
+| telega     | libtd-git             |
+| vterm      | emacs-libvterm-git    |
+| ob-ipython | jupyter               |
+|------------+-----------------------|
+
