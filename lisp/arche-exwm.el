@@ -116,11 +116,10 @@
 	 (cons (kbd "M-b") [C-left])
 	 (cons (kbd "M-f") [C-right])
 	 (cons (kbd "M-DEL") [C-backspace])))
-  
+
   (exwm-enable)
   (require 'exwm-randr)
-  (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1-1" 1 "DP-1-2" 2 "DP-1-2"))
+  (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1" 1 "DP-2" 2 "DP-2"))
   (exwm-randr-enable))
-
 
 (provide 'arche-exwm)

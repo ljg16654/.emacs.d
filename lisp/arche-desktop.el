@@ -42,10 +42,6 @@
 
 (add-hook 'exwm-workspace-switch-hook #'arche/exwm-switch-workspace-hook)
 
-(arche/tmp-global-key (kbd "s-[") #'arche/exwm-previous-workspace)
-(arche/tmp-global-key (kbd "s-]") #'arche/exwm-next-workspace)
-(arche/tmp-global-key (kbd "H-SPC") #'arche/exwm-recent-workspace)
-
 (use-package desktop-environment
   :after exwm
   :config
@@ -107,10 +103,12 @@
 (global-set-key (kbd "C-x T")
 		#'arche/open-tmux-session-in-alacritty-completing-read)
 
+(defvar arche/wallpaper-dir "~/Pictures/Wallpapers/")
+
 (defun arche/select-wallpaper ()
   "Use sxiv to select wallpaper. Then Use feh to set it."
   (interactive)
-  (efs/run-in-background "~/scripts/select-wallpaper.sh"))
+  (efs/run-in-background "~/scripts/select-wallpaper.fish"))
 
 (defun transparency (value)
   "Set transparency value."
