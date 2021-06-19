@@ -33,5 +33,12 @@
   (setq eshell-highlight-prompt nil
         eshell-prompt-function 'epe-theme-lambda))
 
+(if (executable-find "fish")
+    (progn
+      (use-package fish-mode)
+      (use-package fish-completion
+	:config
+	(global-fish-completion-mode))))
+
 (provide 'arche-term)
 
