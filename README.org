@@ -4,14 +4,14 @@ A tinkerer's primary way to waste time.
 
 ** Arch Linux
 
-| functionality | package                 |
-|---------------+-------------------------|
-| flyspell      | hunspell-en_us ispell   |
-| mu            | mu-git(AUR)             |
-| telega        | libtd-git(AUR)          |
-| vterm         | emacs-libvterm-git(AUR) |
-| ob-ipython    | =pip install jupyter=   |
-| screenshot    | scrot                   |
-| search        | ripgrep fd              |
-
-
+| functionality              | package                                   |
+|----------------------------+-------------------------------------------|
+| flyspell                   | hunspell-en_us ispell                     |
+| mu                         | mu-git(AUR)                               |
+| telega                     | libtd-git(AUR)                            |
+| vterm                      | emacs-libvterm-git(AUR)                   |
+| ob-ipython                 | python3 python-pip  =pip install jupyter= |
+| browse-url-generic-program | qutebrowser-git                           |
+| screenshot                 | scrot                                     |
+| search                     | ripgrep fd                                |
+| org-roam                   | sqlite                                    |
