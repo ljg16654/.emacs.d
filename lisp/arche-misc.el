@@ -81,11 +81,6 @@ differ only by a few numbers."
 	      :host github
 	      :repo "emacs-straight/disk-usage"))
 
-(straight-use-package
- '(gimp-mode :type git
-	     :host github
-	     :repo "https://github.com/pft/gimpmode"))
-
 (fset 'yes-or-no-p 'y-or-n-p)
 
 (global-set-key (kbd "s-/") #'query-replace-regexp)

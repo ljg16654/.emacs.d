@@ -110,7 +110,7 @@
 
 (use-package org-download
   :config
-  (progn (setq org-download-screenshot-method "gnome-screenshot -a -f %s")))
+  (setq org-download-screenshot-method "scrot -s %s"))
 
 (use-package org-noter
   :config

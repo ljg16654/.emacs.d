@@ -3,6 +3,37 @@
 (require 'arche-elisp)
 (defvar arche/transparency 85)
 
+;; web search
+;;;###autoload
+(defun arche/duckduckgo-search ()
+  (interactive)
+  "If input starts with space, go to the link after the
+space. Otherwise, search for the input."
+  (let
+      ((what (read-string "Search for: ")))
+    (cond ((s-prefix-p " " what) (browse-url (s-trim what)))
+	  ((s-prefix-p ",g " what) (browse-url (concat "https://github.com/search?q=" (s-chop-prefix ",g " what))))
+	  ((s-prefix-p ",a " what)
+	   (browse-url (concat "https://wiki.archlinux.org/index.php?search="
+			       (string-replace " " "+"
+					       (s-chop-prefix ",a " what)))))
+	  (t (browse-url what)))))
+
+;;;###autoload
+(defun arche/browse-qutebrowser-hist ()
+  (interactive)
+  (let*
+      ((hist (shell-command-to-string "~/scripts/qutebrowser-get-hist.sh"))
+       (hist-list (-filter
+		   (lambda (str) (not (s-blank? str)))
+		   (s-split "\n" hist)))
+       (url-with-description (completing-read "Choose from Qutebrowser history: " hist-list))
+       (url (-last-item (s-split " " url-with-description))))
+    (efs/run-in-background (concat
+			    "qutebrowser "
+			    url
+			    ))))
+
 (defun arche/exwm-next-workspace ()
   (interactive)
   (let*

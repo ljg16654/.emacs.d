@@ -9,6 +9,8 @@
 (general-define-key
  :keymaps 'pdf-view-mode-map
  "o" #'pdf-outline
- "/" #'pdf-occur)
+ "/" #'pdf-occur
+ "j" #'pdf-view-next-line-or-next-page
+ "k" #'pdf-view-previous-line-or-previous-page)
 
 (provide 'arche-pdf)

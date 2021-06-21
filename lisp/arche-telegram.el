@@ -10,4 +10,7 @@
 
 (define-key dired-mode-map (kbd "H-s") #'telega-buffer-file-send)
 
+(add-hook 'telega-chat-mode-hook
+	  #'(lambda () (setq line-spacing 0)))
+
 (provide 'arche-telegram)

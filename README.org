@@ -2,8 +2,6 @@ A tinkerer's primary way to waste time.
 
 * External Dependencies
 
-** Arch Linux
-
 | functionality              | package                                   |
 |----------------------------+-------------------------------------------|
 | EXWM                       | xorg xorg-xinit xorg-xmodmap              |
@@ -12,16 +10,19 @@ A tinkerer's primary way to waste time.
 | telega                     | libtd-git(AUR)                            |
 | vterm                      | emacs-libvterm-git(AUR)                   |
 | ob-ipython                 | python3 python-pip  =pip install jupyter= |
-| browse-url-generic-program | qutebrowser-git                           |
-| screenshot                 | scrot                                     |
+| browse-url-generic-program | qutebrowser-git(AUR)                       |
+| desktop-environment        | scrot slock                               |
 | search                     | ripgrep fd                                |
 | org-roam                   | sqlite                                    |
-| lock screen                | slock                                     |
 | LaTeX                      | texlive-most                              |
 | lsp                        | clang                                     |
 | bongo                      | vlc, mpv                                  |
 | pass                       | pass                                      |
 
+*** Setup mail sync
 
-
-
+#+begin_src sh
+sudo pacman -S python2 python2-pip
+pip2 install rfc6555
+yay -S offlineimap-git
+#+end_src

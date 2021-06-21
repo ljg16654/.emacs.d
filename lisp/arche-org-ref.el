@@ -10,10 +10,7 @@
 	    (mapcar #'file-truename
 		    (list
 		     "~/library/hcimu.bib"
-		     "~/Zot/mylib/references.bib"
-		     "~/Zot/math/math.bib"
-		     "~/Zot/PL/PL.bib"
-		     "~/canvassync/VR369/Assignments/leb.bib")))
+		     )))
 	   (my-pdf-parent-dirs
 	    (mapcar #'file-truename (list
 				     "~/Zot/mylib/"

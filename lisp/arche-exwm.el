@@ -95,9 +95,6 @@
     (interactive)
     "Toggle the dumb touchpad."
     (start-process-shell-command "sh" nil " sh ~/scripts/toggleTouchpad.sh"))
-
-  ;; init tmux sessions
-  (efs/run-in-background "sh ~/scripts/tmux_initialize_sessions.sh")
   
   ;; remap before sending to the X window
   (setq exwm-input-simulation-keys

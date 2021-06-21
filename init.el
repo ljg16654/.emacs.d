@@ -27,9 +27,9 @@
 (add-to-list 'load-path my-lisp-dir)
 
 ;; each use-package form also invoke straight.el to install the package
-(setq warning-minimum-level :emergency)
+(toggle-debug-on-error t)
 
-(defvar arche/enable-exwm t)
+(defvar arche/enable-exwm nil)
 (defvar arche/exwm-enabled nil)
 (require 'arche-package)
 (require 'arche-keybinding)
