@@ -6,6 +6,7 @@ A tinkerer's primary way to waste time.
 
 | functionality              | package                                   |
 |----------------------------+-------------------------------------------|
+| EXWM                       | xorg xorg-xinit xorg-xmodmap              |
 | flyspell                   | hunspell-en_us ispell                     |
 | mu                         | mu-git(AUR)                               |
 | telega                     | libtd-git(AUR)                            |
@@ -15,3 +16,12 @@ A tinkerer's primary way to waste time.
 | screenshot                 | scrot                                     |
 | search                     | ripgrep fd                                |
 | org-roam                   | sqlite                                    |
+| lock screen                | slock                                     |
+| LaTeX                      | texlive-most                              |
+| lsp                        | clang                                     |
+| bongo                      | vlc, mpv                                  |
+| pass                       | pass                                      |
+
+
+
+
