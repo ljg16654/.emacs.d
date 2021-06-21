@@ -117,6 +117,10 @@
   (exwm-enable)
   (require 'exwm-randr)
   (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1" 1 "DP-2" 2 "DP-2"))
+  (add-hook 'exwm-randr-screen-change-hook
+            (lambda ()
+              (start-process-shell-command
+               "autorandr" nil "autorandr --change")))
   (exwm-randr-enable))
 
 (provide 'arche-exwm)
