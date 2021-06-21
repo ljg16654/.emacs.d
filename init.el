@@ -29,7 +29,7 @@
 ;; each use-package form also invoke straight.el to install the package
 (toggle-debug-on-error t)
 
-(defvar arche/enable-exwm nil)
+(defvar arche/enable-exwm t)
 (defvar arche/exwm-enabled nil)
 (require 'arche-package)
 (require 'arche-keybinding)
@@ -59,7 +59,7 @@
 (require 'arche-lisps)
 (require 'arche-py)
 (require 'arche-c)
-(require 'arche-matlab)
+;; (require 'arche-matlab)
 (require 'arche-mma)
 (require 'arche-rust)
 (require 'arche-haskell)
@@ -76,7 +76,7 @@
 (require 'arche-chinese)
 (require 'arche-sibling)
 (require 'arche-writing)
+(require 'arche-music)
 ;; (require 'arche-eaf)
-(require 'arche-exwm)
 (if arche/enable-exwm (require 'arche-exwm))
 (server-start)

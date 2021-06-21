@@ -4,9 +4,9 @@
 	 ;; manually added
 	 ;; sbcln
 	 "/home/jigang/scripts/" ";"
-	 "/home/jigang/.local/lib/sbcl/" ";"
-	 "/usr/local/MATLAB/R2020a/bin/" ";"
-	 "/home/jigang/src/td/tdlib" ";"
+	 ;; "/home/jigang/.local/lib/sbcl/" ";"
+	 ;; "/usr/local/MATLAB/R2020a/bin/" ";"
+	 ;; "/home/jigang/src/td/tdlib" ";"
 	 "~/.local/bin" ";"
 	 (getenv "PATH")))
 (setenv "http_proxy" "http://127.0.0.1:7890")
