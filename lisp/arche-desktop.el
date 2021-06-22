@@ -17,7 +17,12 @@ space. Otherwise, search for the input."
 	   (browse-url (concat "https://wiki.archlinux.org/index.php?search="
 			       (string-replace " " "+"
 					       (s-chop-prefix ",a " what)))))
+	  ((s-prefix-p ",l " what)
+	   (browse-url (concat "http://libgen.rs/search.php?req=" 
+			       (string-replace " " "+"
+					       (s-chop-prefix ",l " what)))))
 	  (t (browse-url what)))))
+
 
 ;;;###autoload
 (defun arche/browse-qutebrowser-hist ()
