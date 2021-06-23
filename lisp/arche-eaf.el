@@ -3,6 +3,7 @@
   :disabled
   :load-path "~/.emacs.d/site-lisp/emacs-application-framework"
   :init
+  ;;(setq browse-url-browser-function #'eaf-open-browser)
   (use-package epc :defer t :ensure t)
   (use-package ctable :defer t :ensure t)
   (use-package deferred :defer t :ensure t)

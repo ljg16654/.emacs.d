@@ -1,6 +1,7 @@
 (require 'arche-package)
 
 ;;* vterm
+(require 'vterm)
 (use-package vterm
   :config (setq vterm-max-scrollback 10000))
 
@@ -39,6 +40,16 @@
       (use-package fish-completion
 	:config
 	(global-fish-completion-mode))))
+
+(defun arche/assure-battery ()
+  "Assure there's more than 5% battery."
+  (when (executable-find "acpi")
+    (let
+	((percentage
+	  (string-to-number (s-trim (shell-command-to-string "acpi -b | awk -F'[,:%]' '{print $3}'")))))
+      (> percentage 5))))
+
+(arche/assure-battery)
 
 (provide 'arche-term)
 

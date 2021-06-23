@@ -10,7 +10,8 @@ A tinkerer's primary way to waste time.
 | telega                     | libtd-git(AUR)                            |
 | vterm                      | emacs-libvterm-git(AUR)                   |
 | ob-ipython                 | python3 python-pip  =pip install jupyter= |
-| browse-url-generic-program | qutebrowser-git(AUR)                       |
+| browse-url-generic-program | qutebrowser-git(AUR)                      |
+| wordnut                    | wordnet-cli                               |
 | desktop-environment        | scrot slock                               |
 | search                     | ripgrep fd                                |
 | org-roam                   | sqlite                                    |
@@ -18,6 +19,8 @@ A tinkerer's primary way to waste time.
 | lsp                        | clang                                     |
 | bongo                      | vlc, mpv                                  |
 | pass                       | pass                                      |
+| uncompress in dired        | unzip                                     |
+| org-web-tools              | pandoc                                    |
 
 *** Setup mail sync
 

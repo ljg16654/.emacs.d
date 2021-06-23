@@ -23,4 +23,5 @@
   ;; (nyan-mode)
   ;; (nyan-start-animation)
   )
+
 (provide 'arche-modeline)

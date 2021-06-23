@@ -83,3 +83,5 @@
 (provide-theme 'random)
 (global-set-key (kbd "M-o") #'describe-face)
 (local-set-key (kbd "M-u") #'counsel-colors-emacs)
+
+

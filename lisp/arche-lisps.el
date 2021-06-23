@@ -38,4 +38,7 @@
 (use-package cider)
 (add-hook 'clojure-mode-hook #'cider-mode)
 
+;;* schemes
+(use-package geiser-guile)
+
 (provide 'arche-lisps)

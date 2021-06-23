@@ -17,7 +17,7 @@
 (require 'notmuch)
 
 (use-package mu4e
-  :load-path "~/src/mu/mu4e"
+  :load-path "/usr/share/emacs/site-lisp/mu4e"
   :init
   (require 'org-mu4e)
   (require 'mu4e)

@@ -1,6 +1,6 @@
-(require 'arche-helm)
-
 ;; By default, emacs disables some commands
+
+(require 'arche-helm)
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
@@ -164,9 +164,6 @@ natural for reading."
 	   ("->"	"→")
 	   ("|->"	"↦")
 	   ("<-"	"←")
-	   ("=>"	"⇒")
-	   ("<="	"≤")
-	   (">="	"≥")
 	   ("\\int"     "∫")
 	   ("\\mapsto"  "↦")
 	   ("\\forall"  "∀")
@@ -201,6 +198,12 @@ natural for reading."
       (replace-match (string ?\C-j) nil t))))
 
 (global-set-key (kbd "s-y") #'consult-register)
+
+(use-package password-store)
+
+(use-package pass)
+
+(global-set-key (kbd "C-x x R") #'recover-this-file)
 
 (provide 'arche-misc)
 

@@ -35,6 +35,18 @@
          (slot . 1)
 	 (window-parameters ((mode-line-format . none))
 			    ))
+	("\\*vterm\\*"
+         (display-buffer-reuse-mode-window display-buffer-at-bottom)
+         (window-height . 0.4)
+         (side . bottom)
+         (slot . 1)
+	 (window-parameters ((mode-line-format . none))))
+	("\\*eshell\\*"
+         (display-buffer-reuse-mode-window display-buffer-at-bottom)
+         (window-height . 0.4)
+         (side . bottom)
+         (slot . 1)
+	 (window-parameters ((mode-line-format . none))))
         ("\\*ielm\\*"
          (display-buffer-reuse-mode-window display-buffer-at-bottom)
          (window-height . 0.4)
@@ -57,5 +69,4 @@
 (add-hook 'help-mode-hook #'visual-line-mode)
 (add-hook 'custom-mode-hook #'visual-line-mode)
 (setq Man-notify-method 'pushy)
-
 (provide 'arche-window-buffer-rule)

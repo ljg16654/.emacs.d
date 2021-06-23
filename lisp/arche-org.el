@@ -1,4 +1,3 @@
-;; -*- Lexical-binding: t; -*-
 (require 'arche-package)
 (require 'arche-pdf)
 (require 'cl-lib)
@@ -163,7 +162,7 @@
 (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
 
 ;;** load languages
-(require 'arche-matlab)
+;; (require 'arche-matlab)
 
 (require 'arche-mma)
 
@@ -196,7 +195,7 @@
    (haskell . t)
    (ditaa . t)
    (ipython . t) ;; provided by package ob-ipython
-   (matlab . t)
+   ;; (matlab . t)
    ))
 
 ;;** m

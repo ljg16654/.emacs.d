@@ -36,8 +36,7 @@ space. Otherwise, search for the input."
        (url (-last-item (s-split " " url-with-description))))
     (efs/run-in-background (concat
 			    "qutebrowser "
-			    url
-			    ))))
+			    url))))
 
 (defun arche/exwm-next-workspace ()
   (interactive)

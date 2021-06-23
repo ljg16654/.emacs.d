@@ -14,15 +14,6 @@
 (setq browse-url-generic-program "qutebrowser")
 (setq browse-url-browser-function #'browse-url-generic)
 
-;; eaf
-;; (setq browse-url-browser-function #'eaf-open-browser)
-
-;; (use-package org-web-tools)
-;; (use-package engine-mode)
-;; (use-package mentor)
-
-;; met error
-;; (void-variable hierarchy--make)
-;; (use-package md4rd)
+(use-package org-web-tools)
 
 (provide 'arche-web)

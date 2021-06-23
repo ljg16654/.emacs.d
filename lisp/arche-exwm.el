@@ -8,13 +8,13 @@
   (setq mouse-autoselect-window nil
         focus-follows-mouse t
         exwm-workspace-warp-cursor t
-        exwm-workspace-number 5)
+        exwm-workspace-number 2)
   :config
   ;; Make class name the buffer name
   (add-hook 'exwm-update-class-hook
             (lambda ()
               (exwm-workspace-rename-buffer exwm-class-name)))
-  
+
   (require 'arche-desktop)
   (add-hook 'exwm-update-title-hook
             (lambda ()
@@ -27,7 +27,7 @@
   (defun arche/setup-window-by-class ()
     (interactive)
     (pcase exwm-class-name
-      ("qutebrowser" (exwm-workspace-move-window 2))))
+      ("qutebrowser" (exwm-workspace-move-window 1))))
 
   (add-hook 'exwm-manage-finish-hook
             (lambda ()
@@ -59,8 +59,7 @@
 	 (cons (kbd "s-f")	#'arche/duckduckgo-search)
 	 (cons (kbd "s-g")	#'exwm-workspace-switch)
 	 (cons (kbd "s-h")	#'arche/browse-qutebrowser-hist)
-	 (cons (kbd "s-i")	#'(lambda () (interactive)
-				    (exwm-workspace-switch-create 1)))
+	 (cons (kbd "s-i")	#'arche/exwm-recent-workspace)
 	 (cons (kbd "s-k")	#'arche/kill-current-buffer)
 	 (cons (kbd "s-n")	#'next-buffer)
 	 (cons (kbd "s-o")	#'switch-to-buffer)
@@ -68,7 +67,7 @@
 	 (cons (kbd "s-p")	#'previous-buffer)
 	 (cons (kbd "s-C-p")	#'proced)
 	 (cons (kbd "s-q")	#'(lambda () (interactive)
-				    (exwm-workspace-switch-create 2)))
+				    (arche/raise-or-run "qutebrowser" "Qutebrowser: ")))
 	 (cons (kbd "s-r")	#'exwm-reset)
 	 (cons (kbd "s-t")	#'arche/toggle-touchpad)
 	 (cons (kbd "s-v")	#'vterm-toggle)
@@ -80,7 +79,6 @@
 	 (cons (kbd "s-,")	#'tab-bar-switch-to-prev-tab)
 	 (cons (kbd "s-[")	#'arche/exwm-previous-workspace)
 	 (cons (kbd "s-]")	#'arche/exwm-next-workspace)
-	 (cons (kbd "H-SPC")	#'arche/exwm-recent-workspace)
 	 (cons (kbd "s-#")	#'desktop-environment-screenshot)
 	 (cons (kbd "s-$")	#'desktop-environment-screenshot-part)
 	 (cons (kbd "χ")	#'other-window)
@@ -95,7 +93,7 @@
     (interactive)
     "Toggle the dumb touchpad."
     (start-process-shell-command "sh" nil " sh ~/scripts/toggleTouchpad.sh"))
-  
+
   ;; remap before sending to the X window
   (setq exwm-input-simulation-keys
 	;; Use (read-key) to get cdr of the cons list
@@ -115,6 +113,7 @@
 	 (cons (kbd "M-DEL") [C-backspace])))
 
   (exwm-enable)
+  (exwm-workspace-switch-create 1)
   (require 'exwm-randr)
   (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1" 1 "DP-2" 2 "DP-2"))
   (add-hook 'exwm-randr-screen-change-hook

@@ -11,7 +11,7 @@
       ((bufn "*Fancy Diary Entries*"))
     (if (get-buffer bufn)
 	(kill-buffer bufn)
-      (diary))))
+      (diary 3))))
 
 (global-set-key (kbd "s-d") #'arche-toggle-diary)
 
@@ -25,6 +25,7 @@
  ;; appt-warning-time-regexp
  )
 (appt-activate t)
+(diary 3)
 
 ;;;###autoload
 (defun my-refresh-canvas-ics ()
