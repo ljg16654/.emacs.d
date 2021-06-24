@@ -112,14 +112,20 @@
 	 (cons (kbd "M-f") [C-right])
 	 (cons (kbd "M-DEL") [C-backspace])))
 
-  (exwm-enable)
-  (exwm-workspace-switch-create 1)
+  
+  (defun arche/exwm-init-hook ()
+    (progn
+      (exwm-workspace-switch-create 1)
+      (display-battery-mode)))
   (require 'exwm-randr)
   (setq exwm-randr-workspace-monitor-plist '(0 "eDP-1" 1 "DP-2" 2 "DP-2"))
-  (add-hook 'exwm-randr-screen-change-hook
-            (lambda ()
-              (start-process-shell-command
-               "autorandr" nil "autorandr --change")))
-  (exwm-randr-enable))
+
+  (defun arche/update-displays ()
+    (efs/run-in-background "autorandr --change --force")
+    (message "Display config: %s"
+             (string-trim (shell-command-to-string "autorandr --current"))))
+  (add-hook 'exwm-randr-screen-change-hook #'arche/update-displays)
+  (exwm-randr-enable)
+  (exwm-enable))
 
 (provide 'arche-exwm)

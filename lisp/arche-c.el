@@ -10,8 +10,7 @@
 (define-key c++-mode-map (kbd "C-k") #'crux-smart-kill-line)
 (define-key c++-mode-map (kbd "C-k") #'crux-smart-kill-line)
 
-(add-hook 'c++-mode-hook
-	  (lambda () (add-hook 'after-save-hook #'clang-format-buffer)))
-
 (use-package clang-format)
+(define-key c++-mode-map (kbd "H-f") #'clang-format)
+
 (provide 'arche-c)
