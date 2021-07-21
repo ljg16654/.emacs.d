@@ -1,4 +1,5 @@
 (require 'arche-package)
+(require 'arche-elisp)
 
 (tool-bar-mode -1)
 (menu-bar-mode -1)
@@ -17,6 +18,8 @@
 (use-package doom-themes)
 (use-package plan9-theme)
 (use-package greymatters-theme)
+(use-package leuven-theme)
+(use-package spacemacs-theme :disabled)
 ;;* autothemer
 (use-package autothemer)
 
@@ -24,9 +27,9 @@
 (defun my-load-tron-legacy ()
   (interactive)
   (progn (setq pdf-view-midnight-colors
-	       '("#B0CCDC" ;; bg
+	       '("#B0CCDC" ;; fg
 		 .
-		 "#000000" ;; fg
+		 "#222222" ;; bg
 		 ))
 	 ;; tab-bar
 	 (set-face-attribute 'tab-bar-tab nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey" :underline t)
@@ -43,6 +46,35 @@
 		 "#FFFFE8"))
 	 (load-theme 'plan9 t)))
 
-(load-theme 'doom-rouge nil nil)
+(load-theme 'doom-acario-dark t)
+
+(use-package org-beautify-theme
+  :disabled
+  :config
+  (load-theme 'org-beautify nil nil))
+
+;; for org babel tangling
+(defvar arche/color-sheme)
+
+(setq arche/color-scheme-list
+      '(dark light))
+
+(defun config-file (color-scheme fn)
+  (if (equal color-scheme arche/color-scheme)
+      fn
+    "no"))
+
+(defun arche/reload-color-scheme ()
+  (interactive)
+  (progn
+    (org-babel-tangle-file "~/system/dotfiles.org"))) 
+
+(defun arche/sel-color-scheme ()
+  (interactive)
+  (progn
+    (setq arche/color-scheme
+	  (read (completing-read "Sel color scheme: "
+				 arche/color-scheme-list)))
+    (arche/reload-color-scheme)))
 
 (provide 'arche-theme)

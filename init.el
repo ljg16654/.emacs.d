@@ -6,14 +6,15 @@
                                                          before-init-time)))
                      gcs-done)))
 
-(setq gc-cons-threshold 128000000)
-(add-hook 'after-init-hook (lambda ()
-                             ;; restore after startup
-                             (setq gc-cons-threshold (default-value 'gc-cons-threshold))))
+(defvar arche/file-name-handler-alist file-name-handler-alist)
 
-(setq inhibit-startup-message t)
+(setq gc-cons-threshold 128000000
+      gc-cons-percentage 0.6)
+
+(setq inhibit-startup-message nil)
 (setq custom-file (concat user-emacs-directory "custom.el"))
 (load custom-file)
+(setq warning-minimum-log-level :error)
 
 (defconst my-emacs-d (file-name-as-directory user-emacs-directory)
   "Directory of emacs.d")
@@ -27,10 +28,12 @@
 (add-to-list 'load-path my-lisp-dir)
 
 ;; each use-package form also invoke straight.el to install the package
-(toggle-debug-on-error t)
+(setq debug-on-error t)
 
 (defvar arche/enable-exwm t)
 (defvar arche/exwm-enabled nil)
+(defvar arche/go-evil nil)
+
 (require 'arche-package)
 (require 'arche-keybinding)
 (require 'arche-hyperbole)
@@ -38,7 +41,6 @@
 (require 'arche-pdf)
 (require 'arche-elisp)
 (require 'arche-org)
-(require 'arche-hydra)
 (require 'arche-yas)
 (require 'arche-minibuffer-completion)
 (require 'arche-ecm)
@@ -60,23 +62,28 @@
 (require 'arche-py)
 (require 'arche-c)
 ;; (require 'arche-matlab)
-(require 'arche-mma)
+;; (require 'arche-science)
 (require 'arche-rust)
 (require 'arche-haskell)
 (require 'arche-lsp)
+(require 'arche-modeline)
 (require 'arche-misc)
 (require 'arche-dictionaries)
 (require 'arche-term)
-(require 'arche-modeline)
 (require 'arche-env)
 (require 'arche-web)
 (require 'arche-email)
 (require 'arche-telegram)
 (require 'arche-log)
-(require 'arche-chinese)
+(require 'arche-im)
 (require 'arche-sibling)
-(require 'arche-writing)
 (require 'arche-music)
+(require 'arche-ledger)
 ;; (require 'arche-eaf)
 (if arche/enable-exwm (require 'arche-exwm))
+
+(setq gc-cons-threshold 16777216
+      gc-cons-percentage 0.1
+      file-name-handler-alist arche/file-name-handler-alist)
+
 (server-start)

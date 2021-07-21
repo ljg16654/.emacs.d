@@ -10,6 +10,9 @@
     (kill-buffer (current-buffer))
     (unless (one-window-p) (delete-window))))
 
+(use-package all-the-icons-ibuffer
+  :init (all-the-icons-ibuffer-mode 1))
+
 (if (not arche/enable-exwm)
     (progn
       (global-set-key (kbd "s-o") #'switch-to-buffer)
@@ -53,6 +56,19 @@
 
 (setq tab-bar-new-tab-choice "*scratch*")
 
+(defun polybar-disp-tabs ()
+  "For displaying tabs in polybar.
+In polybar config, add module of type `type = custom/script' and
+specify exec = emacsclient -e '(polybar-disp-tabs)'"
+  (let*
+      ((tab-get-name (lambda (tab) (substring-no-properties (alist-get 'name tab))))
+       (current-tab-name (funcall tab-get-name (tab-bar--current-tab)))
+       (tab-names (mapcar (lambda (tab) (funcall tab-get-name tab)) (funcall tab-bar-tabs-function))))
+    (string-join (mapcar
+		  (lambda (name) (if (string-equal name current-tab-name) (concat ">>" name "<<")
+			      name)) tab-names)
+		 " ")))
+
 (defun my-select-tab ()
   (interactive)
   (let ((tabs (mapcar (lambda (tab)
@@ -62,7 +78,7 @@
      ((eq tabs nil) (tab-new))
      ((eq (length tabs) 1) (tab-next))
      (t
-      (tab-bar-switch-to-tab
+      (tab-bar-switch-to-tabn
        (completing-read "Select tab: " tabs nil t))))))
 
 (use-package avy)
@@ -76,5 +92,18 @@
 (global-set-key (kbd "χ") #'other-window)
 (global-set-key (kbd "ρ") #'(lambda () (interactive)
 			      (other-window -1)))
+
+(defun arche/ace-focus-window (key-string)
+  (execute-kbd-macro (read-kbd-macro
+		      (concat "θ" key-string))))
+
+(defmacro aw-bind-to-hyper (key-string)
+  `(global-set-key (kbd (concat "H-" ,key-string))
+		      #'(lambda () (interactive)
+			  (arche/ace-focus-window ,key-string))))
+(aw-bind-to-hyper "a")
+(aw-bind-to-hyper "s")
+(aw-bind-to-hyper "d")
+(aw-bind-to-hyper "f")
 
 (provide 'arche-buffer-management)

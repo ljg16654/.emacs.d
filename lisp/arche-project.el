@@ -1,5 +1,4 @@
 (require 'arche-package)
-(require 'arche-org)
 
 (use-package find-file-in-project :disabled)
 
@@ -13,8 +12,15 @@
 	      ".so"
 	      ".pyc")))
 
-(global-set-key (kbd "s-SPC") #'project-find-file)
-(global-set-key (kbd "s-u") #'project-switch-to-buffer)
-(global-set-key (kbd "σ") #'compile)
+(use-package project
+  :config
+  (global-set-key (kbd "s-SPC") #'project-find-file)
+  (global-set-key (kbd "s-u") #'project-switch-to-buffer)
+  (global-set-key (kbd "σ") #'compile))
+
+(defun find-file-in-emacs-config ()
+  (interactive)
+  (project-find-file-in "" (list "~/.emacs.d/") (cons 'vc "~/.emacs.d/")))
 
 (provide 'arche-project)
+

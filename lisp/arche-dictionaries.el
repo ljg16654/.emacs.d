@@ -1,7 +1,4 @@
 (require 'arche-package)
-(require 'arche-modeline)
-(require 'arche-misc)
-(require 'arche-org)
 
 (use-package wordnut
   :config 

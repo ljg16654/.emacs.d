@@ -1,11 +1,11 @@
 ;; see arche-web.el for more configuration related to the browser   
 (require 'arche-package)
 (require 'arche-elisp)
-(defvar arche/transparency 85)
+(defvar arche/transparency 95)
 
 ;; web search
 ;;;###autoload
-(defun arche/duckduckgo-search ()
+(defun arche-websearch ()
   (interactive)
   "If input starts with space, go to the link after the
 space. Otherwise, search for the input."
@@ -78,15 +78,20 @@ space. Otherwise, search for the input."
 (add-hook 'exwm-workspace-switch-hook #'arche/exwm-switch-workspace-hook)
 
 (use-package desktop-environment
-  :after exwm
+  :after (exwm telega)
   :config
+  (setq desktop-environment-screenshot-directory "~/Pictures/screenshots")
   (desktop-environment-mode)
-  ;; TODO find latest screenshot
-  )
-
-(defun efs/run-in-background (command)
-  (let ((command-parts (split-string command "[ ]+")))
-    (apply #'call-process `(,(car command-parts) nil 0 nil ,@(cdr command-parts)))))
+  (require 's)
+  (defun latest-screenshot ()
+    (concat desktop-environment-screenshot-directory "/"
+	    (s-trim (shell-command-to-string (concat "ls "
+						     desktop-environment-screenshot-directory
+						     " | grep '.png$'  | sort | tail -n 1")))))
+  (defun telega-send-latest-screenshot ()
+    (interactive)
+    (telega-buffer-file-send (latest-screenshot)
+			     (telega-completing-read-chat "Send to chat: ") t)))
 
 ;; stumpwm simulation
 ;;;###autoload
@@ -159,17 +164,17 @@ space. Otherwise, search for the input."
 	  (t
 	   (set-frame-parameter (selected-frame) 'alpha 100)))))
 
-(defun arche/open-pdf-in-zathura ()
-  (interactive)
-  (if (executable-find "zathura")
-      (if (eq major-mode 'pdf-view-mode)
-       (efs/run-in-background (concat "zathura "
-				      (file-truename (buffer-file-name)))))
-      (message "Cannot find zathura...")))
-
-(define-key pdf-view-mode-map (kbd "z") #'arche/open-pdf-in-zathura)
+(arche/toggle-transparency)
 
 (global-set-key (kbd "C-c t") #'arche/toggle-transparency)
 (global-set-key (kbd "C-c W") #'arche/select-wallpaper)
+
+(use-package app-launcher
+  :straight '(app-launcher :host github :repo "SebastienWae/app-launcher"))
+
+(use-package wttrin
+  :config
+  (setq wttrin-default-cities
+	(list "Shanghai")))
 
 (provide 'arche-desktop)

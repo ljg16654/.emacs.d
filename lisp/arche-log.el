@@ -9,11 +9,13 @@
   (interactive)
   (let
       ((bufn "*Fancy Diary Entries*"))
-    (if (get-buffer bufn)
+      (if (get-buffer bufn)    
 	(kill-buffer bufn)
       (diary 3))))
 
 (global-set-key (kbd "s-d") #'arche-toggle-diary)
+(global-set-key (kbd "s-a") #'org-agenda-list) 
+(global-set-key (kbd "s-A") #'org-cycle-agenda-files)
 
 ;;* appointment
 (setq
@@ -21,11 +23,9 @@
  appt-audible nil
  ;; In modeline, display number of minutes left to the appointment
  appt-display-mode-line t
- appt-message-warning-time 60
- ;; appt-warning-time-regexp
- )
+ appt-message-warning-time 60)
+
 (appt-activate t)
-(diary 3)
 
 ;;;###autoload
 (defun my-refresh-canvas-ics ()
@@ -42,5 +42,12 @@
 
 (add-hook 'diary-list-entries-hook 'diary-include-other-diary-files)
 (add-hook 'diary-mark-entries-hook 'diary-mark-included-diary-files)
+
+(use-package calfw
+  :commands cfw:open-org-agenda
+  :config
+  (use-package calfw-org
+    :config
+    (setq cfw:org-agenda-schedule-args '())))
 
 (provide 'arche-log)

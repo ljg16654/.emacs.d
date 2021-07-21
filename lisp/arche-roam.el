@@ -1,15 +1,24 @@
 (require 'arche-package)
-(require 'arche-ecm)
-
-(executable-find "sqlite3")
 
 (use-package org-roam
+  :straight t
+  :after (consult)
   :commands org-roam-mode
   :init (add-hook 'after-init-hook 'org-roam-mode)
   :config
   ;; make sure org-ref has been loaded
   (require 'arche-org-ref)
   (require 'org-ref)
+  ;; setup course for consult-buffer
+  (setq arche/org-roam-source
+	(list :name "roam"
+	      :narrow ?r
+	      :category 'bookmark
+	      :action #'find-file
+	      :items #'org-roam--list-all-files))
+  ;; TODO better way to add to the end?
+  (setq consult-buffer-sources (reverse (cons arche/org-roam-source
+					      (reverse consult-buffer-sources))))
   (progn
     ;; all subdirectories of org-roam-directory are considered part of
     ;; org-roam regardless of level of nesting.
@@ -75,10 +84,10 @@
            :head "#+TITLE: ${title}\n#+ROAM_KEY: ${ref}"
            :unnarrowed t))))
 
-(straight-use-package
- '(org-transclusion
-   :type git
-   :host github
-   :repo "nobiot/org-transclusion"))
+(use-package org-transclusion
+  :straight (org-transclusion
+	     :type git
+	     :host github
+	     :repo "nobiot/org-transclusion"))
 
 (provide 'arche-roam)

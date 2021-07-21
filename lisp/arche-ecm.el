@@ -1,6 +1,6 @@
 ;;*  Embark, Consult and Marginalia
 (require 'arche-package)
-(require 'arche-keybinding)
+
 (use-package embark
   :after which-key
   :config
@@ -25,13 +25,10 @@
 
 (use-package consult
   :config
-  (progn
-    ;; 'f SPC' for recentf
-    (recentf-mode t)
-    ))
-
-(global-set-key (kbd "M-i") #'consult-imenu)
-(global-set-key (kbd "s-j") #'consult-line)
+  (recentf-mode t)
+  (global-set-key (kbd "M-i") #'consult-imenu)
+  (global-set-key (kbd "s-j") #'consult-line)
+  (global-set-key (kbd "ν") #'consult-mark))
 
 (use-package embark-consult
   :after (embark consult)

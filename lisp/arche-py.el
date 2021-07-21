@@ -1,40 +1,39 @@
 (require 'arche-package)
-(require 'arche-prog)
-(require 'arche-sibling)
 
 ;;* line number
-(add-hook 'python-mode-hook #'linum-mode)
+(defun arche/python-mode-hook ()
+  (electric-pair-mode t))
+
+(add-hook 'python-mode-hook #'arche/python-mode-hook)
 
 ;;* pytest
-(use-package python-pytest)
+(use-package python-pytest
+  :config
+  (define-key python-mode-map (kbd "H-t") #'python-pytest-dispatch)
+  (define-key python-mode-map (kbd "H-f") #'python-pytest-function)
+  (define-key python-mode-map (kbd "H-r") #'python-pytest-last-failed)
+  (define-key python-mode-map (kbd "H-z") #'python-shell-switch-to-shell))
 
 ;;* live-py
 (use-package live-py-mode)
 
-;;* keybinding
-(define-key python-mode-map (kbd "H-t") #'python-pytest-dispatch)
-(define-key python-mode-map (kbd "H-f") #'python-pytest-function)
-(define-key python-mode-map (kbd "H-r") #'python-pytest-last-failed)
-(define-key python-mode-map (kbd "H-b") #'lsp-ui-doc-focus-frame)
-(define-key python-mode-map (kbd "H-s") #'arche-sibling-jump)
-(define-key python-mode-map (kbd "H-z") #'python-shell-switch-to-shell)
 ;; for font-lock and filling paragraphs inside docstring region:
 (use-package python-docstring)
 
 ;;* LSP
-(use-package lsp-pyright)
-(defun my-enable-pyright ()
+(use-package lsp-pyright
+  :config
+  (defun my-enable-pyright ()
   "enable pyright"
   (interactive)
   (progn
     (require 'lsp-pyright)
-    (lsp)))
+    (lsp))))
 
 ;;* docstring generation
-(use-package sphinx-doc)
-(add-hook 'python-mode-hook #'(lambda ()
-				(sphinx-doc-mode t)
-				(electric-pair-mode t)))
+(use-package sphinx-doc
+  :config
+  (add-hook 'python-mode-hook #'sphinx-doc-mode))
 
 ;;* prettify symbols
 (setq python-prettify-symbols-alist
@@ -48,7 +47,6 @@
        '("_0" . ?₀)
        '("_1" . ?₁)
        '("_2" . ?₂)
-       '("epsilon" . ?ε)
-       ))
+       '("epsilon" . ?ε)))
 
 (provide 'arche-py)

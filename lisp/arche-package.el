@@ -1,5 +1,7 @@
 ;; each use-package form also invoke straight.el to install the package
 (setq straight-use-package-by-default t)
+(setq straight-disable-native-compile nil)
+(setq straight-check-for-modifications nil) ;; experimental
 
 (defvar bootstrap-version)
 (let ((bootstrap-file
@@ -15,5 +17,5 @@
   (load bootstrap-file nil 'nomessage))
 
 (straight-use-package 'use-package)
-;(use-package el-patch)
+					;(use-package el-patch)
 (provide 'arche-package)

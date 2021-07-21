@@ -1,6 +1,4 @@
 (require 'arche-package)
-(require 'arche-org)
-(require 'arche-elisp)
 
 (use-package eww
   :after ace-link
@@ -15,5 +13,9 @@
 (setq browse-url-browser-function #'browse-url-generic)
 
 (use-package org-web-tools)
+
+(use-package youtube-dl
+  :custom
+  (youtube-dl-directory "~/Videos"))
 
 (provide 'arche-web)

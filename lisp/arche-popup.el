@@ -1,21 +1,18 @@
 (require 'arche-package)
-(require 'arche-keybinding)
+
 (use-package popper
+  :after key-chord
   :init
   (setq popper-display-control nil)
   (setq popper-reference-buffers
 	(list "\\*Python\\*"
-              "\\*ielm\\*"))
+              "\\*ielm\\*"
+	      "eshell"
+	      "vterm"))
   :config
-  ;; (defhydra 'popper-stuff
-  ;;   (global-map "C-c t")
-  ;;   ("t" #'popper-toggle-latest)
-  ;;   ("o" #'popper-cycle)
-  ;;   ("p" #'popper-toggle-type))
   (key-chord-define-global "dk" #'popper-toggle-latest)
   (popper-mode +1))
 
-;;;###autoload
 (defun clear-popper-popup-alive ()
   "Clear popup buffers that are currently maintained by
 	      popper.el. Useful when related rules are changed."

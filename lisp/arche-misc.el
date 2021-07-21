@@ -1,9 +1,12 @@
+(require 'arche-package)
 ;; By default, emacs disables some commands
 
-(require 'arche-helm)
+(setq-default display-line-numbers-width )
+
 (put 'upcase-region 'disabled nil)
 (put 'downcase-region 'disabled nil)
 (put 'narrow-to-region 'disabled nil)
+(put 'set-goal-column 'disabled nil)
 
 ;; king ring volume
 (setq kill-ring-max 200)
@@ -22,7 +25,7 @@
 (global-set-key (kbd "M-Q") #'unfill-paragraph)
 
 ;; Font-lock by depth
-(use-package prism)
+(use-package prism :disabled)
 
 ;;* By default, visiting destination of symlink under version control asks for confirm 
 (setq vc-follow-symlinks nil)
@@ -66,7 +69,13 @@ differ only by a few numbers."
     (global-set-key (kbd "C-c R") #'crux-rename-file-and-buffer)))
 
 ;; highlight specified keyword
-(use-package hl-todo)
+(use-package hl-todo
+  :config
+  (defhydra hl-todo
+    nil
+    ("j" #'hl-todo-next)
+    ("k" #'hl-todo-previous)
+    ("l" #'hl-todo-occur)))
 
 (use-package ace-jump-mode)
 
@@ -76,10 +85,12 @@ differ only by a few numbers."
   :config
   (ace-link-setup-default))
 
-(straight-use-package
- '(disk-usage :type git
-	      :host github
-	      :repo "emacs-straight/disk-usage"))
+(use-package disk-usage
+  :straight (disk-usage :type git
+			:host github
+			:repo "emacs-straight/disk-usage")
+  :config
+  (define-key dired-mode-map (kbd "H-s") #'disk-usage))
 
 (fset 'yes-or-no-p 'y-or-n-p)
 
@@ -152,26 +163,30 @@ natural for reading."
 
 ;; TODO https://github.com/Ilazki/prettify-utils.el/blob/master/prettify-utils.el
 
-(load "prettify-utils.el")
+(defvar arche/prettify-utils-loaded nil)
+
 (defun prettify-set ()
-  (progn
-    (setq prettify-symbols-alist
-	  (prettify-utils-generate
-	   ("lambda"	"λ")
-	   ("|>"	"▷")
-	   ("<|"	"◁")
-	   ("->>"	"↠")
-	   ("->"	"→")
-	   ("|->"	"↦")
-	   ("<-"	"←")
-	   ("\\int"     "∫")
-	   ("\\mapsto"  "↦")
-	   ("\\forall"  "∀")
-	   ("\\in"      "∊")
-	   ("\\exists"  "∃")
-	   ("\\land"    "∧")
-	   ("\\lor"     "∨")))
-    (prettify-symbols-mode)))
+  (unless arche/prettify-utils-loaded
+    (progn
+      (load "prettify-utils.el")
+      (setq arche/prettify-utils-loaded t)
+      (setq prettify-symbols-alist
+	    (prettify-utils-generate
+	     ("lambda"	"λ")
+	     ("|>"	"▷")
+	     ("<|"	"◁")
+	     ("->>"	"↠")
+	     ("->"	"→")
+	     ("|->"	"↦")
+	     ("<-"	"←")
+	     ("\\int"     "∫")
+	     ("\\mapsto"  "↦")
+	     ("\\forall"  "∀")
+	     ("\\in"      "∊")
+	     ("\\exists"  "∃")
+	     ("\\land"    "∧")
+	     ("\\lor"     "∨")))
+      (prettify-symbols-mode))))
 
 (add-hook 'prog-mode-hook 'prettify-set)
 (add-hook 'org-mode-hook 'prettify-set)
@@ -203,7 +218,25 @@ natural for reading."
 
 (use-package pass)
 
-(global-set-key (kbd "C-x x R") #'recover-this-file)
+(use-package point-history
+  :straight (point-history
+	     :type git
+	     :host github
+	     :repo "blue0513/point-history"))
+
+(setq point-history-show-buffer-height 20
+      point-history-max-item-num 100
+      point-history-should-preview t)
+(point-history-mode t)
+(global-set-key (kbd "C-s-h") #'point-history-show)
+
+(use-package super-save
+  :custom
+  (super-save-exclude (list "\\.pdf$"
+			    "\\.epub$"))
+  :config
+  (super-save-mode +1))
+
+(use-package docker)
 
 (provide 'arche-misc)
-
