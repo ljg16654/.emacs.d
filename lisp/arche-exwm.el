@@ -73,6 +73,7 @@
 	 (cons (kbd "s-q")		#'(lambda () (interactive)
 					    (arche/raise-or-run "qutebrowser" "Qutebrowser: ")))
 	 (cons (kbd "s-r")		#'exwm-reset)
+	 (cons (kbd "s-s")		#'shell)
 	 (cons (kbd "s-t")		#'tab-bar-select-tab-by-name)
 	 (cons (kbd "s-v")		#'vterm-toggle)
 	 (cons (kbd "s-w")		#'wordnut-search-and-capture)

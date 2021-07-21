@@ -1,6 +1,28 @@
 A tinkerer's primary way to waste time.
 
-* External Dependencies
+* Externel Dependencies :: GNU Guix
+
+These will (hopefully soon) be merged in a single guix profile.
+
+| functionality              | package              |
+|----------------------------+----------------------|
+| magit                      | openssh perl         |
+| spell checking             | ispell               |
+| pass                       | password-store       |
+| mu4e                       | mu                   |
+| telega                     | emacs-telega         |
+| vterm                      | emacs-vterm          |
+| browse-url-generic-program | qutebrowser          |
+| wordnut                    | wordnet              |
+| search                     | ripgrep fd           |
+| org-roam                   | emacs-org-roam       |
+| tex                        | emacs-auctex texlive |
+| lsp                        | clang:extra          |
+| bongo                      | vlc mpv              |
+| dired                      | unzip                |
+| org-web-tools              | curl pandoc          |
+
+* External Dependencies :: Arch Linux
 
 | functionality              | package                                   |
 |----------------------------+-------------------------------------------|
@@ -17,7 +39,7 @@ A tinkerer's primary way to waste time.
 | org-roam                   | sqlite                                    |
 | LaTeX                      | texlive-most                              |
 | lsp                        | clang                                     |
-| bongo                      | vlc, mpv                                  |
+| bongo                      | vlc mpv                                   |
 | pass                       | pass                                      |
 | uncompress in dired        | unzip                                     |
 | org-web-tools              | pandoc                                    |
