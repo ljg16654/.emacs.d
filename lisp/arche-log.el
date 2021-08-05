@@ -25,8 +25,6 @@
  appt-display-mode-line t
  appt-message-warning-time 60)
 
-(appt-activate t)
-
 ;;;###autoload
 (defun my-refresh-canvas-ics ()
   (interactive)

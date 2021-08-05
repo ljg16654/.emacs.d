@@ -12,5 +12,5 @@
 (setenv "http_proxy" "http://127.0.0.1:7890")
 (setenv "https_proxy" "http://127.0.0.1:7890")
 (use-package exec-path-from-shell
-  :init (exec-path-from-shell-initialize))
+  :config (exec-path-from-shell-initialize))
 (provide 'arche-env)

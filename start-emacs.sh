@@ -1,3 +1,3 @@
 #!/bin/sh
 
-exec dbus-launch --exit-with-session emacs  --debug-init -mm
+exec dbus-launch emacs -debug-init -mm --no-splash

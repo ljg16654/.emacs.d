@@ -1,5 +1,7 @@
 (require 'arche-elisp)
 
+(global-hl-line-mode)
+
 ;; victor mono with iosevka
 (set-face-attribute 'default nil :family "Victor Mono" :weight 'normal :height 150)
 (set-face-attribute 'Info-quoted nil :family "Iosevka" :weight 'semibold)

@@ -47,7 +47,7 @@
 (require 'arche-helm)
 (require 'arche-company)
 (require 'arche-rg)
-(require 'arche-popup)
+;; (require 'arche-popup)
 (require 'arche-window-buffer-rule)
 (require 'arche-buffer-management)
 (require 'arche-isearch)

@@ -62,10 +62,10 @@
 ;; https://github.com/rejeep/prodigy.el
 (use-package prodigy)
 
-;; workflow for managing multiple eshell/shell buffers
-;; s-s / s-e to open side window for placing shell/eshell
+;; Emulation of 'scratchpad' in i3
+;; s-s / s-e to toggle or create side window for placing shell/eshell
 ;; C-u s-s / C-u s-e to create new shell/eshell buffer and SPC z r to give a mnemonic name to it.
-;; C-o to switch to other shells
+;; In a shell, C-o to switch to other shells
 (defun arche/switch-to-buffer-same-major-mode ()
   "Using completing-read, switch to other buffers with the same major-mode"
   (interactive)
@@ -79,10 +79,75 @@
 			 "Select buffer: "
 			 (cl-remove (buffer-name) (mapcar #'buffer-name buffers)))))))
 
+
+(defun arche/toggle-window-with-major-mode (&optional major-mode-to-toggle raise-win-fn)
+  "Toggle windows with specific major-mode in current frame. This
+function is mainly written for major-modes of inferior
+intepreters or shells.
+
+If the argument `major-mode-to-toggle' is not given, choose the
+major-mode associated with current buffer.
+
+If no live windows with specified major-mode exist in current
+frame, call `raise-win-fn' to open one. Otherwise, close all
+lives windows that match specified major-mode.
+"
+  (interactive)
+  (let* ((wl (window-list))
+	 (mm (if major-mode-to-toggle major-mode-to-toggle major-mode))
+	 (wl-filtered (-filter
+		       #'(lambda (win)
+			   (equal mm (with-current-buffer (window-buffer win) major-mode)))
+		       wl)))
+    (pcase (length wl-filtered)
+      (0 (and raise-win-fn (funcall raise-win-fn)))
+      (_ (mapcar #'delete-window wl-filtered)))))
+
+(defun arche/toggle-eshell (&optional arg)
+  "Toggle or create eshell buffer.
+
+Without prefix arg, toggle eshell. Otherwise the behavior is the same as `eshell'."
+  (interactive)
+  (if arg
+      (eshell arg)
+    (arche/toggle-window-with-major-mode 'eshell-mode #'eshell)))
+
+(global-set-key (kbd "s-e") #'arche/toggle-eshell)
+
+(defun arche/toggle-shell ()
+  (interactive)
+  (arche/toggle-window-with-major-mode 'shell-mode #'shell))
+
+(global-set-key (kbd "s-s") #'arche/toggle-shell)
+
+(defun arche/switch-to-first-by-major-mode (mm)
+  (switch-to-buffer-other-window (-first #'(lambda (buf)
+					     (with-current-buffer buf (derived-mode-p mm)))
+					 (buffer-list))))
+
+(defun arche/raise-vterm ()
+  (interactive)
+  (arche/switch-to-first-by-major-mode 'vterm-mode))
+
+(defun arche/toggle-vterm ()
+  (interactive)
+  (arche/toggle-window-with-major-mode 'vterm-mode #'arche/raise-vterm))
+
+(global-set-key (kbd "s-v") #'arche/toggle-vterm)
+
+(defun arche/raise-inferior-python ()
+  (interactive)
+  (arche/switch-to-first-by-major-mode 'inferior-python-mode))
+
+(defun arche/toggle-python ()
+  (interactive)
+  (arche/toggle-window-with-major-mode 'inferior-python-mode #'arche/raise-inferior-python))
+
+(global-set-key (kbd "C-c p") #'arche/toggle-python)
+
 (general-define-key
- :keymaps '(eshell-mode-map shell-mode-map)
- "C-o" #'arche/switch-to-buffer-same-major-mode
- "C-<return>" #'delete-window)
+ :keymaps '(eshell-mode-map shell-mode-map vterm-mode-map)
+ "C-o" #'arche/switch-to-buffer-same-major-mode)
 
 (provide 'arche-term)
 

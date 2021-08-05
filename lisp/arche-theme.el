@@ -19,34 +19,17 @@
 (use-package plan9-theme)
 (use-package greymatters-theme)
 (use-package leuven-theme)
-(use-package spacemacs-theme :disabled)
+(use-package spacemacs-theme :straight nil)
+(use-package color-theme-modern)
 ;;* autothemer
 (use-package autothemer)
 
-;;;###autoload
-(defun my-load-tron-legacy ()
+(defun my-dark-tab-bar ()
   (interactive)
-  (progn (setq pdf-view-midnight-colors
-	       '("#B0CCDC" ;; fg
-		 .
-		 "#222222" ;; bg
-		 ))
-	 ;; tab-bar
-	 (set-face-attribute 'tab-bar-tab nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey" :underline t)
-	 (set-face-attribute 'tab-bar-tab-inactive nil :inherit nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey")
-	 (set-face-attribute 'tab-bar nil :background "black")
-	 (load-theme 'tron-legacy t)))
-
-;;;###autoload
-(defun my-load-plan9 ()
-  (interactive)
-  (progn (setq pdf-view-midnight-colors
-	       '("#424242"
-		 .
-		 "#FFFFE8"))
-	 (load-theme 'plan9 t)))
-
-(load-theme 'doom-acario-dark t)
+  (set-face-attribute 'tab-bar-tab nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey" :underline t)
+  (set-face-attribute 'tab-bar-tab-inactive nil :inherit nil :family "Iosevka Fixed" :height 150 :box nil :background "black" :foreground "SlateGrey")
+  (set-face-attribute 'tab-bar nil :background "black")
+  (set-face-attribute 'tab-bar nil :background "black" :foreground "SlateGrey")) ;
 
 (use-package org-beautify-theme
   :disabled
@@ -54,7 +37,7 @@
   (load-theme 'org-beautify nil nil))
 
 ;; for org babel tangling
-(defvar arche/color-sheme)
+(defvar arche/color-sheme 'light)
 
 (setq arche/color-scheme-list
       '(dark light))

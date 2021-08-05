@@ -239,4 +239,13 @@ natural for reading."
 
 (use-package docker)
 
+(use-package transmission)
+
+(use-package smooth-scrolling)
+
+(global-set-key (kbd "H-t") "~")
+(global-set-key (kbd "H-r") "`")
+
+(use-package golden-ratio)
+
 (provide 'arche-misc)

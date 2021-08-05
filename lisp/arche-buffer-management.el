@@ -89,7 +89,6 @@ specify exec = emacsclient -e '(polybar-disp-tabs)'"
   (setq aw-keys
 	(list ?a ?s ?d ?f ?j ?k ?l ?q ?w ?e ?r ?x ?c ?v)))
 (global-set-key (kbd "θ") #'ace-window)
-(global-set-key (kbd "χ") #'other-window)
 (global-set-key (kbd "ρ") #'(lambda () (interactive)
 			      (other-window -1)))
 
@@ -105,5 +104,21 @@ specify exec = emacsclient -e '(polybar-disp-tabs)'"
 (aw-bind-to-hyper "s")
 (aw-bind-to-hyper "d")
 (aw-bind-to-hyper "f")
+
+(use-package burly) 
+
+;; tips
+;; {M-x persp-add-buffer RET}
+;; {M-x persp-set-buffer RET}
+;; {M-x C-u s-o}
+;; {M-x persp-remove RET}
+;; {M-x persp-kill}
+;; {M-x persp-kill-others}
+(use-package perspective
+  :init
+  (persp-mode))
+
+(use-package persp-mode
+  :disabled)
 
 (provide 'arche-buffer-management)

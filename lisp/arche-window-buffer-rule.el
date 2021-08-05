@@ -62,20 +62,13 @@
         (side . bottom)
         (slot . 1)
 	(window-parameters ((mode-line-format . none))))
-       ("\\(?:\\*\\(?:e?shell\\)\\)"
+       ("\\(?:\\*\\(?:e?shell\\)\\|vterm\\)"
 	(display-buffer-in-side-window)
-	(window-height . 0.4)
+	(window-height . 0.27)
 	(side . top)
 	(slot . 1)
 	(window-parameters . ((header-line-format . ((:eval (concat "  " (buffer-name)))))
 			      (mode-line-format . none))))
-       ("\\*vterm\\*"
-        (display-buffer-reuse-mode-window display-buffer-at-bottom)
-        (window-height . 0.4)
-        (side . bottom)
-        (slot . 1)
-	(window-parameters ((mode-line-format . none))))
-
        ("\\*ielm\\*"
         (display-buffer-reuse-mode-window display-buffer-at-bottom)
         (window-height . 0.4)
@@ -101,3 +94,8 @@
 (add-hook 'custom-mode-hook #'visual-line-mode)
 (setq Man-notify-method 'pushy)
 (provide 'arche-window-buffer-rule)
+
+
+
+
+

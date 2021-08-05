@@ -5,7 +5,8 @@
 
 (use-package lispy
   :config
-  (define-key lispy-mode-map (kbd "M-i") #'imenu)
+  (define-key lispy-mode-map (kbd "M-o") #'ace-window)
+  (define-key lispy-mode-map (kbd "M-i") #'consult-imenu)
   (define-key lispy-mode-map (kbd "M-u") #'lispy-iedit))
 
 (defun arche-lisps-hook ()

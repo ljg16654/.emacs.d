@@ -6,6 +6,7 @@
   (require 'org-mu4e)
   (require 'mu4e)
   :config
+  (add-hook 'mu4e-view-mode-hook #'olivetti-mode)
   (setq mail-user-agent 'mu4e-user-agent)
   (setq mu4e-maildir "/home/jigang/Maildir")
   (setq mu4e-get-mail-command "offlineimap")
@@ -26,9 +27,15 @@
 					 (string-prefix-p "/SJTU" (mu4e-message-field msg :maildir))))
 	     :vars '( 		   
 		     (mu4e-trash-folder . "/SJTU/Trash")
-		     (smtpmail-smtp-server . "smtp.gmail.com"))))))
+		     (smtpmail-smtp-server . "smtp.gmail.com")))
+	   )))
 
 (use-package mu4e-alert
-  :config (mu4e-alert-enable-mode-line-display))
+  :config
+  (defun my-mu4e-alert-mode-line-formatter (mail-count)
+    (format "[unread: %d]" mail-count))
+  (setq mu4e-alert-modeline-formatter #'my-mu4e-alert-mode-line-formatter)
+  (mu4e-alert-enable-mode-line-display))
+
 
 (provide 'arche-email)

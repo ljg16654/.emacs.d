@@ -1,9 +1,7 @@
 ;; see arche-web.el for more configuration related to the browser   
 (require 'arche-package)
 (require 'arche-elisp)
-(defvar arche/transparency 95)
 
-;; web search
 ;;;###autoload
 (defun arche-websearch ()
   (interactive)
@@ -153,18 +151,7 @@ space. Otherwise, search for the input."
 (defun transparency (value)
   "Set transparency value."
   (interactive "ntransparency value 0 - 100 opaque:")
-  (setq arche/transparency value))
-
-(defun arche/toggle-transparency ()
-  "Toggle transparency of selected frame."
-  (interactive)
-  (let ((current-transparency (cdr (assoc 'alpha (frame-parameters (selected-frame))))))
-    (cond ((eq current-transparency 100)
-	   (set-frame-parameter (selected-frame) 'alpha arche/transparency))
-	  (t
-	   (set-frame-parameter (selected-frame) 'alpha 100)))))
-
-(arche/toggle-transparency)
+  (set-frame-parameter (selected-frame) 'alpha value))
 
 (global-set-key (kbd "C-c t") #'arche/toggle-transparency)
 (global-set-key (kbd "C-c W") #'arche/select-wallpaper)

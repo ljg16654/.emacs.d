@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: begin_latex_env
+# key: ,be
+# --
+\begin{${1:equation}}
+$0
+\end{$1}

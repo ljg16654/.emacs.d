@@ -35,7 +35,7 @@
   (defun update-org-latex-fragments ()
     (if (equal major-mode 'org-mode)
 	(org-latex-preview '(64))
-      (plist-put org-format-latex-options :scale (* 1.6 text-scale-mode-amount))
+      (plist-put org-format-latex-options :scale (* 3 text-scale-mode-amount))
       (org-latex-preview '(16))))
   (use-package org-bullets)
   (defun arche-org-mode-hook ()
@@ -43,7 +43,6 @@
       (auto-fill-mode t)
       (org-bullets-mode t)
       (org-indent-mode t)
-      (flyspell-mode t)
       (if (one-window-p) (olivetti-mode t))))
 
   (add-hook 'org-mode-hook #'arche-org-mode-hook)
@@ -63,6 +62,7 @@
   (setq org-todo-keywords
 	'((sequence "TODO(t)" "STUCK(z@/@)" "|" "DONE(d@)" "CANCELLED(c@)")))
 
+  
   (setq org-agenda-restore-windows-after-quit t
 	;; wiredly, the window abides by display-buffer-alist when 'only-window is set
 	org-agenda-window-setup 'only-window)
@@ -77,6 +77,8 @@
   (setq org-src-window-setup 'current-window)
   ;; display/update images in the buffer after I evaluate
   (add-hook 'org-babel-after-execute-hook 'org-display-inline-images 'append)
+  ;; citations
+  (require 'arche-oc)
   
   :bind
   (("H-c" . org-capture)))
@@ -160,9 +162,10 @@
   :hook (org-mode-hook . #'org-cdlatex-mode))
 
 (use-package org-fragtog
-  :hook (org-mode-hook . #'org-fragtog-mode))
+  :config
+  (add-hook 'org-mode-hook #'org-fragtog-mode))
 
-(setq org-format-latex-options (plist-put org-format-latex-options :scale 3))
+(setq org-format-latex-options (plist-put org-format-latex-options :scale 4))
 
 ;;;###autoloadovement between blocks
 (defun arche-cc-preserve-current-window ()
@@ -185,6 +188,8 @@
 	     (call-interactively 'org-previous-block)
 	     (reposition-window))))
   ("c" #'arche-cc-preserve-current-window))
+
+(use-package magic-latex-buffer)
 
 ;;* org-ref
 (require 'arche-org-ref)

@@ -4,6 +4,10 @@
 (use-package embark
   :after which-key
   :config
+  (define-key global-map (kbd "C-,") #'embark-act)
+  (let ((map vertico-map))
+    (define-key map (kbd "C-,") #'embark-act)
+    (define-key map (kbd "M-q") #'embark-collect-toggle-view))
   (progn
     (global-set-key (kbd "H-e") #'embark-act)
     ;; quit minibuffer after performing the action when called from the minibuffer
@@ -27,7 +31,6 @@
   :config
   (recentf-mode t)
   (global-set-key (kbd "M-i") #'consult-imenu)
-  (global-set-key (kbd "s-j") #'consult-line)
   (global-set-key (kbd "ν") #'consult-mark))
 
 (use-package embark-consult
@@ -44,3 +47,5 @@
 (define-key embark-general-map (kbd "W") #'wordnut-search)
 
 (provide 'arche-ecm)
+
+(global-set-key (kbd "H-l") #'embark-collect-completions)

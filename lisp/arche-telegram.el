@@ -1,7 +1,7 @@
 (require 'arche-package)
 
 (use-package telega
-  :disabled
+  :straight nil
   :config
   (setq telega-proxies
 	'((:server "127.0.0.1"
